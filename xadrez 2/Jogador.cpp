@@ -1,48 +1,36 @@
 #include "Jogador.h"
 
-void Jogador::Jogador::inicializa()
+void Xadrez_2::Personagem::Jogador::Jogador::inicializa()
 {
-	velocidade = Vector2f(0.1f, 0.1f);
+	vel = Vector2f(0.1f, 0.1f);
 
 }
 
-Jogador::Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
-	corpo(RectangleShape(tam))
+Xadrez_2::Personagem::Jogador::Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
+	Personagem(pos, tam)
 {
 	corpo.setPosition(pos);
 	corpo.setFillColor(Color::Blue);
 	inicializa();
 }
 
-Jogador::Jogador::Jogador(const RectangleShape corpo):
-	corpo(corpo)
-{
-	inicializa();
-}
-
-Jogador::Jogador::Jogador():
-	corpo()
-{
-	inicializa();
-}
-
-Jogador::Jogador::~Jogador()
+Xadrez_2::Personagem::Jogador::Jogador::~Jogador()
 {
 }
 
 
-void Jogador::Jogador::mover()
+void Xadrez_2::Personagem::Jogador::Jogador::move()
 {
 	if (Keyboard::isKeyPressed(Keyboard::A)) {
-		corpo.move(-velocidade.x, 0.0f);
+		corpo.move(-vel.x, 0.0f);
 	}
 	if (Keyboard::isKeyPressed(Keyboard::W)) {
-		corpo.move(0.0f,- velocidade.y);
+		corpo.move(0.0f, -vel.y);
 	}
 	if (Keyboard::isKeyPressed(Keyboard::D)) {
-		corpo.move(velocidade.x, 0.0f);
+		corpo.move(vel.x, 0.0f);
 	}
 	if (Keyboard::isKeyPressed(Keyboard::S)) {
-		corpo.move(0.0f,velocidade.y);
+		corpo.move(0.0f, vel.y);
 	}
 }

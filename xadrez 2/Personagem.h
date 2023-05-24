@@ -2,7 +2,7 @@
 
 #include "stdafx.h"
 
-namespace Xadrez_2{
+namespace Xadrez_2 {
 
 	namespace Personagem {
 		class Personagem
@@ -15,7 +15,7 @@ namespace Xadrez_2{
 			~Personagem();
 			const RectangleShape getCorpo();
 
-			virtual void mover() = 0;
+			virtual void move() = 0;
 		};
 	}
 }

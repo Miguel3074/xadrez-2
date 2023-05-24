@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Personagem.h"
+#include "Jogador.h"
 
 #define VEL_INIMIGO_X 0.5f
 #define VEL_INIMIGO_Y 0.5f
@@ -12,7 +13,7 @@ namespace Xadrez_2 {
 	namespace Personagem {
 		namespace Inimigo {
 
-			class Inimigo:public Personagem
+			class Inimigo :public Personagem
 			{
 			private:
 				Jogador::Jogador* jogador;
@@ -25,7 +26,7 @@ namespace Xadrez_2 {
 				~Inimigo();
 				void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
 				void movimentoAleatorio();
-				void mover();
+				void move();
 
 			};
 		}
