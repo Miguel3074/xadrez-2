@@ -26,7 +26,7 @@ namespace Xadrez_2 {
 				~Inimigo();
 				void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
 				void movimentoAleatorio();
-				void move();
+				void atualizar();
 
 			};
 		}

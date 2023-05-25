@@ -6,7 +6,7 @@ void Xadrez_2::Personagem::Inimigo::Inimigo::inicializa()
 }
 
 Xadrez_2::Personagem::Inimigo::Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Jogador::Jogador* jogador) :
-	Personagem(pos, tam), relogio(), jogador(jogador)
+	Personagem(pos, tam, vel.x), relogio(), jogador(jogador)
 {
 	corpo.setFillColor(Color::Red);
 	inicializa();
@@ -38,7 +38,7 @@ void Xadrez_2::Personagem::Inimigo::Inimigo::movimentoAleatorio()
 {
 }
 
-void Xadrez_2::Personagem::Inimigo::Inimigo::move()
+void Xadrez_2::Personagem::Inimigo::Inimigo::atualizar()
 {
 	Vector2f posJogador = jogador->getCorpo().getPosition();
 	Vector2f posInimigo = corpo.getPosition();

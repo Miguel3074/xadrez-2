@@ -13,9 +13,9 @@ namespace Xadrez_2 {
 				void inicializa();
 
 			public:
-				Jogador(const Vector2f pos, const Vector2f tam);
+				Jogador(const Vector2f pos, const Vector2f tam, const float vel);
 				~Jogador();
-				void move();
+				void atualizar();
 			};
 		}
 	}
