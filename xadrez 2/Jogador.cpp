@@ -1,12 +1,17 @@
 #include "Jogador.h"
 
-void Xadrez_2::Personagem::Jogador::Jogador::inicializa()
+void Entidades::Personagens::Jogador::Jogador::inicializa()
 {
 	vel = Vector2f(0.1f, 0.1f);
 
 }
 
-Xadrez_2::Personagem::Jogador::Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
+Entidades::Personagens::Jogador::Jogador() : Personagem()
+{
+	inicializa();
+}
+
+Entidades::Personagens::Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
 	Personagem(pos, tam)
 {
 	corpo.setPosition(pos);
@@ -14,12 +19,12 @@ Xadrez_2::Personagem::Jogador::Jogador::Jogador(const Vector2f pos, const Vector
 	inicializa();
 }
 
-Xadrez_2::Personagem::Jogador::Jogador::~Jogador()
+Entidades::Personagens::Jogador::Jogador::~Jogador()
 {
 }
 
 
-void Xadrez_2::Personagem::Jogador::Jogador::move()
+void Entidades::Personagens::Jogador::Jogador::executar()
 {
 	if (Keyboard::isKeyPressed(Keyboard::A)) {
 		corpo.move(-vel.x, 0.0f);

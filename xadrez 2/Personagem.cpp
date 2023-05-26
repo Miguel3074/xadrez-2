@@ -1,18 +1,14 @@
 #include "Personagem.h"
 
-Xadrez_2::Personagem::Personagem::Personagem(const Vector2f pos, const Vector2f tam) :
-	corpo(RectangleShape(tam))
+Entidades::Personagens::Personagem::Personagem() : Entidade()
+{}
+
+Entidades::Personagens::Personagem::Personagem(const Vector2f pos, const Vector2f tam) : Entidade()
 {
 	corpo.setPosition(pos);
 	corpo.setFillColor(Color::Blue);
+	corpo.setSize(tam);
 }
 
-Xadrez_2::Personagem::Personagem::~Personagem()
-{
-}
-
-const RectangleShape Xadrez_2::Personagem::Personagem::getCorpo()
-{
-	return corpo;
-}
-
+Entidades::Personagens::Personagem::~Personagem()
+{}

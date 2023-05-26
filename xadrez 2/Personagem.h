@@ -1,21 +1,19 @@
 #pragma once
 
-#include "stdafx.h"
+#include "Entidade.h"
 
-namespace Xadrez_2 {
-
-	namespace Personagem {
-		class Personagem
+namespace Entidades {
+	namespace Personagens {
+		class Personagem : public Entidade
 		{
 		protected:
-			RectangleShape corpo;
 			Vector2f vel;
 		public:
+			Personagem();
 			Personagem(const Vector2f pos, const Vector2f tam);
 			~Personagem();
-			const RectangleShape getCorpo();
 
-			virtual void move() = 0;
+			virtual void executar() = 0;
 		};
 	}
 }

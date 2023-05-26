@@ -3,20 +3,21 @@
 #include "stdafx.h"
 #include "Personagem.h"
 
-namespace Xadrez_2 {
-	namespace Personagem {
-		namespace Jogador {
+namespace Entidades {
+	namespace Personagens {
 
-			class Jogador :public Personagem
+			class Jogador : public Personagem
 			{
 			private:
+				//int pontos;
 				void inicializa();
 
 			public:
+				Jogador();
 				Jogador(const Vector2f pos, const Vector2f tam);
 				~Jogador();
-				void move();
+
+				void executar();
 			};
-		}
 	}
 }

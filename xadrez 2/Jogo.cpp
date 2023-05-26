@@ -41,7 +41,7 @@ void Xadrez_2::Jogo::executar()
 			}
 		}
 		pJanela->limpaJanela();
-		for (int i = 0; i < personagens.size(); i++) {
+		for (int i = 0; i < (int) personagens.size(); i++) {
 			personagens.at(i)->move();
 			pJanela->desenhaElemento(personagens.at(i)->getCorpo());
 		}

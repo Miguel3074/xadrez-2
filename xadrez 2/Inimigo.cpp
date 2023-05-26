@@ -1,24 +1,27 @@
 #include "Inimigo.h"
 
-void Xadrez_2::Personagem::Inimigo::Inimigo::inicializa()
+void Entidades::Personagens::Inimigo::inicializa()
 {
 	vel = Vector2f(0.05f, 0.05f);
 }
 
-Xadrez_2::Personagem::Inimigo::Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Jogador::Jogador* jogador) :
-	Personagem(pos, tam), relogio(), jogador(jogador)
+Entidades::Personagens::Inimigo::Inimigo() : Personagem(), relogio()
+{}
+
+Entidades::Personagens::Inimigo::Inimigo(const Vector2f pos, const Vector2f tam) :
+	Personagem(pos, tam), relogio()
 {
 	corpo.setFillColor(Color::Red);
 	inicializa();
-	srand(time(NULL));
+	srand((unsigned) time(NULL));
 	moveRand = rand() % 4;
 }
 
-Xadrez_2::Personagem::Inimigo::Inimigo::~Inimigo()
+Entidades::Personagens::Inimigo::~Inimigo()
 {
 }
 
-void Xadrez_2::Personagem::Inimigo::Inimigo::persegueJogador(Vector2f posJogador, Vector2f posInimigo)
+void Entidades::Personagens::Inimigo::persegueJogador(Vector2f posJogador, Vector2f posInimigo)
 {
 	if (posJogador.x - posInimigo.x > 0.0f) {
 		corpo.move(vel.x, 0.0f);
@@ -34,11 +37,11 @@ void Xadrez_2::Personagem::Inimigo::Inimigo::persegueJogador(Vector2f posJogador
 	}
 }
 
-void Xadrez_2::Personagem::Inimigo::Inimigo::movimentoAleatorio()
+void Entidades::Personagens::Inimigo::movimentoAleatorio()
 {
 }
 
-void Xadrez_2::Personagem::Inimigo::Inimigo::move()
+void Entidades::Personagens::Inimigo::executar()
 {
 	Vector2f posJogador = jogador->getCorpo().getPosition();
 	Vector2f posInimigo = corpo.getPosition();

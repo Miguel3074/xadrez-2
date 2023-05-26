@@ -9,7 +9,7 @@ namespace Xadrez_2 {
 	{
 	private:
 		Gerenciador::GerenciadorGrafico* pJanela;
-		vector<Xadrez_2::Personagem::Personagem*> personagens;
+		vector<Entidades::Personagens::Personagem*> personagens;
 	public:
 		Jogo();
 		~Jogo();

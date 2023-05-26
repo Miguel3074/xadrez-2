@@ -9,24 +9,23 @@
 #define RAIO_PERSEGUIR_X 200.0f
 #define RAIO_PERSEGUIR_Y 200.0f
 
-namespace Xadrez_2 {
-	namespace Personagem {
-		namespace Inimigo {
-
-			class Inimigo :public Personagem
+namespace Entidades {
+	namespace Personagens {
+			class Inimigo : public Personagem
 			{
 			private:
-				Jogador::Jogador* jogador;
 				Clock relogio;
 				short moveRand;
 				void inicializa();
 
 			public:
-				Inimigo(const Vector2f pos, const Vector2f tam, Jogador::Jogador* jogador);
+				Inimigo();
+				Inimigo(const Vector2f pos, const Vector2f tam);
 				~Inimigo();
+
 				void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
 				void movimentoAleatorio();
-				void move();
+				void executar();
 
 			};
 		}
