@@ -1,5 +1,4 @@
 #include "GerenciadoEventos.h"
-
 namespace Xadrez_2 {
 	namespace Gerenciador {
 
@@ -7,14 +6,13 @@ namespace Xadrez_2 {
 
 		GerenciadorEvento::GerenciadorEvento()
 		{
-			pJanela = pJanela->getGerenciadorGrafico();
 		}
 
 		GerenciadorEvento::~GerenciadorEvento()
 		{
-			if (pJanela) {
-				delete(pJanela);
-				pJanela = nullptr;
+			if (pGerenciadorGrafico) {
+				delete(pGerenciadorGrafico);
+				pGerenciadorGrafico = nullptr;
 			}
 		}
 
@@ -28,9 +26,14 @@ namespace Xadrez_2 {
 		}
 
 
-		void GerenciadorEvento::setJogador(Personagem::Jogador::Jogador* pJogador)
+		void GerenciadorEvento::setJogador(Entidade::Personagem::Jogador::Jogador* pJogador)
 		{
 			this->pjogador = pJogador;
+		}
+
+		void GerenciadorEvento::setGerenciadorGrafico(GerenciadorGrafico* pGrafico)
+		{
+			this->pGerenciadorGrafico = pGrafico;
 		}
 
 		void GerenciadorEvento::verificaTeclaPressionada(Keyboard::Key tecla)
@@ -42,7 +45,7 @@ namespace Xadrez_2 {
 				pjogador->andar(false);
 			}
 			else if (tecla == Keyboard::Escape) {
-				pJanela->fecharJanela();
+				pGerenciadorGrafico->fecharJanela();
 			}
 		}
 
@@ -56,7 +59,7 @@ namespace Xadrez_2 {
 		void GerenciadorEvento::executar()
 		{
 			Event evento;
-			while (pJanela->getJanela()->pollEvent(evento))
+			while (pGerenciadorGrafico->getJanela()->pollEvent(evento))
 			{
 				if (evento.type == Event::KeyPressed) {
 					verificaTeclaPressionada(evento.key.code);
@@ -66,7 +69,7 @@ namespace Xadrez_2 {
 				}
 				else if (evento.type == Event::Closed)
 				{
-					pJanela->fecharJanela();
+					pGerenciadorGrafico->fecharJanela();
 				}
 
 			}

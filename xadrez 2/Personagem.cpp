@@ -1,40 +1,43 @@
+
 #include "Personagem.h"
 
+namespace Xadrez_2 {
+	namespace Entidade {
+		namespace Personagem {
 
-Xadrez_2::Personagem::Personagem::Personagem(const Vector2f pos, const Vector2f tam, const float vel) :
-	corpo(RectangleShape(tam)), dirEsquerda(false), dt(NULL), podeAndar(false), vel(vel, 0.0f)
-{
-	corpo.setPosition(pos);
-	corpo.setFillColor(Color::Blue);
-}
 
-Xadrez_2::Personagem::Personagem::~Personagem()
-{
-}
+			Personagem::Personagem(const Vector2f pos, const Vector2f tam, const float vel) :
+				dirEsquerda(false), dt(NULL), podeAndar(false), vel(vel, 0.0f), Entidade(pos, tam)
+			{
+				corpo.setPosition(pos);
+				corpo.setFillColor(Color::Blue);
+			}
 
-const RectangleShape Xadrez_2::Personagem::Personagem::getCorpo()
-{
-	return corpo;
-}
+			Personagem::~Personagem()
+			{
+			}
 
-void Xadrez_2::Personagem::Personagem::andar(const bool dirEsquerda)
-{
-	podeAndar = true;
-	this->dirEsquerda = dirEsquerda;
-}
+			void Personagem::andar(const bool dirEsquerda)
+			{
+				podeAndar = true;
+				this->dirEsquerda = dirEsquerda;
+			}
 
-void Xadrez_2::Personagem::Personagem::parar()
-{
-	podeAndar = false;
-}
+			void Personagem::parar()
+			{
+				podeAndar = false;
+			}
 
-void Xadrez_2::Personagem::Personagem::atualizarPosicao()
-{
-	dt = relogio.getElapsedTime().asSeconds();
-	float ds = 1000 * dt; //MRU
-	if (dirEsquerda) {
-		ds *= -1;
+			void Personagem::atualizarPosicao()
+			{
+				dt = relogio.getElapsedTime().asSeconds();
+				float ds = 1000 * dt; //MRU
+				if (dirEsquerda) {
+					ds *= -1;
+				}
+				//cout << ds << endl;
+				corpo.move(ds, 0.0f);
+			}
+		}
 	}
-	//cout << ds << endl;
-	corpo.move(ds, 0.0f);
 }

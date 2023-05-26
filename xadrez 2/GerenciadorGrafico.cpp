@@ -3,7 +3,7 @@
 namespace Xadrez_2 {
 	namespace Gerenciador {
 
-		GerenciadorGrafico* GerenciadorGrafico::pJanela = GerenciadorGrafico::getGerenciadorGrafico();
+		GerenciadorGrafico* GerenciadorGrafico::pGerenciadorGrafico = GerenciadorGrafico::getGerenciadorGrafico();
 
 		GerenciadorGrafico::GerenciadorGrafico() :
 			janela(new RenderWindow(VideoMode(1080.0f, 720.0f), "Xadrez-2"))
@@ -24,10 +24,10 @@ namespace Xadrez_2 {
 
 		GerenciadorGrafico* GerenciadorGrafico::getGerenciadorGrafico()
 		{
-			if (pJanela == nullptr) {
+			if (pGerenciadorGrafico == nullptr) {
 				return new GerenciadorGrafico();
 			}
-			return pJanela;
+			return pGerenciadorGrafico;
 		}
 
 		RenderWindow* GerenciadorGrafico::getJanela()

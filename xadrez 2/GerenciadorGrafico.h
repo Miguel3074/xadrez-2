@@ -12,7 +12,7 @@ namespace Xadrez_2 {
 			RenderWindow* janela;
 
 			//SINGLETON
-			static GerenciadorGrafico* pJanela;
+			static GerenciadorGrafico* pGerenciadorGrafico;
 			GerenciadorGrafico();
 		public:
 			~GerenciadorGrafico();

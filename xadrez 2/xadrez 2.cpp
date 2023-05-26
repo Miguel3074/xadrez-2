@@ -7,6 +7,6 @@ using namespace Xadrez_2;
 
 int main()
 {
-    Jogo jogo;
-    return 0;
+	Jogo jogo;
+	return 0;
 }

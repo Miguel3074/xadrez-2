@@ -4,19 +4,21 @@
 #include "Personagem.h"
 
 namespace Xadrez_2 {
-	namespace Personagem {
-		namespace Jogador {
+	namespace Entidade {
+		namespace Personagem {
+			namespace Jogador {
 
-			class Jogador :public Personagem
-			{
-			private:
-				void inicializa();
+				class Jogador :public Personagem
+				{
+				private:
+					void inicializa();
 
-			public:
-				Jogador(const Vector2f pos, const Vector2f tam, const float vel);
-				~Jogador();
-				void atualizar();
-			};
+				public:
+					Jogador(const Vector2f pos, const Vector2f tam, const float vel);
+					~Jogador();
+					void atualizar();
+				};
+			}
 		}
 	}
 }
