@@ -1,8 +1,8 @@
 #include "GerenciadorGrafico.h"
 
-Xadrez_2::Gerenciador::GerenciadorGrafico* Xadrez_2::Gerenciador::GerenciadorGrafico::pJanela = nullptr;
+Gerenciadores::GerenciadorGrafico* Gerenciadores::GerenciadorGrafico::pJanela = nullptr;
 
-Xadrez_2::Gerenciador::GerenciadorGrafico::GerenciadorGrafico() :
+Gerenciadores::GerenciadorGrafico::GerenciadorGrafico() :
 	janela(new RenderWindow(VideoMode(1080.0f, 720.0f), "Xadrez-2"))
 {
 	if (janela == nullptr) {
@@ -11,7 +11,7 @@ Xadrez_2::Gerenciador::GerenciadorGrafico::GerenciadorGrafico() :
 	}
 }
 
-Xadrez_2::Gerenciador::GerenciadorGrafico::~GerenciadorGrafico()
+Gerenciadores::GerenciadorGrafico::~GerenciadorGrafico()
 {
 	if (janela) {
 		delete(janela);
@@ -19,40 +19,40 @@ Xadrez_2::Gerenciador::GerenciadorGrafico::~GerenciadorGrafico()
 	}
 }
 
-Xadrez_2::Gerenciador::GerenciadorGrafico* Xadrez_2::Gerenciador::GerenciadorGrafico::getGerenciadorGrafico()
+Gerenciadores::GerenciadorGrafico* Gerenciadores::GerenciadorGrafico::getGerenciadorGrafico()
 {
 	if (pJanela == nullptr) {
-		return new Xadrez_2::Gerenciador::GerenciadorGrafico();
+		return new Gerenciadores::GerenciadorGrafico();
 	}
 	return pJanela;
 }
 
-RenderWindow* Xadrez_2::Gerenciador::GerenciadorGrafico::getJanela()
+RenderWindow* Gerenciadores::GerenciadorGrafico::getJanela()
 {
 	return janela;
 }
 
-void Xadrez_2::Gerenciador::GerenciadorGrafico::limpaJanela()
+void Gerenciadores::GerenciadorGrafico::limpaJanela()
 {
 	janela->clear();
 }
 
-void Xadrez_2::Gerenciador::GerenciadorGrafico::desenhaElemento(RectangleShape corpo)
+void Gerenciadores::GerenciadorGrafico::desenhaElemento(RectangleShape corpo)
 {
 	janela->draw(corpo);
 }
 
-void Xadrez_2::Gerenciador::GerenciadorGrafico::mostraElementos()
+void Gerenciadores::GerenciadorGrafico::mostraElementos()
 {
 	janela->display();
 }
 
-void Xadrez_2::Gerenciador::GerenciadorGrafico::fecharJanela()
+void Gerenciadores::GerenciadorGrafico::fecharJanela()
 {
 	janela->close();
 }
 
-const bool Xadrez_2::Gerenciador::GerenciadorGrafico::verificaJanelaAberta()
+const bool Gerenciadores::GerenciadorGrafico::verificaJanelaAberta()
 {
 	return janela->isOpen();
 }

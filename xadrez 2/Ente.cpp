@@ -8,7 +8,7 @@ Ente::~Ente()
 
 void Ente::desenhar()
 {
-	GGG->desenhaElemento(this);
+	pGerGra->desenhaElemento(this);
 }
 
-static Xadrez_2::Gerenciador::GerenciadorGrafico* Ente::GGG(Xadrez_2::Gerenciador::GerenciadorGrafico.getGerenciadorGrafico())
+static Gerenciadores::GerenciadorGrafico* Ente::pGerGra(Gerenciadores::GerenciadorGrafico.getGerenciadorGrafico())

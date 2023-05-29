@@ -7,7 +7,7 @@ class Ente {
 protected:
 	//unsigned int id; //se precisarmos pesquisar algo pelo id numérica a algum ponto dá pra acionar isso aqui
 	//static unsigned int ID_CONT; //pra auto-incrementar no caso acima
-	static Xadrez_2::Gerenciador::GerenciadorGrafico* GGG; //Gerenciador Gráfico Geral, GGG
+	static Gerenciadores::GerenciadorGrafico* pGerGra; //Gerenciador Gráfico Geral, GGG
 	// >Inserir variável para imagem da ent
 	sf::Event evento;
 

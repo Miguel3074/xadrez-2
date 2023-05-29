@@ -43,10 +43,10 @@ void Entidades::Personagens::Inimigo::movimentoAleatorio()
 
 void Entidades::Personagens::Inimigo::executar()
 {
-	Vector2f posJogador = jogador->getCorpo().getPosition();
+	/*Vector2f posJogador = jogador->getCorpo().getPosition();
 	Vector2f posInimigo = corpo.getPosition();
 
 	if (fabs(posJogador.x - posInimigo.x) <= RAIO_PERSEGUIR_X && fabs(posJogador.y - posInimigo.y) <= RAIO_PERSEGUIR_Y) {
 		persegueJogador(posJogador, posInimigo);
-	}
+	}*/
 }

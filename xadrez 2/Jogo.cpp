@@ -1,19 +1,18 @@
 #include "Jogo.h"
 
-Xadrez_2::Jogo::Jogo() :
-	personagens(), pJanela(pJanela->getGerenciadorGrafico())
+Jogo::Jogo() : personagens()
 {
-	if (pJanela == nullptr) {
+	if (pGerGra == nullptr) {
 		cout << "ERRO AO CRIAR GERENCIADOR GRAFICO";
 		exit(1);
 	}
 
 
-	Personagem::Jogador::Jogador* jogador = new Personagem::Jogador::Jogador(Vector2f(100.0f, 200.0f), Vector2f(50.0f, 50.0f));
-	Personagem::Inimigo::Inimigo* inimigo = new Personagem::Inimigo::Inimigo(Vector2f(100.0f, 200.0f), Vector2f(50.0f, 50.0f), jogador);
+	Entidades::Personagens::Jogador* jogador = new Entidades::Personagens::Jogador(Vector2f(100.0f, 200.0f), Vector2f(50.0f, 50.0f));
+	Entidades::Personagens::Inimigo* inimigo = new Entidades::Personagens::Inimigo(Vector2f(100.0f, 200.0f), Vector2f(50.0f, 50.0f));
 
-	Personagem::Personagem* p1 = static_cast<Personagem::Personagem*>(jogador);
-	Personagem::Personagem* p2 = static_cast<Personagem::Personagem*>(inimigo);
+	Entidades::Personagens::Personagem* p1 = static_cast<Entidades::Personagens::Personagem*>(jogador);
+	Entidades::Personagens::Personagem* p2 = static_cast<Entidades::Personagens::Personagem*>(inimigo);
 
 	personagens.push_back(p1);
 	personagens.push_back(p2);
@@ -21,31 +20,33 @@ Xadrez_2::Jogo::Jogo() :
 	executar();
 }
 
-Xadrez_2::Jogo::~Jogo()
+Jogo::~Jogo()
 {
 }
 
-void Xadrez_2::Jogo::executar()
+void Jogo::executar()
 {
-	while (pJanela->verificaJanelaAberta())
+	while (pGerGra->verificaJanelaAberta())
 	{
 		Event evento;
-		if (pJanela->getJanela()->pollEvent(evento)) {
+		if (pGerGra->getJanela()->pollEvent(evento)) {
 			if (evento.type == Event::Closed) {
-				pJanela->fecharJanela();
+				pGerGra->fecharJanela();
 			}
 			else if (evento.type == Event::KeyPressed) {
 				if (evento.key.code == Keyboard::Escape) {
-					pJanela->fecharJanela();
+					pGerGra->fecharJanela();
 				}
 			}
 		}
-		pJanela->limpaJanela();
+		pGerGra->limpaJanela();
 		for (int i = 0; i < (int) personagens.size(); i++) {
-			personagens.at(i)->move();
-			pJanela->desenhaElemento(personagens.at(i)->getCorpo());
+			personagens.at(i)->executar();
+			pGerGra->desenhaElemento(personagens.at(i)->getCorpo());
 		}
-		pJanela->mostraElementos();
+		pGerGra->mostraElementos();
 	}
 	personagens.clear();
 }
+
+static Gerenciadores::GerenciadorGrafico* Ente::pGerGra(Gerenciadores::GerenciadorGrafico.getGerenciadorGrafico())

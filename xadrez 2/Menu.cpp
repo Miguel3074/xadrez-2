@@ -15,7 +15,7 @@ int Menu::getMenuOpcao() { return menuOpcao; }
 
 void Menu::executar()
 {
-	Window* janela = GGG->getJanela();
+	Window* janela = pGerGra->getJanela();
 
 	while (janela->pollEvent(this->evento)) {
 		switch (opcao)
