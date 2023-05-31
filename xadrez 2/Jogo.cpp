@@ -2,10 +2,11 @@
 
 namespace Xadrez_2 {
 
-	Gerenciador::GerenciadorGrafico* Jogo::pGerenciadorGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
 	Gerenciador::GerenciadorEvento* Jogo::pEvento = Gerenciador::GerenciadorEvento::getGerenciadorEvento();
 
-	Jogo::Jogo()
+	Jogo::Jogo() :
+		pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
+		colisor(&listaPersonagens, &listaObstaculos)
 	{
 		if (pGerenciadorGrafico == nullptr) {
 			cout << "ERRO AO CRIAR GERENCIADOR GRAFICO";
@@ -25,7 +26,10 @@ namespace Xadrez_2 {
 		{
 			pEvento->executar();
 			pGerenciadorGrafico->limpaJanela();
-			listaEntidade.executar(pGerenciadorGrafico->getJanela());
+			listaPersonagens.executar(pGerenciadorGrafico->getJanela());
+
+			colisor.executar();
+
 			pGerenciadorGrafico->mostraElementos();
 		}
 	}
@@ -40,11 +44,10 @@ namespace Xadrez_2 {
 		Entidade::Personagem::Personagem* p2 = static_cast<Entidade::Personagem::Personagem*>(inimigo1);
 		Entidade::Personagem::Personagem* p3 = static_cast<Entidade::Personagem::Personagem*>(inimigo2);
 
-		listaEntidade.addEntidade(p1);
-		listaEntidade.addEntidade(p2);
-		listaEntidade.addEntidade(p3);
+		listaPersonagens.addEntidade(p1);
+		listaPersonagens.addEntidade(p2);
+		listaPersonagens.addEntidade(p3);
 
 		pEvento->setJogador(jogador);
-		pEvento->setGerenciadorGrafico(pGerenciadorGrafico);
 	}
 }

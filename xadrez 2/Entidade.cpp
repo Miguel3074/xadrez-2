@@ -1,8 +1,8 @@
 #include "Entidade.h"
 
 namespace Xadrez_2 {
-	Xadrez_2::Entidade::Entidade::Entidade(const Vector2f pos, const Vector2f tam) :
-		corpo(RectangleShape(tam)), pos(pos), tam(tam)
+	Xadrez_2::Entidade::Entidade::Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs iD) :
+		corpo(RectangleShape(tam)), pos(pos), tam(tam), ID(iD)
 	{
 	}
 
@@ -15,9 +15,19 @@ namespace Xadrez_2 {
 		return corpo;
 	}
 
+	Vector2f Entidade::Entidade::getPos()
+	{
+		return pos;
+	}
 
+	Vector2f Entidade::Entidade::getTam()
+	{
+		return tam;
+	}
 
-
-
+	IDs::IDs Entidade::Entidade::getId()
+	{
+		return ID;
+	}
 
 }

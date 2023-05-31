@@ -11,7 +11,7 @@ namespace Xadrez_2 {
 				}
 
 				Jogador::Jogador(const Vector2f pos, const Vector2f tam, const float vel) :
-					Personagem(pos, tam, vel)
+					Personagem(pos, tam, vel, IDs::IDs::jogador)
 				{
 					corpo.setPosition(pos);
 					corpo.setFillColor(Color::Blue);
@@ -31,6 +31,22 @@ namespace Xadrez_2 {
 					}
 					relogio.restart();
 
+				}
+				void Jogador::colisao(Entidade* outraentidade, Vector2f ds)
+				{
+					switch (outraentidade->getId())
+					{
+					case(IDs::IDs::plataforma):
+					{
+
+					}
+					break;
+					case(IDs::IDs::inimigo):
+					{
+
+					}
+					break;
+					}
 				}
 			}
 		}

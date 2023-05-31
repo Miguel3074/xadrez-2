@@ -4,6 +4,7 @@
 #include "Inimigo.h"
 #include "GerenciadorGrafico.h"
 #include "GerenciadoEventos.h"
+#include "GerenciadorColisao.h"
 #include "ListaEntidade.h"
 
 namespace Xadrez_2 {
@@ -11,8 +12,10 @@ namespace Xadrez_2 {
 	{
 	private:
 		static Gerenciador::GerenciadorEvento* pEvento;
-		static Gerenciador::GerenciadorGrafico* pGerenciadorGrafico;
-		Lista::ListaEntidade listaEntidade;
+		Gerenciador::GerenciadorGrafico* pGerenciadorGrafico;
+		Gerenciador::GerenciadorColisao colisor;
+		ListaEntidade listaPersonagens;
+		ListaEntidade listaObstaculos;
 	public:
 		Jogo();
 		~Jogo();

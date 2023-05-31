@@ -19,7 +19,7 @@ namespace Xadrez_2 {
 				private:
 					Jogador::Jogador* jogador;
 					Clock relogio;
-					short moveRand;
+					//short moveRand;
 					void inicializa();
 
 				public:
@@ -28,7 +28,7 @@ namespace Xadrez_2 {
 					void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
 					void movimentoAleatorio();
 					void atualizar();
-
+					void colisao(Entidade* outraentidade, Vector2f ds);
 				};
 			}
 		}

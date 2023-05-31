@@ -15,11 +15,10 @@ namespace Xadrez_2 {
 				Clock relogio;
 				float dt;
 			public:
-				Personagem(const Vector2f pos, const Vector2f tam, const float vel);
+				Personagem(const Vector2f pos, const Vector2f tam, const float vel, IDs::IDs iD);
 				~Personagem();
 				void andar(const bool dirEsquerda);
 				void parar();
-				virtual void atualizar() = 0;
 
 				void atualizarPosicao();
 			};

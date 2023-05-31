@@ -6,8 +6,8 @@ namespace Xadrez_2 {
 		namespace Personagem {
 
 
-			Personagem::Personagem(const Vector2f pos, const Vector2f tam, const float vel) :
-				dirEsquerda(false), dt(NULL), podeAndar(false), vel(vel, 0.0f), Entidade(pos, tam)
+			Personagem::Personagem(const Vector2f pos, const Vector2f tam, const float vel, IDs::IDs iD) :
+				dirEsquerda(false), dt(NULL), podeAndar(false), vel(vel, 0.0f), Entidade(pos, tam, iD)
 			{
 				corpo.setPosition(pos);
 				corpo.setFillColor(Color::Blue);
@@ -35,7 +35,6 @@ namespace Xadrez_2 {
 				if (dirEsquerda) {
 					ds *= -1;
 				}
-				//cout << ds << endl;
 				corpo.move(ds, 0.0f);
 			}
 		}

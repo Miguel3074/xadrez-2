@@ -10,12 +10,12 @@ namespace Xadrez_2 {
 				}
 
 				Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Jogador::Jogador* jogador) :
-					Personagem(pos, tam, vel.x), relogio(), jogador(jogador)
+					Personagem(pos, tam, vel.x, IDs::IDs::inimigo), relogio(), jogador(jogador)
 				{
 					corpo.setFillColor(Color::Red);
 					inicializa();
 					srand(time(NULL));
-					moveRand = rand() % 4;
+					//moveRand = rand() % 4;
 				}
 
 				Inimigo::~Inimigo()
@@ -50,6 +50,10 @@ namespace Xadrez_2 {
 					if (fabs(posJogador.x - posInimigo.x) <= RAIO_PERSEGUIR_X && fabs(posJogador.y - posInimigo.y) <= RAIO_PERSEGUIR_Y) {
 						persegueJogador(posJogador, posInimigo);
 					}
+				}
+				void Inimigo::colisao(Entidade* outraentidade, Vector2f ds)
+				{
+					parar();
 				}
 			}
 		}

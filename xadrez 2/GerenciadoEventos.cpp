@@ -4,7 +4,8 @@ namespace Xadrez_2 {
 
 		GerenciadorEvento* GerenciadorEvento::pEvento = nullptr;
 
-		GerenciadorEvento::GerenciadorEvento()
+		GerenciadorEvento::GerenciadorEvento() :
+			pjogador(nullptr), pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico())
 		{
 		}
 
@@ -29,11 +30,6 @@ namespace Xadrez_2 {
 		void GerenciadorEvento::setJogador(Entidade::Personagem::Jogador::Jogador* pJogador)
 		{
 			this->pjogador = pJogador;
-		}
-
-		void GerenciadorEvento::setGerenciadorGrafico(GerenciadorGrafico* pGrafico)
-		{
-			this->pGerenciadorGrafico = pGrafico;
 		}
 
 		void GerenciadorEvento::verificaTeclaPressionada(Keyboard::Key tecla)

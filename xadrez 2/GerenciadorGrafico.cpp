@@ -25,7 +25,7 @@ namespace Xadrez_2 {
 		GerenciadorGrafico* GerenciadorGrafico::getGerenciadorGrafico()
 		{
 			if (pGerenciadorGrafico == nullptr) {
-				return new GerenciadorGrafico();
+				pGerenciadorGrafico = new GerenciadorGrafico();
 			}
 			return pGerenciadorGrafico;
 		}
