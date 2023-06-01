@@ -15,9 +15,14 @@ namespace Xadrez_2 {
 		return corpo;
 	}
 
+	void Entidade::Entidade::setPos(Vector2f p)
+	{
+		corpo.setPosition(p);
+	}
+
 	Vector2f Entidade::Entidade::getPos()
 	{
-		return pos;
+		return corpo.getPosition();
 	}
 
 	Vector2f Entidade::Entidade::getTam()

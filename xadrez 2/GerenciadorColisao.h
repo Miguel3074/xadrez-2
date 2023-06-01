@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ListaEntidade.h"
-
+#include "Entidade.h"
 
 namespace Xadrez_2 {
 	namespace Gerenciador
@@ -9,10 +9,9 @@ namespace Xadrez_2 {
 		class GerenciadorColisao
 		{
 		private:
-			ListaEntidade* listaPersonagem;
-			ListaEntidade* listaObstaculo;
+			ListaEntidade* listaEntidades;
 		public:
-			GerenciadorColisao(ListaEntidade* listaPersonagem, ListaEntidade* listaObstaculo);
+			GerenciadorColisao(ListaEntidade* listaEntidades);
 			~GerenciadorColisao();
 			const Vector2f calculaColisao(Entidade::Entidade* ent1, Entidade::Entidade* ent2);
 			void executar();

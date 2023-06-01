@@ -12,12 +12,14 @@ namespace Xadrez_2 {
 			RectangleShape corpo;
 			Vector2f pos;
 			Vector2f tam;
+			Texture textura;
 
 			const IDs::IDs ID;
 		public:
 			Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs iD);
 			~Entidade();
 			const RectangleShape getCorpo() const;
+			void setPos(Vector2f p);
 			Vector2f getPos();
 			Vector2f getTam();
 			IDs::IDs getId();

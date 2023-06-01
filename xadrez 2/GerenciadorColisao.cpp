@@ -1,63 +1,37 @@
 #include "GerenciadorColisao.h"
 
-Xadrez_2::Gerenciador::GerenciadorColisao::GerenciadorColisao(ListaEntidade* listaPersonagem, ListaEntidade* listaObstaculo) :
-	listaObstaculo(listaObstaculo), listaPersonagem(listaPersonagem)
+Xadrez_2::Gerenciador::GerenciadorColisao::GerenciadorColisao(ListaEntidade* listaEntidades) :
+	listaEntidades(listaEntidades)
 {
 }
 
 Xadrez_2::Gerenciador::GerenciadorColisao::~GerenciadorColisao()
 {
-	if (listaPersonagem)
-		delete(listaPersonagem);
-	if (listaObstaculo)
-		delete(listaObstaculo);
+	if (listaEntidades)
+		delete(listaEntidades);
 }
 
 const Vector2f Xadrez_2::Gerenciador::GerenciadorColisao::calculaColisao(Entidade::Entidade* ent1, Entidade::Entidade* ent2)
 {
-	Vector2f pos1 = ent1->getPos();
-	Vector2f pos2 = ent2->getPos();
-
-	Vector2f tam1 = ent1->getTam();
-	Vector2f tam2 = ent2->getTam();
-
-
-	Vector2f distanciaCentros(
-		fabs((pos1.x + tam1.x / 2.0f) - (pos2.x + tam2.x / 2.0f)),
-		fabs((pos1.y + tam1.y / 2.0f) - (pos2.y + tam2.y / 2.0f))
-	);
-	Vector2f somaMetadeRectangulo(tam1.x / 2.0f + tam2.x / 2.0f, tam1.y / 2.0f + tam2.y / 2.0f);
-	return sf::Vector2f(distanciaCentros.x - somaMetadeRectangulo.x, distanciaCentros.y - somaMetadeRectangulo.y);
-
-	return Vector2f();
+	Vector2f distancia, metade_retangulo, colisao;
+	distancia = { fabs((ent1->getPos().x + ent2->getTam().x / 2.0f) - (ent2->getPos().x + ent2->getTam().x / 2.0f)) ,
+				  fabs((ent1->getPos().y + ent2->getTam().y / 2.0f) - (ent2->getPos().y + ent2->getTam().y / 2.0f)) };
+	metade_retangulo = { (ent1->getTam().x + ent2->getTam().x) / 2.0f,
+						 (ent1->getTam().y + ent2->getTam().y) / 2.0f };
+	colisao = distancia - metade_retangulo;
+	return colisao;
 }
 
 void Xadrez_2::Gerenciador::GerenciadorColisao::executar()
 {
-	for (int i = 0; i < listaPersonagem->getTam() - 1; i++) {
-		Entidade::Entidade* ent1 = listaPersonagem->operator[](i);
-		for (int j = i + 1; j < listaPersonagem->getTam(); j++) {
-			Entidade::Entidade* ent2 = listaPersonagem->operator[](j);
+	for (int i = 0; i < listaEntidades->getTam() - 1; i++) {
+		Entidade::Entidade* ent1 = listaEntidades->operator[](i);
+		for (int j = 0; j < listaEntidades->getTam(); j++) {
+			Entidade::Entidade* ent2 = listaEntidades->operator[](j);
 			sf::Vector2f ds = calculaColisao(ent1, ent2);
 			if (ds.x < 0.0f && ds.y < 0.0f) {
 				ent1->colisao(ent2, ds);
 			}
 		}
 	}
-	/*
-	for (int i = 0; i < listaPersonagem->getTam(); i++) {
-		Entidade::Entidade* ent1 = listaPersonagem->operator[](i);
-		for (int j = 0; j < listaObstaculo->getTam(); j++) {
-			Entidade::Entidade* ent2 = listaObstaculo->operator[](j);
-			sf::Vector2f ds = calculaColisao(ent1, ent2);
-			if (ds.x < 0.0f && ds.y < 0.0f) {
-				if (ent2->getID() == IDs::IDs::plataforma || ent2->getID() == IDs::IDs::caixa) {
-					ent2->colisao(ent1, ds);
-				}
-				else {
-					// outro obstáculo
-				}
-			}
-		}
-	}*/
 }

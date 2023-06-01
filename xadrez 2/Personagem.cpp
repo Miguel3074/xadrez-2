@@ -10,7 +10,6 @@ namespace Xadrez_2 {
 				dirEsquerda(false), dt(NULL), podeAndar(false), vel(vel, 0.0f), Entidade(pos, tam, iD)
 			{
 				corpo.setPosition(pos);
-				corpo.setFillColor(Color::Blue);
 			}
 
 			Personagem::~Personagem()
@@ -26,6 +25,16 @@ namespace Xadrez_2 {
 			void Personagem::parar()
 			{
 				podeAndar = false;
+			}
+
+			void Personagem::setVel(Vector2f v)
+			{
+				vel = v;
+			}
+
+			Vector2f Personagem::getVel()
+			{
+				return vel;
 			}
 
 			void Personagem::atualizarPosicao()

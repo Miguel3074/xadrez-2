@@ -10,6 +10,7 @@ namespace Xadrez_2 {
 		{
 		private:
 			RenderWindow* janela;
+			VideoMode resolucao;
 
 			//SINGLETON
 			static GerenciadorGrafico* pGerenciadorGrafico;
@@ -18,6 +19,7 @@ namespace Xadrez_2 {
 			~GerenciadorGrafico();
 			static GerenciadorGrafico* getGerenciadorGrafico();
 			RenderWindow* getJanela();
+			VideoMode getResolucao();
 			void limpaJanela();
 			void desenhaElemento(RectangleShape corpo);
 			void mostraElementos();
