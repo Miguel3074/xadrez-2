@@ -11,23 +11,23 @@
 
 namespace Entidades {
 	namespace Personagens {
-			class Inimigo : public Personagem
-			{
-			private:
-				Clock relogio;
-				short moveRand;
-				void inicializa();
+		class Inimigo : public Personagem
+		{
+		private:
+			Jogador* jogador;
+			Clock relogio;
+			//short moveRand;
+			void inicializa();
 
-			public:
-				Inimigo();
-				Inimigo(const Vector2f pos, const Vector2f tam);
-				~Inimigo();
+		public:
+			Inimigo();
+			Inimigo(const Vector2f pos, const Vector2f tam, Jogador* jogador);
+			~Inimigo();
 
-				void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
-				void movimentoAleatorio();
-				void executar();
-
-			};
-		}
+			void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
+			void movimentoAleatorio();
+			void executar();
+			void colisao(Entidade* outraentidade, Vector2f ds);
+		};
 	}
 }

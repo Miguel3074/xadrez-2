@@ -1,21 +1,15 @@
 #include "Jogo.h"
 
-Jogo::Jogo() : personagens()
+Gerenciadores::GerenciadorEventos* Jogo::pEvento = Gerenciadores::GerenciadorEventos::getGerenciadorEventos();
+
+Jogo::Jogo() : 
+	pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
+	colisor(&listaEntidades)
 {
-	if (pGerGra == nullptr) {
+	if (pGerenciadorGrafico == nullptr) {
 		cout << "ERRO AO CRIAR GERENCIADOR GRAFICO";
 		exit(1);
 	}
-
-
-	Entidades::Personagens::Jogador* jogador = new Entidades::Personagens::Jogador(Vector2f(100.0f, 200.0f), Vector2f(50.0f, 50.0f));
-	Entidades::Personagens::Inimigo* inimigo = new Entidades::Personagens::Inimigo(Vector2f(100.0f, 200.0f), Vector2f(50.0f, 50.0f));
-
-	Entidades::Personagens::Personagem* p1 = static_cast<Entidades::Personagens::Personagem*>(jogador);
-	Entidades::Personagens::Personagem* p2 = static_cast<Entidades::Personagens::Personagem*>(inimigo);
-
-	personagens.push_back(p1);
-	personagens.push_back(p2);
 
 	executar();
 }
@@ -26,27 +20,37 @@ Jogo::~Jogo()
 
 void Jogo::executar()
 {
-	while (pGerGra->verificaJanelaAberta())
+	instanciaEntidade();
+	while (pGerenciadorGrafico->verificaJanelaAberta())
 	{
-		Event evento;
-		if (pGerGra->getJanela()->pollEvent(evento)) {
-			if (evento.type == Event::Closed) {
-				pGerGra->fecharJanela();
-			}
-			else if (evento.type == Event::KeyPressed) {
-				if (evento.key.code == Keyboard::Escape) {
-					pGerGra->fecharJanela();
-				}
-			}
-		}
-		pGerGra->limpaJanela();
-		for (int i = 0; i < (int) personagens.size(); i++) {
-			personagens.at(i)->executar();
-			pGerGra->desenhaElemento(personagens.at(i)->getCorpo());
-		}
-		pGerGra->mostraElementos();
+		pEvento->executar();
+		pGerenciadorGrafico->limpaJanela();
+		listaEntidades.executar(pGerenciadorGrafico->getJanela());
+
+		colisor.executar();
+
+		pGerenciadorGrafico->mostraElementos();
 	}
-	personagens.clear();
 }
 
-static Gerenciadores::GerenciadorGrafico* Ente::pGerGra(Gerenciadores::GerenciadorGrafico.getGerenciadorGrafico())
+void Jogo::instanciaEntidade()
+{
+	Entidades::Personagens::Jogador* jogador = new Entidades::Personagens::Jogador(Vector2f(500.0f, 200.0f), Vector2f(78.0f, 130.0f), 0.15f);
+	Entidades::Personagens::Inimigo* inimigo1 = new Entidades::Personagens::Inimigo(Vector2f(100.0f, 200.0f), Vector2f(73.0f, 107.0f), jogador);
+	Entidades::Personagens::Inimigo* inimigo2 = new Entidades::Personagens::Inimigo(Vector2f(600.0f, 200.0f), Vector2f(73.0f, 107.0f), jogador);
+	Entidades::Obstaculo* obstaculo1 = new Entidades::Obstaculo(Vector2f(0.0f, static_cast<float>(pGerenciadorGrafico->getResolucao().height) - 100.0f),
+		Vector2f(static_cast<float>(pGerenciadorGrafico->getResolucao().width), 100.0f), IDs::plataforma);
+
+	Entidades::Personagens::Personagem* p1 = static_cast<Entidades::Personagens::Personagem*>(jogador);
+	Entidades::Personagens::Personagem* p2 = static_cast<Entidades::Personagens::Personagem*>(inimigo1);
+	Entidades::Personagens::Personagem* p3 = static_cast<Entidades::Personagens::Personagem*>(inimigo2);
+	Entidades::Obstaculo* o1 = static_cast<Entidades::Obstaculo*>(obstaculo1);
+
+
+	listaEntidades.addEntidade(p1);
+	listaEntidades.addEntidade(p2);
+	listaEntidades.addEntidade(p3);
+	listaEntidades.addEntidade(o1);
+
+	pEvento->setJogador(jogador);
+}

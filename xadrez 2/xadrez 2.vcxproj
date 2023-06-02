@@ -127,29 +127,49 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system.lib;sfml-window.lib;sfml-graphics.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ente.cpp" />
+    <ClCompile Include="Entidade.cpp" />
+    <ClCompile Include="GerenciadorColisao.cpp" />
+    <ClCompile Include="GerenciadorEventos.cpp" />
+    <ClCompile Include="GerenciadorGrafico.cpp" />
     <ClCompile Include="Inimigo.cpp" />
     <ClCompile Include="Jogador.cpp" />
     <ClCompile Include="Jogo.cpp" />
+    <ClCompile Include="ListaEntidade.cpp" />
+    <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="xadrez 2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ente.h" />
+    <ClInclude Include="Entidade.h" />
+    <ClInclude Include="GerenciadorColisao.h" />
+    <ClInclude Include="GerenciadorEventos.h" />
+    <ClInclude Include="GerenciadorGrafico.h" />
+    <ClInclude Include="IDs.h" />
     <ClInclude Include="Inimigo.h" />
     <ClInclude Include="Jogador.h" />
     <ClInclude Include="Jogo.h" />
+    <ClInclude Include="Lista.h" />
+    <ClInclude Include="ListaEntidade.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Personagem.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Tela.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -10,14 +10,16 @@ namespace Gerenciadores {
 	{
 	private:
 		RenderWindow* janela;
+		VideoMode resolucao;
 
 		//SINGLETON
-		static GerenciadorGrafico* pJanela;
+		static GerenciadorGrafico* pGerenciadorGrafico;
 		GerenciadorGrafico();
 	public:
 		~GerenciadorGrafico();
 		static GerenciadorGrafico* getGerenciadorGrafico();
 		RenderWindow* getJanela();
+		VideoMode getResolucao();
 		void limpaJanela();
 		void desenhaElemento(RectangleShape corpo);
 		void mostraElementos();

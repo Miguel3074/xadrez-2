@@ -1,9 +1,9 @@
 #include "GerenciadorGrafico.h"
 
-Gerenciadores::GerenciadorGrafico* Gerenciadores::GerenciadorGrafico::pJanela = nullptr;
+Gerenciadores::GerenciadorGrafico* Gerenciadores::GerenciadorGrafico::pGerenciadorGrafico = Gerenciadores::GerenciadorGrafico::getGerenciadorGrafico();
 
 Gerenciadores::GerenciadorGrafico::GerenciadorGrafico() :
-	janela(new RenderWindow(VideoMode(1080.0f, 720.0f), "Xadrez-2"))
+	resolucao(1940, 1080), janela(new RenderWindow(VideoMode(1940, 1080), "Xadrez-2"))
 {
 	if (janela == nullptr) {
 		cout << "ERROR: Nao foi possivel criar uma janela grafica" << endl;
@@ -21,15 +21,20 @@ Gerenciadores::GerenciadorGrafico::~GerenciadorGrafico()
 
 Gerenciadores::GerenciadorGrafico* Gerenciadores::GerenciadorGrafico::getGerenciadorGrafico()
 {
-	if (pJanela == nullptr) {
-		return new Gerenciadores::GerenciadorGrafico();
+	if (pGerenciadorGrafico == nullptr) {
+		pGerenciadorGrafico = new Gerenciadores::GerenciadorGrafico();
 	}
-	return pJanela;
+	return pGerenciadorGrafico;
 }
 
 RenderWindow* Gerenciadores::GerenciadorGrafico::getJanela()
 {
 	return janela;
+}
+
+VideoMode Gerenciadores::GerenciadorGrafico::getResolucao()
+{
+	return resolucao;
 }
 
 void Gerenciadores::GerenciadorGrafico::limpaJanela()

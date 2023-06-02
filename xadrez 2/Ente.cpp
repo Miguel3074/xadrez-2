@@ -8,7 +8,7 @@ Ente::~Ente()
 
 void Ente::desenhar()
 {
-	pGerGra->desenhaElemento(this);
+	//pGerGra->desenhaElemento(this);
 }
 
-static Gerenciadores::GerenciadorGrafico* Ente::pGerGra(Gerenciadores::GerenciadorGrafico.getGerenciadorGrafico())
+Gerenciadores::GerenciadorGrafico* Ente::pGerGra(Gerenciadores::GerenciadorGrafico::getGerenciadorGrafico());

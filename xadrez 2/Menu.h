@@ -1,8 +1,9 @@
 #pragma once
 
 #include "Ente.h"
+#include "Tela.h"
 
-class Menu : public Ente
+class Menu : public Ente, public Tela
 {
 private:
 
@@ -18,4 +19,4 @@ public:
 	int getMenuOpcao();
 
 	void executar();
-}
+};

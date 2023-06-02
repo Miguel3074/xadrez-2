@@ -1,7 +1,13 @@
 #include "Menu.h"
 
-Menu::Menu() : fase1("Fase 1"), fase2("Fase 2"), pontos("Pontos"), sair("Sair"), selecao(">>"), menuOpcao(0)
+Menu::Menu() : fase1(), fase2(), pontos(), sair(), selecao(), menuOpcao(0)
 {
+	fase1.setString("Fase 1");
+	fase2.setString("Fase 2");
+	pontos.setString("Pontos");
+	sair.setString("Sair");
+	selecao.setString(">>");
+
 	fase1.setPosition(300, 200);
 	fase2.setPosition(300, 250);
 	pontos.setPosition(300, 300);
@@ -18,19 +24,19 @@ void Menu::executar()
 	Window* janela = pGerGra->getJanela();
 
 	while (janela->pollEvent(this->evento)) {
-		switch (opcao)
+		switch (menuOpcao)
 		{
 		case 1:
-			sel.setPosition(270, 200);
+			selecao.setPosition(270, 200);
 			break;
 		case 2:
-			sel.setPosition(270, 250);
+			selecao.setPosition(270, 250);
 			break;
 		case 3:
-			sel.setPosition(270, 300);
+			selecao.setPosition(270, 300);
 			break;
 		case 4:
-			sel.setPosition(270, 350);
+			selecao.setPosition(270, 350);
 			break;
 		}
 

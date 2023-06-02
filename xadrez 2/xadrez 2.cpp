@@ -3,8 +3,6 @@
 
 #include "Jogo.h"
 
-using namespace Xadrez_2;
-
 int main()
 {
     Jogo jogo;

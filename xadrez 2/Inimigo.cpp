@@ -3,18 +3,23 @@
 void Entidades::Personagens::Inimigo::inicializa()
 {
 	vel = Vector2f(0.05f, 0.05f);
+	if (!this->textura.loadFromFile("../TEXTURAS/PRETAS/peaoP 73_107.png")) {
+		cout << "Erro ao carregar a textura do peao\n";
+	}
+	textura.setSmooth(true);
+	corpo.setTexture(&textura);
 }
 
-Entidades::Personagens::Inimigo::Inimigo() : Personagem(), relogio()
+Entidades::Personagens::Inimigo::Inimigo() : Personagem(), relogio(), jogador()
 {}
 
-Entidades::Personagens::Inimigo::Inimigo(const Vector2f pos, const Vector2f tam) :
-	Personagem(pos, tam), relogio()
+Entidades::Personagens::Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Jogador* jogador) :
+	Personagem(pos, tam, vel.x, IDs::inimigo), relogio(), jogador(jogador)
 {
-	corpo.setFillColor(Color::Red);
+	podeAndar = true;
 	inicializa();
 	srand((unsigned) time(NULL));
-	moveRand = rand() % 4;
+	//moveRand = rand() % 4;
 }
 
 Entidades::Personagens::Inimigo::~Inimigo()
@@ -43,10 +48,31 @@ void Entidades::Personagens::Inimigo::movimentoAleatorio()
 
 void Entidades::Personagens::Inimigo::executar()
 {
-	/*Vector2f posJogador = jogador->getCorpo().getPosition();
+	Vector2f posJogador = jogador->getCorpo().getPosition();
 	Vector2f posInimigo = corpo.getPosition();
 
 	if (fabs(posJogador.x - posInimigo.x) <= RAIO_PERSEGUIR_X && fabs(posJogador.y - posInimigo.y) <= RAIO_PERSEGUIR_Y) {
 		persegueJogador(posJogador, posInimigo);
-	}*/
+	}
+	else {
+		podeAndar = true;
+	}
+}
+
+void Entidades::Personagens::Inimigo::colisao(Entidade* outraentidade, Vector2f ds)
+{
+	switch (outraentidade->getId())
+	{
+	case(IDs::plataforma):
+	{
+
+	}
+	break;
+	case(IDs::jogador):
+	{
+		corpo.move(-ds.x, 0);
+		parar();
+	}
+	break;
+	}
 }
