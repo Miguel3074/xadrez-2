@@ -1,6 +1,5 @@
 #pragma once
 
-#include "stdafx.h"
 #include "Personagem.h"
 
 namespace Xadrez_2 {
@@ -14,7 +13,7 @@ namespace Xadrez_2 {
 					void inicializa();
 
 				public:
-					Jogador(const Vector2f pos, const Vector2f tam, const float vel);
+					Jogador(const Vector2f pos, const Vector2f tam);
 					~Jogador();
 					void atualizar();
 					void colisao(Entidade* outraentidade, Vector2f ds);

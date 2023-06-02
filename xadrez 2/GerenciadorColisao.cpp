@@ -7,8 +7,7 @@ Xadrez_2::Gerenciador::GerenciadorColisao::GerenciadorColisao(ListaEntidade* lis
 
 Xadrez_2::Gerenciador::GerenciadorColisao::~GerenciadorColisao()
 {
-	if (listaEntidades)
-		delete(listaEntidades);
+
 }
 
 const Vector2f Xadrez_2::Gerenciador::GerenciadorColisao::calculaColisao(Entidade::Entidade* ent1, Entidade::Entidade* ent2)
@@ -26,7 +25,7 @@ void Xadrez_2::Gerenciador::GerenciadorColisao::executar()
 {
 	for (int i = 0; i < listaEntidades->getTam() - 1; i++) {
 		Entidade::Entidade* ent1 = listaEntidades->operator[](i);
-		for (int j = 0; j < listaEntidades->getTam(); j++) {
+		for (int j = i + 1; j < listaEntidades->getTam(); j++) {
 			Entidade::Entidade* ent2 = listaEntidades->operator[](j);
 			sf::Vector2f ds = calculaColisao(ent1, ent2);
 			if (ds.x < 0.0f && ds.y < 0.0f) {

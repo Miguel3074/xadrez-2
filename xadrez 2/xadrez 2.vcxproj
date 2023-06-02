@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Ente.cpp" />
     <ClCompile Include="Entidade.cpp" />
+    <ClCompile Include="Fase.cpp" />
+    <ClCompile Include="FaseBiblio.cpp" />
+    <ClCompile Include="FaseParque.cpp" />
     <ClCompile Include="GerenciadoEventos.cpp" />
     <ClCompile Include="GerenciadorColisao.cpp" />
     <ClCompile Include="GerenciadorGrafico.cpp" />
@@ -154,7 +158,11 @@
     <ClCompile Include="xadrez 2.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Ente.h" />
     <ClInclude Include="Entidade.h" />
+    <ClInclude Include="Fase.h" />
+    <ClInclude Include="FaseBiblio.h" />
+    <ClInclude Include="FaseParque.h" />
     <ClInclude Include="GerenciadoEventos.h" />
     <ClInclude Include="GerenciadorColisao.h" />
     <ClInclude Include="GerenciadorGrafico.h" />

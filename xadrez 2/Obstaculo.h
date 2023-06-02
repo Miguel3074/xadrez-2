@@ -12,7 +12,7 @@ namespace Xadrez_2 {
 				bool aereo;
 
 			public:
-				Obstaculo(const Vector2f pos, const Vector2f tam, IDs::IDs id);
+				Obstaculo(const Vector2f pos, IDs::IDs id);
 				~Obstaculo();
 
 				void atualizar();

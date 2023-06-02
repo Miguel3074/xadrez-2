@@ -23,7 +23,7 @@ namespace Xadrez_2 {
 					void inicializa();
 
 				public:
-					Inimigo(const Vector2f pos, const Vector2f tam, Jogador::Jogador* jogador);
+					Inimigo(const Vector2f pos, Jogador::Jogador* jogador);
 					~Inimigo();
 					void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
 					void movimentoAleatorio();

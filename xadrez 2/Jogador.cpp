@@ -14,8 +14,8 @@ namespace Xadrez_2 {
 					corpo.setTexture(&textura);
 				}
 
-				Jogador::Jogador(const Vector2f pos, const Vector2f tam, const float vel) :
-					Personagem(pos, tam, vel, IDs::IDs::jogador)
+				Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
+					Personagem(pos, tam, 0.15f, IDs::IDs::jogador)
 				{
 					corpo.setPosition(pos);
 					inicializa();
@@ -24,7 +24,6 @@ namespace Xadrez_2 {
 				Jogador::~Jogador()
 				{
 				}
-
 
 				void Jogador::atualizar()
 				{
@@ -39,7 +38,7 @@ namespace Xadrez_2 {
 				{
 					switch (outraentidade->getId())
 					{
-					case(IDs::IDs::plataforma):
+					case(IDs::IDs::tabuleiro):
 					{
 						corpo.move(0, -ds.y);
 					}

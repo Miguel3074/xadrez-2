@@ -20,6 +20,7 @@ namespace Xadrez_2 {
 			~GerenciadorEvento();
 			static GerenciadorEvento* getGerenciadorEvento();
 			void setJogador(Entidade::Personagem::Jogador::Jogador* pJogador);
+			Entidade::Personagem::Jogador::Jogador* getJogador();
 			void verificaTeclaPressionada(Keyboard::Key tecla);
 			void verificaTeclaSolta(Keyboard::Key tecla);
 			void executar();

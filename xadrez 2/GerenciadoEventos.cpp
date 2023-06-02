@@ -12,8 +12,7 @@ namespace Xadrez_2 {
 		GerenciadorEvento::~GerenciadorEvento()
 		{
 			if (pGerenciadorGrafico) {
-				delete(pGerenciadorGrafico);
-				pGerenciadorGrafico = nullptr;
+
 			}
 		}
 
@@ -21,7 +20,7 @@ namespace Xadrez_2 {
 		{
 			if (pEvento == nullptr) {
 				;
-				return new GerenciadorEvento();
+				pEvento = new GerenciadorEvento();
 			}
 			return pEvento;
 		}
@@ -30,6 +29,11 @@ namespace Xadrez_2 {
 		void GerenciadorEvento::setJogador(Entidade::Personagem::Jogador::Jogador* pJogador)
 		{
 			this->pjogador = pJogador;
+		}
+
+		Entidade::Personagem::Jogador::Jogador* GerenciadorEvento::getJogador()
+		{
+			return pjogador;
 		}
 
 		void GerenciadorEvento::verificaTeclaPressionada(Keyboard::Key tecla)

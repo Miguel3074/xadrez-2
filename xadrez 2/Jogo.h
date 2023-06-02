@@ -1,26 +1,23 @@
 #pragma once
 
-#include "Jogador.h"
-#include "Inimigo.h"
-#include "Obstaculo.h"
-#include "GerenciadorGrafico.h"
-#include "GerenciadoEventos.h"
-#include "GerenciadorColisao.h"
-#include "ListaEntidade.h"
+#include "FaseBiblio.h"
+#include "FaseParque.h"
+
 
 namespace Xadrez_2 {
 	class Jogo
 	{
 	private:
-		static Gerenciador::GerenciadorEvento* pEvento;
 		Gerenciador::GerenciadorGrafico* pGerenciadorGrafico;
-		Gerenciador::GerenciadorColisao colisor;
-		ListaEntidade listaEntidades;
+		static Gerenciador::GerenciadorEvento* pEvento;
+		Fase::FaseBiblio* fase1;
+		Fase::FaseParque* fase2;
+
+		void criarFase();
 	public:
 		Jogo();
 		~Jogo();
 		void executar();
-		void instanciaEntidade();
 	};
 
 }

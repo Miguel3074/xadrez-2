@@ -14,8 +14,8 @@ namespace Xadrez_2 {
 					corpo.setTexture(&textura);
 				}
 
-				Inimigo::Inimigo(const Vector2f pos, const Vector2f tam, Jogador::Jogador* jogador) :
-					Personagem(pos, tam, vel.x, IDs::IDs::inimigo), relogio(), jogador(jogador)
+				Inimigo::Inimigo(const Vector2f pos, Jogador::Jogador* jogador) :
+					Personagem(pos, Vector2f(78.0f, 130.0f), 0.15f, IDs::IDs::inimigo), relogio(), jogador(jogador)
 				{
 					podeAndar = true;
 					inicializa();
@@ -65,7 +65,7 @@ namespace Xadrez_2 {
 				{
 					switch (outraentidade->getId())
 					{
-					case(IDs::IDs::plataforma):
+					case(IDs::IDs::tabuleiro):
 					{
 
 					}

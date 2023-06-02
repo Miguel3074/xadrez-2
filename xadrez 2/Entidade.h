@@ -1,12 +1,10 @@
 #pragma once
 
-#include "stdafx.h"
-#include "IDs.hpp"
+#include "Ente.h"
 
 namespace Xadrez_2 {
 	namespace Entidade {
-
-		class Entidade
+		class Entidade : public Ente
 		{
 		protected:
 			RectangleShape corpo;
@@ -14,7 +12,6 @@ namespace Xadrez_2 {
 			Vector2f tam;
 			Texture textura;
 
-			const IDs::IDs ID;
 		public:
 			Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs iD);
 			~Entidade();
@@ -22,8 +19,7 @@ namespace Xadrez_2 {
 			void setPos(Vector2f p);
 			Vector2f getPos();
 			Vector2f getTam();
-			IDs::IDs getId();
-			virtual void atualizar() = 0;
+			virtual void atualizar();
 			virtual void colisao(Entidade* outraentidade, Vector2f ds) = 0;
 		};
 	}
