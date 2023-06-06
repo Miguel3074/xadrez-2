@@ -7,6 +7,7 @@ namespace Xadrez_2 {
 		class FaseBiblio : public Fase
 		{
 		private:
+			ifstream mapa1txt;
 		public:
 			FaseBiblio();
 			~FaseBiblio();

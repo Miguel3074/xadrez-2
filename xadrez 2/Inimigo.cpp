@@ -39,10 +39,6 @@ namespace Xadrez_2 {
 					}
 				}
 
-				void Inimigo::movimentoAleatorio()
-				{
-				}
-
 				void Inimigo::atualizar(float gravidade)
 				{
 					Vector2f posJogador = jogador->getCorpo().getPosition();

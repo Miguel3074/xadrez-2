@@ -26,7 +26,6 @@ namespace Xadrez_2 {
 					Inimigo(const Vector2f pos, Jogador::Jogador* jogador);
 					~Inimigo();
 					void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
-					void movimentoAleatorio();
 					void atualizar(float gravidade);
 					void colisao(Entidade* outraentidade, Vector2f ds);
 				};

@@ -10,15 +10,14 @@ namespace Xadrez_2 {
 		}
 		void FaseParque::criarMapa()
 		{
-			ifstream arquivo;
 			string linha;
-			arquivo.open("FaseParqueMapa.txt");
-			if (!arquivo.is_open()) {
+			mapa2txt.open("FaseParqueMapa.txt");
+			if (!mapa2txt.is_open()) {
 				cout << "nao foi possivel abrir o arquivo" << endl;
 				exit(1);
 			}
 			int j = 0;
-			while (getline(arquivo, linha)) { //CRIA O MAPA PELO ARQUIVO TXT SENDO UM CARACTER POR ENTIDADE
+			while (getline(mapa2txt, linha)) { //CRIA O MAPA PELO ARQUIVO TXT SENDO UM CARACTER POR ENTIDADE
 				for (int i = 0; i < linha.size(); i++) {
 					if (linha[i] != ' ') {
 						criarEntidade(linha[i], Vector2i(i, j));
@@ -26,7 +25,7 @@ namespace Xadrez_2 {
 				}
 				j++;
 			}
-			arquivo.close();
+			mapa2txt.close();
 		}
 	}
 }
