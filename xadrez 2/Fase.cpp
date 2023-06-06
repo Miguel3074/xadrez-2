@@ -8,7 +8,8 @@ namespace Xadrez_2 {
 			Ente(ID_fase), listaEntidades(),
 			pColisao(new Gerenciador::GerenciadorColisao(&listaEntidades)),
 			pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
-			pEvento(pEvento->getGerenciadorEvento())
+			pEvento(pEvento->getGerenciadorEvento()),
+			gravidade(0.007f)
 		{
 			if (pColisao == nullptr) {
 				cout << "Erro ao criar gerenciador de colisao" << endl;
@@ -48,13 +49,14 @@ namespace Xadrez_2 {
 
 		void Fase::criaTabuleiro(const Vector2f pos)
 		{
-			Entidade::Obstaculo::Obstaculo* tabuleiro = new Entidade::Obstaculo::Obstaculo(pos, IDs::IDs::tabuleiro);
+			Entidade::Obstaculo::Tabuleiro* tabuleiro = new Entidade::Obstaculo::Tabuleiro(pos, IDs::IDs::tabuleiro);
 
 			if (tabuleiro == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um tabuleiro" << std::endl;
 				exit(1);
 			}
-			Entidade::Obstaculo::Obstaculo* o1 = static_cast<Entidade::Obstaculo::Obstaculo*>(tabuleiro);
+			Entidade::Obstaculo::Tabuleiro* o1 = static_cast<Entidade::Obstaculo::Tabuleiro*>(tabuleiro);
+			listaEntidades.addEntidade(static_cast<Entidade::Entidade*>(tabuleiro));
 		}
 
 		void Fase::criaTorre(const Vector2f pos)
@@ -79,7 +81,7 @@ namespace Xadrez_2 {
 
 		void Fase::criarEntidade(char letra, const Vector2i pos)
 		{
-			Vector2f posAux = Vector2f(pos.x * 50, pos.y * 50);
+			Vector2f posAux = Vector2f(pos.x * 75, pos.y * 75);
 			switch (letra)
 			{
 			case ('p'):
@@ -112,7 +114,7 @@ namespace Xadrez_2 {
 
 		void Fase::executar()
 		{
-			listaEntidades.executar(pGerenciadorGrafico->getJanela());
+			listaEntidades.executar(pGerenciadorGrafico->getJanela(), gravidade);
 			pColisao->executar();
 			pEvento->executar();
 		}

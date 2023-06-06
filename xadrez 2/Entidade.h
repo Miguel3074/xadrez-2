@@ -10,16 +10,20 @@ namespace Xadrez_2 {
 			RectangleShape corpo;
 			Vector2f pos;
 			Vector2f tam;
+			Vector2f vel;
 			Texture textura;
 
 		public:
-			Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs iD);
+			Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs iD, Vector2f vel);
 			~Entidade();
 			const RectangleShape getCorpo() const;
 			void setPos(Vector2f p);
 			Vector2f getPos();
 			Vector2f getTam();
-			virtual void atualizar();
+			void setVel(Vector2f v);
+			Vector2f getVel();
+			void mover(Vector2f a);
+			virtual void atualizar(float gravidade) = 0;
 			virtual void colisao(Entidade* outraentidade, Vector2f ds) = 0;
 		};
 	}

@@ -38,13 +38,13 @@ namespace Xadrez_2 {
 		return objListaEntidade.operator[](pos);
 	}
 
-	void ListaEntidade::executar(RenderWindow* janela)
+	void ListaEntidade::executar(RenderWindow* janela, float gravidade)
 	{
 		int tam = objListaEntidade.getTam();
 		Entidade::Entidade* aux = nullptr;
 		for (int i = 0; i < tam; i++) {
 			aux = objListaEntidade.operator[](i);
-			aux->atualizar();
+			aux->atualizar(gravidade);
 			janela->draw(aux->getCorpo());
 		}
 	}

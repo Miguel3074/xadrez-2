@@ -15,7 +15,7 @@ namespace Xadrez_2 {
 				}
 
 				Inimigo::Inimigo(const Vector2f pos, Jogador::Jogador* jogador) :
-					Personagem(pos, Vector2f(78.0f, 130.0f), 0.15f, IDs::IDs::inimigo), relogio(), jogador(jogador)
+					Personagem(pos, Vector2f(78.0f, 130.0f), Vector2f(0.15f, 0.0f), IDs::IDs::inimigo), relogio(), jogador(jogador)
 				{
 					podeAndar = true;
 					inicializa();
@@ -36,12 +36,6 @@ namespace Xadrez_2 {
 						else {
 							corpo.move(-vel.x, 0.0f);
 						}
-						if (posJogador.y - posInimigo.y > 0.0f) {
-							corpo.move(0.0f, vel.y);
-						}
-						else {
-							corpo.move(0.0f, -vel.y);
-						}
 					}
 				}
 
@@ -49,7 +43,7 @@ namespace Xadrez_2 {
 				{
 				}
 
-				void Inimigo::atualizar()
+				void Inimigo::atualizar(float gravidade)
 				{
 					Vector2f posJogador = jogador->getCorpo().getPosition();
 					Vector2f posInimigo = corpo.getPosition();
@@ -60,6 +54,8 @@ namespace Xadrez_2 {
 					else {
 						podeAndar = true;
 					}
+					corpo.move(0.0f, -vel.y);
+					vel.y = vel.y - gravidade;
 				}
 				void Inimigo::colisao(Entidade* outraentidade, Vector2f ds)
 				{

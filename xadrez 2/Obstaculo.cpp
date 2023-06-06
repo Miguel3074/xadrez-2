@@ -4,22 +4,13 @@ namespace Xadrez_2 {
 	namespace Entidade {
 		namespace Obstaculo {
 
-			Obstaculo::Obstaculo(const Vector2f pos, IDs::IDs id) :
-				Entidade(pos, Vector2f(500.0f, 100.0f), id), aereo(false)
+			Obstaculo::Obstaculo(const Vector2f pos, const Vector2f tam, IDs::IDs id, bool dan) :
+				Entidade(pos, tam, id, Vector2f(0.0f, 0.0f)), danoso(dan)
 			{
-				corpo.setFillColor(Color::Green);
 				corpo.setPosition(pos);
 			}
 
 			Obstaculo::~Obstaculo()
-			{
-			}
-
-			void Obstaculo::atualizar()
-			{
-			}
-
-			void Obstaculo::colisao(Entidade* outraentidade, Vector2f ds)
 			{
 			}
 		}

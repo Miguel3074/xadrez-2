@@ -16,7 +16,7 @@ namespace Xadrez_2 {
 		void removeEntidade(int pos);
 		int getTam();
 		Entidade::Entidade* operator[](int pos);
-		void executar(RenderWindow* janela);
+		void executar(RenderWindow* janela, float gravidade);
 	};
 
 }

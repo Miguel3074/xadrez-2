@@ -27,7 +27,6 @@ namespace Xadrez_2 {
 
 	void Jogo::executar()
 	{
-		criarFase();
 		while (pGerenciadorGrafico->verificaJanelaAberta())
 		{
 			pGerenciadorGrafico->limpaJanela();

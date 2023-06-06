@@ -6,7 +6,6 @@ namespace Xadrez_2 {
 
 				void Jogador::inicializa()
 				{
-					vel = Vector2f(0.1f, 0.1f);
 					if (!this->textura.loadFromFile("../TEXTURAS/BRANCAS/cavaloB 78_130.png")) {
 						cout << "Erro ao carregar a textura do cavalo\n";
 					}
@@ -15,7 +14,8 @@ namespace Xadrez_2 {
 				}
 
 				Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
-					Personagem(pos, tam, 0.15f, IDs::IDs::jogador)
+					Personagem(pos, tam, Vector2f(0.1f, 0.0f), IDs::IDs::jogador),
+					estaNoAr(false), pulou(true)
 				{
 					corpo.setPosition(pos);
 					inicializa();
@@ -25,12 +25,25 @@ namespace Xadrez_2 {
 				{
 				}
 
-				void Jogador::atualizar()
+				void Jogador::setPulou(bool pulo)
+				{
+					pulou = true;
+				}
+
+				bool Jogador::getPulou()
+				{
+					return false;
+				}
+
+				void Jogador::atualizar(float gravidade)
 				{
 
 					if (podeAndar) {
 						atualizarPosicao();
 					}
+
+					corpo.move(0.0f, -vel.y);
+					vel.y = vel.y - gravidade;
 					relogio.restart();
 
 				}
@@ -40,7 +53,6 @@ namespace Xadrez_2 {
 					{
 					case(IDs::IDs::tabuleiro):
 					{
-						corpo.move(0, -ds.y);
 					}
 					break;
 					case(IDs::IDs::inimigo):

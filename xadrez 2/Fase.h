@@ -3,7 +3,7 @@
 #include "Ente.h"
 #include "Jogador.h"
 #include "Inimigo.h"
-#include "Obstaculo.h"
+#include "Tabuleiro.h"
 #include "GerenciadorGrafico.h"
 #include "GerenciadoEventos.h"
 #include "GerenciadorColisao.h"
@@ -21,6 +21,7 @@ namespace Xadrez_2 {
 			Gerenciador::GerenciadorGrafico* pGerenciadorGrafico;
 			Gerenciador::GerenciadorEvento* pEvento;
 
+			float gravidade;
 		public:
 			Fase(IDs::IDs ID_fase);
 			~Fase();

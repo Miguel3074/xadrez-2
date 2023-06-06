@@ -6,8 +6,8 @@ namespace Xadrez_2 {
 		namespace Personagem {
 
 
-			Personagem::Personagem(const Vector2f pos, const Vector2f tam, const float vel, IDs::IDs iD) :
-				dirEsquerda(false), dt(NULL), podeAndar(false), vel(vel, 0.0f), Entidade(pos, tam, iD)
+			Personagem::Personagem(const Vector2f pos, const Vector2f tam, Vector2f vel, IDs::IDs iD) :
+				dirEsquerda(false), dt(NULL), podeAndar(false), Entidade(pos, tam, iD, vel)
 			{
 				corpo.setPosition(pos);
 			}
@@ -25,16 +25,6 @@ namespace Xadrez_2 {
 			void Personagem::parar()
 			{
 				podeAndar = false;
-			}
-
-			void Personagem::setVel(Vector2f v)
-			{
-				vel = v;
-			}
-
-			Vector2f Personagem::getVel()
-			{
-				return vel;
 			}
 
 			void Personagem::atualizarPosicao()

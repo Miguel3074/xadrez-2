@@ -9,18 +9,15 @@ namespace Xadrez_2 {
 			class Personagem : public Entidade
 			{
 			protected:
-				Vector2f vel;
 				bool podeAndar;
 				bool dirEsquerda;
 				Clock relogio;
 				float dt;
 			public:
-				Personagem(const Vector2f pos, const Vector2f tam, const float vel, IDs::IDs iD);
+				Personagem(const Vector2f pos, const Vector2f tam, Vector2f vel, IDs::IDs iD);
 				~Personagem();
 				void andar(const bool dirEsquerda);
 				void parar();
-				void setVel(Vector2f v);
-				Vector2f getVel();
 
 				void atualizarPosicao();
 			};

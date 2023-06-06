@@ -10,12 +10,16 @@ namespace Xadrez_2 {
 				class Jogador :public Personagem
 				{
 				private:
+					bool estaNoAr;
+					bool pulou;
 					void inicializa();
 
 				public:
 					Jogador(const Vector2f pos, const Vector2f tam);
 					~Jogador();
-					void atualizar();
+					void setPulou(bool pulo);
+					bool getPulou();
+					void atualizar(float gravidade);
 					void colisao(Entidade* outraentidade, Vector2f ds);
 				};
 			}

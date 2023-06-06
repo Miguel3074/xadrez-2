@@ -41,10 +41,16 @@ namespace Xadrez_2 {
 			if (tecla == Keyboard::A) {
 				pjogador->andar(true);
 			}
-			else if (tecla == Keyboard::D) {
+			if (tecla == Keyboard::D) {
 				pjogador->andar(false);
 			}
-			else if (tecla == Keyboard::Escape) {
+			if (tecla == Keyboard::W) {
+				if (pjogador->getPulou() == false) {
+					pjogador->setPulou(true);
+					pjogador->setVel(Vector2f(pjogador->getVel().x, 3.2f));
+				}
+			}
+			if (tecla == Keyboard::Escape) {
 				pGerenciadorGrafico->fecharJanela();
 			}
 		}
