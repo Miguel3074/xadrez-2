@@ -2,7 +2,7 @@
 
 #include "Ente.h"
 #include "Jogador.h"
-#include "Inimigo.h"
+#include "Peao.h"
 #include "Tabuleiro.h"
 #include "GerenciadorGrafico.h"
 #include "GerenciadoEventos.h"

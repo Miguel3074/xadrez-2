@@ -17,17 +17,12 @@ namespace Xadrez_2 {
 				class Inimigo :public Personagem
 				{
 				private:
-					Jogador::Jogador* jogador;
-					Clock relogio;
+					//Jogador::Jogador* jogador;
 					//short moveRand;
-					void inicializa();
 
 				public:
-					Inimigo(const Vector2f pos, Jogador::Jogador* jogador);
+					Inimigo(const Vector2f pos, const Vector2f tam, IDs::IDs id);//, Jogador::Jogador* jogador
 					~Inimigo();
-					void persegueJogador(Vector2f posJogador, Vector2f posInimigo);
-					void atualizar(float gravidade);
-					void colisao(Entidade* outraentidade, Vector2f ds);
 				};
 			}
 		}

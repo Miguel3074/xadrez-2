@@ -27,7 +27,7 @@ namespace Xadrez_2 {
 
 		void Fase::criaPeao(const Vector2f pos)
 		{
-			Entidade::Personagem::Inimigo::Inimigo* inimigo = new Entidade::Personagem::Inimigo::Inimigo(pos, pEvento->getJogador());
+			Entidade::Personagem::Inimigo::Inimigo* inimigo = new Entidade::Personagem::Inimigo::Peao(pos);
 			if (inimigo == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Peao" << std::endl;
 				exit(1);
@@ -37,7 +37,7 @@ namespace Xadrez_2 {
 
 		void Fase::criaJogador(const Vector2f pos)
 		{
-			Entidade::Personagem::Jogador::Jogador* jogador = new Entidade::Personagem::Jogador::Jogador(pos, Vector2f(78.0f, 130.0f));
+			Entidade::Personagem::Jogador::Jogador* jogador = new Entidade::Personagem::Jogador::Jogador(pos);
 			if (jogador == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Jogador" << std::endl;
 				exit(1);
@@ -49,7 +49,7 @@ namespace Xadrez_2 {
 
 		void Fase::criaTabuleiro(const Vector2f pos)
 		{
-			Entidade::Obstaculo::Tabuleiro* tabuleiro = new Entidade::Obstaculo::Tabuleiro(pos, IDs::IDs::tabuleiro);
+			Entidade::Obstaculo::Tabuleiro* tabuleiro = new Entidade::Obstaculo::Tabuleiro(pos);
 
 			if (tabuleiro == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um tabuleiro" << std::endl;

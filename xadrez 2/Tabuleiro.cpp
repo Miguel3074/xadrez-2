@@ -2,8 +2,8 @@
 namespace Xadrez_2 {
 	namespace Entidade {
 		namespace Obstaculo {
-			Tabuleiro::Tabuleiro(const Vector2f pos, IDs::IDs id) :
-				Obstaculo(pos, Vector2f(450.0f, 150.0f), id, false), empuxo(0)
+			Tabuleiro::Tabuleiro(const Vector2f pos) :
+				Obstaculo(pos, Vector2f(450.0f, 150.0f), IDs::IDs::tabuleiro, false), empuxo(0)
 			{
 				if (!this->textura.loadFromFile("../TEXTURAS/tabuleiro.png")) {
 					cout << "Erro ao carregar a textura do cavalo\n";
@@ -27,9 +27,7 @@ namespace Xadrez_2 {
 						outraentidade->mover(Vector2f(0.0f, ds.y));
 					else
 						outraentidade->mover(Vector2f(0.0f, -ds.y));
-					if (outraentidade->getId() == IDs::IDs::jogador || outraentidade->getId() == IDs::IDs::inimigo) {
-						outraentidade->setVel(Vector2f(outraentidade->getVel().x, 0.0f));
-					}
+					outraentidade->setVel(Vector2f(outraentidade->getVel().x, 0.0f));
 				}
 			}
 		}

@@ -40,13 +40,13 @@ namespace Xadrez_2 {
 		{
 			if (tecla == Keyboard::A) {
 				pjogador->andar(true);
+
 			}
 			if (tecla == Keyboard::D) {
 				pjogador->andar(false);
 			}
 			if (tecla == Keyboard::W) {
-				if (pjogador->getPulou() == false) {
-					pjogador->setPulou(true);
+				if (pjogador->getVel().y <= 0.01f && pjogador->getVel().y >= -0.01f) {
 					pjogador->setVel(Vector2f(pjogador->getVel().x, 3.2f));
 				}
 			}
