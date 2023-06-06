@@ -32,9 +32,11 @@ namespace Xadrez_2 {
 					if (podeAndar) {
 						if (posJogador.x - posInimigo.x > 0.0f) {
 							corpo.move(vel.x, 0.0f);
+							dirEsquerda = false;
 						}
 						else {
 							corpo.move(-vel.x, 0.0f);
+							dirEsquerda = true;
 						}
 					}
 				}
@@ -64,7 +66,10 @@ namespace Xadrez_2 {
 					break;
 					case(IDs::IDs::jogador):
 					{
-						corpo.move(-ds.x, 0);
+						if(dirEsquerda)
+							corpo.move(-ds.x, 0);
+						else
+							corpo.move(ds.x, 0);
 						parar();
 					}
 					break;

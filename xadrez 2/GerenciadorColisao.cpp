@@ -18,6 +18,7 @@ const Vector2f Xadrez_2::Gerenciador::GerenciadorColisao::calculaColisao(Entidad
 	metade_retangulo = { (ent1->getTam().x + ent2->getTam().x) / 2.0f,
 						 (ent1->getTam().y + ent2->getTam().y) / 2.0f };
 	colisao = distancia - metade_retangulo;
+
 	return colisao;
 }
 
