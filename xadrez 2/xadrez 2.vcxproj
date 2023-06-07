@@ -179,6 +179,7 @@
     <ClInclude Include="Peao.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Tabuleiro.h" />
+    <ClInclude Include="Tela.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

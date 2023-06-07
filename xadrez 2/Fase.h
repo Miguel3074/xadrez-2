@@ -8,14 +8,13 @@
 #include "GerenciadoEventos.h"
 #include "GerenciadorColisao.h"
 #include "ListaEntidade.h"
+#include "Tela.h"
 
 
 namespace Xadrez_2 {
 	class Jogo;
 	namespace Fase {
-		class Fase : public Ente
-
-
+		class Fase : public Ente, public Tela
 		{
 		protected:
 			ListaEntidade listaEntidades;
@@ -40,7 +39,7 @@ namespace Xadrez_2 {
 			void criaRainha(const Vector2f pos);
 			virtual void criarMapa() = 0;
 			void criarEntidade(char letra, const Vector2i pos);
-			virtual void executar() = 0;
+			//virtual void executar() = 0;
 		};
 	}
 }

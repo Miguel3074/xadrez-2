@@ -2,7 +2,7 @@
 #include "Jogo.h"
 
 
-Xadrez_2::Fase::Menu::Menu() : Fase(IDs::IDs::menu), fase1(), fase2(), pontos(), sair(), selecao(), menuOpcao(1)
+Xadrez_2::Menu::Menu() : Ente(IDs::IDs::menu), fase1(), fase2(), pontos(), sair(), selecao(), menuOpcao(1)
 {
 	fase1.setString("Fase 1");
 	fase2.setString("Fase 2");
@@ -28,11 +28,12 @@ Xadrez_2::Fase::Menu::Menu() : Fase(IDs::IDs::menu), fase1(), fase2(), pontos(),
 	selecao.setFont(fonte);
 }
 
-Xadrez_2::Fase::Menu::~Menu() {}
+Xadrez_2::Menu::~Menu() {}
 
-int Xadrez_2::Fase::Menu::getMenuOpcao() { return menuOpcao; }
+int Xadrez_2::Menu::getMenuOpcao() { return menuOpcao; }
 
-void Xadrez_2::Fase::Menu::criarMapa() {
+void Xadrez_2::Menu::executar()
+{
 	RenderWindow* janela = pGrafico->getJanela();
 	Event evento;
 
@@ -58,9 +59,7 @@ void Xadrez_2::Fase::Menu::criarMapa() {
 	janela->draw(pontos);
 	janela->draw(sair);
 
-	janela->display();
-
-	while (pGerenciadorGrafico->getJanela()->pollEvent(evento)) {
+	while (janela->pollEvent(evento)) {
 		switch (evento.type)
 		{
 		case Event::Closed:
@@ -88,10 +87,4 @@ void Xadrez_2::Fase::Menu::criarMapa() {
 			break;
 		}
 	}
-
-}
-
-void Xadrez_2::Fase::Menu::executar()
-{
-	criarMapa();
 }

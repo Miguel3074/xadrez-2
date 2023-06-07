@@ -12,8 +12,8 @@ namespace Xadrez_2 {
 		Gerenciador::GerenciadorEvento* pEvento;
 		Fase::FaseBiblio* fase1;
 		Fase::FaseParque* fase2;
-		Fase::Menu* menu;
-		Fase::Fase* faseAtual;
+		Menu* menu;
+		Tela* faseAtual;
 
 		void criarFase();
 	public:

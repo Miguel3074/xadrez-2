@@ -12,7 +12,7 @@ namespace Xadrez_2 {
 
 	Jogo::Jogo() :
 		pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
-		fase1(new Fase::FaseBiblio()), fase2(new Fase::FaseParque()), menu(new Fase::Menu()), faseAtual(menu),
+		fase1(new Fase::FaseBiblio()), fase2(new Fase::FaseParque()), menu(new Menu()), faseAtual(menu),
 		pEvento(Gerenciador::GerenciadorEvento::getGerenciadorEvento())
 	{
 		if (pGerenciadorGrafico == nullptr) {
