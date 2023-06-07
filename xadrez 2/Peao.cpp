@@ -24,6 +24,9 @@ namespace Xadrez_2 {
 				{
 					Vector2f posInimigo = corpo.getPosition();
 					podeAndar = true;
+					if (corpo.getPosition().x < (1920.f - tam.x) && corpo.getPosition().x > 0.f) {
+						corpo.move(-0.07f, 0.0f);
+					}
 					corpo.move(0.0f, -vel.y);
 					vel.y = vel.y - gravidade;
 

@@ -20,8 +20,6 @@ namespace Xadrez_2 {
 		Jogo();
 		~Jogo();
 		void mudarTela(int telaN);
-		void executarFase1() { faseAtual = fase1; }
-		void executarFase2() { faseAtual = fase2; }
 		void executar();
 	};
 

@@ -39,7 +39,6 @@ namespace Xadrez_2 {
 			void criaRainha(const Vector2f pos);
 			virtual void criarMapa() = 0;
 			void criarEntidade(char letra, const Vector2i pos);
-			//virtual void executar() = 0;
 		};
 	}
 }

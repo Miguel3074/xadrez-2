@@ -24,10 +24,10 @@ namespace Xadrez_2 {
 			Vector2f getTam();
 			void setVel(Vector2f v);
 			Vector2f getVel();
-			void mover(Vector2f a);
 			bool getDirecao();
 			virtual void atualizar(float gravidade) = 0;
 			virtual void colisao(Entidade* outraentidade, Vector2f ds) = 0;
+			void mover(Vector2f a);
 		};
 	}
 }
