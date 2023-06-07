@@ -58,8 +58,6 @@ void Xadrez_2::Fase::Menu::criarMapa() {
 	janela->draw(pontos);
 	janela->draw(sair);
 
-	janela->display();
-
 	while (pGerenciadorGrafico->getJanela()->pollEvent(evento)) {
 		switch (evento.type)
 		{

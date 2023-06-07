@@ -7,7 +7,7 @@ namespace Xadrez_2 {
 
 
 			Personagem::Personagem(const Vector2f pos, const Vector2f tam, Vector2f vel, IDs::IDs iD) :
-				dt(NULL), podeAndar(false), Entidade(pos, tam, iD, vel)
+				dt(0), podeAndar(false), Entidade(pos, tam, iD, vel)
 			{
 				corpo.setPosition(pos);
 			}
