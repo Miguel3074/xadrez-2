@@ -1,17 +1,15 @@
 #pragma once
 
-#include "Ente.h"
 #include "Jogador.h"
 #include "Inimigo.h"
 #include "Tabuleiro.h"
 #include "GerenciadorGrafico.h"
 #include "GerenciadoEventos.h"
 #include "GerenciadorColisao.h"
-#include "ListaEntidade.h"
 
 
 namespace Xadrez_2 {
-
+	class Jogo;
 	namespace Fase {
 		class Fase : public Ente
 		{
@@ -21,10 +19,15 @@ namespace Xadrez_2 {
 			Gerenciador::GerenciadorGrafico* pGerenciadorGrafico;
 			Gerenciador::GerenciadorEvento* pEvento;
 
+			Jogo* instanciaJogo;
+
 			float gravidade;
 		public:
 			Fase(IDs::IDs ID_fase);
 			~Fase();
+
+			void setInstanciaJogo(Jogo* jogo);
+
 			void criaPeao(const Vector2f pos);
 			void criaJogador(const Vector2f pos);
 			void criaTabuleiro(const Vector2f pos);
@@ -32,7 +35,7 @@ namespace Xadrez_2 {
 			void criaRainha(const Vector2f pos);
 			virtual void criarMapa() = 0;
 			void criarEntidade(char letra, const Vector2i pos);
-			void executar();
+			virtual void executar();
 			void desenhar();
 
 

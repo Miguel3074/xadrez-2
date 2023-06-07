@@ -27,6 +27,7 @@ namespace Xadrez_2 {
 						outraentidade->mover(Vector2f(0.0f, ds.y));
 					else
 						outraentidade->mover(Vector2f(0.0f, -ds.y));
+					outraentidade->colisao(this, ds);
 					if (outraentidade->getId() == IDs::IDs::jogador || outraentidade->getId() == IDs::IDs::inimigo) {
 						outraentidade->setVel(Vector2f(outraentidade->getVel().x, 0.0f));
 					}

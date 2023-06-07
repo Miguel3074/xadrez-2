@@ -10,6 +10,7 @@ namespace Xadrez_2 {
 		}
 		void FaseBiblio::criarMapa()
 		{
+			listaEntidades.limparLista();
 			string linha;
 			mapa1txt.open("FaseBiblioMapa.txt");
 			if (!mapa1txt.is_open()) {

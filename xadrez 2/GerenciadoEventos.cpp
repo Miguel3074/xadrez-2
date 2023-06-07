@@ -1,11 +1,13 @@
 #include "GerenciadoEventos.h"
+#include "Jogo.h"
+
 namespace Xadrez_2 {
 	namespace Gerenciador {
 
 		GerenciadorEvento* GerenciadorEvento::pEvento = nullptr;
 
 		GerenciadorEvento::GerenciadorEvento() :
-			pjogador(nullptr), pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico())
+			instanciaJogo(nullptr), pjogador(nullptr), pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico())
 		{
 		}
 
@@ -51,7 +53,7 @@ namespace Xadrez_2 {
 				}
 			}
 			if (tecla == Keyboard::Escape) {
-				pGerenciadorGrafico->fecharJanela();
+				instanciaJogo->mudarTela(0);
 			}
 		}
 
