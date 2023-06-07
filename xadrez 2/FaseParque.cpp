@@ -10,6 +10,7 @@ namespace Xadrez_2 {
 		}
 		void FaseParque::criarMapa()
 		{
+			listaEntidades.limparLista();
 			string linha;
 			mapa2txt.open("FaseParqueMapa.txt");
 			if (!mapa2txt.is_open()) {

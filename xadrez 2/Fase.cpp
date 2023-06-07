@@ -5,7 +5,7 @@ namespace Xadrez_2 {
 
 	namespace Fase {
 		Fase::Fase(IDs::IDs ID_fase) :
-			Ente(ID_fase), listaEntidades(),
+			Ente(ID_fase), listaEntidades(), instanciaJogo(nullptr),
 			pColisao(new Gerenciador::GerenciadorColisao(&listaEntidades)),
 			pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
 			pEvento(pEvento->getGerenciadorEvento()),
@@ -111,5 +111,7 @@ namespace Xadrez_2 {
 			break;
 			}
 		}
+
+		void Xadrez_2::Fase::Fase::setInstanciaJogo(Jogo* jogo) { this->instanciaJogo = jogo; }
 	}
 }

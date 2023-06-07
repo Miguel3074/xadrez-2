@@ -11,7 +11,7 @@
 
 
 namespace Xadrez_2 {
-
+	class Jogo;
 	namespace Fase {
 		class Fase : public Ente
 
@@ -26,10 +26,13 @@ namespace Xadrez_2 {
 			Texture texturaFundo;
 			Sprite fundo;
 
+			Jogo* instanciaJogo;
+
 			float gravidade;
 		public:
 			Fase(IDs::IDs ID_fase);
 			~Fase();
+			void setInstanciaJogo(Jogo* jogo);
 			void criaPeao(const Vector2f pos);
 			void criaJogador(const Vector2f pos);
 			void criaTabuleiro(const Vector2f pos);

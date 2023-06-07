@@ -10,6 +10,7 @@ namespace Xadrez_2 {
 		}
 		void FaseBiblio::criarMapa()
 		{
+			listaEntidades.limparLista();
 			if (!texturaFundo.loadFromFile("../TEXTURAS/fundo.jpg"))
 			{
 				cout << "Erro na textura do fundo do mapaBilbio.\n";
