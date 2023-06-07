@@ -94,7 +94,7 @@ namespace Xadrez_2 {
 				criaTorre(posAux);
 			}
 			break;
-			case('ra'):
+			case('q'):
 			{
 				criaRainha(posAux);
 			}
