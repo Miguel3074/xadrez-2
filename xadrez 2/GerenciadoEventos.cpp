@@ -46,8 +46,8 @@ namespace Xadrez_2 {
 				pjogador->andar(false);
 			}
 			if (tecla == Keyboard::W) {
-				if (pjogador->getVel().y <= 0.01f && pjogador->getVel().y >= -0.01f) {
-					pjogador->setVel(Vector2f(pjogador->getVel().x, 3.2f));
+				if (pjogador->getVel().y <= 0.015f && pjogador->getVel().y >= -0.015f) {
+					pjogador->setVel(Vector2f(pjogador->getVel().x, 2.7f));
 				}
 			}
 			if (tecla == Keyboard::Escape) {

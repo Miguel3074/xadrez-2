@@ -10,6 +10,13 @@ namespace Xadrez_2 {
 		}
 		void FaseBiblio::criarMapa()
 		{
+			if (!texturaFundo.loadFromFile("../TEXTURAS/fundo.jpg"))
+			{
+				cout << "Erro na textura do fundo do mapaBilbio.\n";
+			}
+			texturaFundo.setSmooth(true);
+			fundo.setTexture(texturaFundo);
+
 			string linha;
 			mapa1txt.open("FaseBiblioMapa.txt");
 			if (!mapa1txt.is_open()) {
@@ -26,6 +33,13 @@ namespace Xadrez_2 {
 				j++;
 			}
 			mapa1txt.close();
+		}
+		void FaseBiblio::executar()
+		{
+			pGerenciadorGrafico->getGerenciadorGrafico()->desenharSprite(fundo);
+			listaEntidades.executar(pGerenciadorGrafico->getJanela(), gravidade);
+			pColisao->executar();
+			pEvento->executar();
 		}
 	}
 }

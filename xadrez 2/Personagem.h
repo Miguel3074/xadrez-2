@@ -10,7 +10,6 @@ namespace Xadrez_2 {
 			{
 			protected:
 				bool podeAndar;
-				bool dirEsquerda;
 				Clock relogio;
 				float dt;
 			public:

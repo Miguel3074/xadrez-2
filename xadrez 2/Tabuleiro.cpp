@@ -23,11 +23,19 @@ namespace Xadrez_2 {
 			void Tabuleiro::colisao(Entidade* outraentidade, Vector2f ds)
 			{
 				if (outraentidade->getId() != IDs::IDs::tabuleiro) {
-					if (outraentidade->getCorpo().getPosition().y < corpo.getPosition().y)
-						outraentidade->mover(Vector2f(0.0f, ds.y));
-					else
-						outraentidade->mover(Vector2f(0.0f, -ds.y));
-					outraentidade->setVel(Vector2f(outraentidade->getVel().x, 0.0f));
+					if (ds.y > ds.x) {
+						if (outraentidade->getCorpo().getPosition().y < corpo.getPosition().y)
+							outraentidade->mover(Vector2f(0.0f, ds.y));
+						else
+							outraentidade->mover(Vector2f(0.0f, -ds.y));
+						outraentidade->setVel(Vector2f(outraentidade->getVel().x, 0.0f));
+					}
+					else {
+						if (outraentidade->getDirecao())
+							outraentidade->mover(Vector2f(-ds.x, 0.f));
+						else
+							outraentidade->mover(Vector2f(ds.x, 0.f));
+					}
 				}
 			}
 		}

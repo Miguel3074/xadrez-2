@@ -48,7 +48,7 @@ namespace Xadrez_2 {
 					break;
 					case(IDs::IDs::peao):
 					{
-						corpo.move(-ds.x, 0);
+
 					}
 					break;
 					}

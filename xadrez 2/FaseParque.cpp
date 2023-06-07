@@ -27,5 +27,12 @@ namespace Xadrez_2 {
 			}
 			mapa2txt.close();
 		}
+		void FaseParque::executar()
+		{
+			//pGerenciadorGrafico->getGerenciadorGrafico()->desenharSprite(fundo);
+			//listaEntidades.executar(pGerenciadorGrafico->getJanela(), gravidade);
+			//pColisao->executar();
+			//pEvento->executar();
+		}
 	}
 }

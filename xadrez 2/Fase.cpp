@@ -111,16 +111,5 @@ namespace Xadrez_2 {
 			break;
 			}
 		}
-
-		void Fase::executar()
-		{
-			listaEntidades.executar(pGerenciadorGrafico->getJanela(), gravidade);
-			pColisao->executar();
-			pEvento->executar();
-		}
-
-		void Fase::desenhar()
-		{
-		}
 	}
 }

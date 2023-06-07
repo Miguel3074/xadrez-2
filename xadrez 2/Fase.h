@@ -14,12 +14,17 @@ namespace Xadrez_2 {
 
 	namespace Fase {
 		class Fase : public Ente
+
+
 		{
 		protected:
 			ListaEntidade listaEntidades;
 			Gerenciador::GerenciadorColisao* pColisao;
 			Gerenciador::GerenciadorGrafico* pGerenciadorGrafico;
 			Gerenciador::GerenciadorEvento* pEvento;
+
+			Texture texturaFundo;
+			Sprite fundo;
 
 			float gravidade;
 		public:
@@ -32,10 +37,7 @@ namespace Xadrez_2 {
 			void criaRainha(const Vector2f pos);
 			virtual void criarMapa() = 0;
 			void criarEntidade(char letra, const Vector2i pos);
-			void executar();
-			void desenhar();
-
-
+			virtual void executar() = 0;
 		};
 	}
 }

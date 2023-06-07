@@ -40,11 +40,17 @@ namespace Xadrez_2 {
 					break;
 					case(IDs::IDs::jogador):
 					{
-						if (dirEsquerda)
-							corpo.move(-ds.x, 0);
-						else
-							corpo.move(ds.x, 0);
-						parar();
+						if (ds.x > ds.y) {
+							if (outraentidade->getDirecao())
+								outraentidade->mover(Vector2f(-ds.x, 0.f));
+							else
+								outraentidade->mover(Vector2f(ds.x, 0.f));
+						}
+						else {
+							outraentidade->mover(Vector2f(0.f, ds.y));
+							outraentidade->setVel(Vector2f(outraentidade->getVel().x, 0.f));
+						}
+
 					}
 					break;
 					}

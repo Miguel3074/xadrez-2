@@ -12,6 +12,7 @@ namespace Xadrez_2 {
 			FaseParque();
 			~FaseParque();
 			void criarMapa();
+			void executar();
 		};
 
 	}
