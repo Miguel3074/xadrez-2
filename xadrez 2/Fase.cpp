@@ -21,7 +21,7 @@ namespace Xadrez_2 {
 		{
 			if (pColisao) {
 				delete(pColisao);
-				pColisao == nullptr;
+				pColisao = nullptr;
 			}
 		}
 
@@ -81,7 +81,7 @@ namespace Xadrez_2 {
 
 		void Fase::criarEntidade(char letra, const Vector2i pos)
 		{
-			Vector2f posAux = Vector2f(pos.x * 75, pos.y * 75);
+			Vector2f posAux = Vector2f(pos.x * 75.f, pos.y * 75.f);
 			switch (letra)
 			{
 			case ('p'):

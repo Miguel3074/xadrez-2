@@ -2,7 +2,7 @@
 #include "Jogo.h"
 
 
-Xadrez_2::Menu::Menu() : Ente(IDs::IDs::menu), fase1(), fase2(), pontos(), sair(), selecao(), menuOpcao(1)
+Xadrez_2::Menu::Menu() : Ente(IDs::IDs::menu), fase1(), fase2(), pontos(), sair(), selecao(), menuOpcao(1), instanciaJogo(nullptr)
 {
 	fase1.setString("Fase 1");
 	fase2.setString("Fase 2");
