@@ -1,21 +1,19 @@
 #pragma once
 
-#include "Personagem.h"
+#include "Inimigo.h"
+
 
 namespace Xadrez_2 {
 	namespace Entidade {
 		namespace Personagem {
-			namespace Jogador {
-
-				class Jogador :public Personagem
+			namespace Inimigo {
+				class Peao : public Inimigo
 				{
 				private:
-					bool estaNoAr;
-					void inicializa();
-
+					bool chegouNoFinal;
 				public:
-					Jogador(const Vector2f pos);
-					~Jogador();
+					Peao(const Vector2f pos);
+					~Peao();
 					void atualizar(float gravidade);
 					void colisao(Entidade* outraentidade, Vector2f ds);
 				};

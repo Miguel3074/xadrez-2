@@ -7,7 +7,7 @@ namespace Xadrez_2 {
 
 
 			Personagem::Personagem(const Vector2f pos, const Vector2f tam, Vector2f vel, IDs::IDs iD) :
-				dirEsquerda(false), dt(NULL), podeAndar(false), Entidade(pos, tam, iD, vel)
+				dt(NULL), podeAndar(false), Entidade(pos, tam, iD, vel)
 			{
 				corpo.setPosition(pos);
 			}
@@ -18,8 +18,10 @@ namespace Xadrez_2 {
 
 			void Personagem::andar(const bool dirEsquerda)
 			{
+
 				podeAndar = true;
 				this->dirEsquerda = dirEsquerda;
+
 			}
 
 			void Personagem::parar()
@@ -35,6 +37,15 @@ namespace Xadrez_2 {
 					ds *= -1;
 				}
 				corpo.move(ds, 0.0f);
+				if (corpo.getPosition().x < (1920.f - tam.x) && corpo.getPosition().x > 0.f) {
+					corpo.move(ds, 0.0f);
+				}
+				else if (corpo.getPosition().x <= 0.f) {
+					corpo.setPosition(Vector2f(0.1f, corpo.getPosition().y));
+				}
+				else if (corpo.getPosition().x >= (1920.f - tam.x)) {
+					corpo.setPosition(Vector2f(1919.f - tam.x, corpo.getPosition().y));
+				}
 			}
 		}
 	}

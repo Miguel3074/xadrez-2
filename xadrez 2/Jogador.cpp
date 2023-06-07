@@ -13,9 +13,9 @@ namespace Xadrez_2 {
 					corpo.setTexture(&textura);
 				}
 
-				Jogador::Jogador(const Vector2f pos, const Vector2f tam) :
-					Personagem(pos, tam, Vector2f(0.1f, 0.0f), IDs::IDs::jogador),
-					estaNoAr(false), pulou(true)
+				Jogador::Jogador(const Vector2f pos) :
+					Personagem(pos, Vector2f(78.0f, 130.0f), Vector2f(0.1f, 0.0f), IDs::IDs::jogador),
+					estaNoAr(false)
 				{
 					corpo.setPosition(pos);
 					inicializa();
@@ -25,19 +25,9 @@ namespace Xadrez_2 {
 				{
 				}
 
-				void Jogador::setPulou(bool pulo)
-				{
-					pulou = true;
-				}
-
-				bool Jogador::getPulou()
-				{
-					return false;
-				}
-
 				void Jogador::atualizar(float gravidade)
 				{
-
+					setPos(corpo.getPosition());
 					if (podeAndar) {
 						atualizarPosicao();
 					}
@@ -53,11 +43,12 @@ namespace Xadrez_2 {
 					{
 					case(IDs::IDs::tabuleiro):
 					{
+
 					}
 					break;
-					case(IDs::IDs::inimigo):
+					case(IDs::IDs::peao):
 					{
-						corpo.move(-ds.x, 0);
+
 					}
 					break;
 					}

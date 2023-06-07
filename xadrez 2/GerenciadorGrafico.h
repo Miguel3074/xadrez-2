@@ -23,6 +23,7 @@ namespace Xadrez_2 {
 			void limpaJanela();
 			void desenhaElemento(RectangleShape corpo);
 			void mostraElementos();
+			void desenharSprite(Sprite sprite);
 			void fecharJanela();
 			const bool verificaJanelaAberta();
 		};

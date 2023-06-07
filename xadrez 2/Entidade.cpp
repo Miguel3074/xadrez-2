@@ -3,7 +3,7 @@
 namespace Xadrez_2 {
 	namespace Entidade {
 		Xadrez_2::Entidade::Entidade::Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs iD, Vector2f vel) :
-			corpo(RectangleShape(tam)), pos(pos), tam(tam), Ente(iD)
+			corpo(RectangleShape(tam)), pos(pos), tam(tam), Ente(iD), dirEsquerda(false)
 		{
 		}
 
@@ -44,6 +44,11 @@ namespace Xadrez_2 {
 		void Entidade::mover(Vector2f a)
 		{
 			corpo.move(a);
+		}
+
+		bool Entidade::getDirecao()
+		{
+			return dirEsquerda;
 		}
 
 	}

@@ -60,6 +60,12 @@ namespace Xadrez_2 {
 			janela->close();
 		}
 
+		void GerenciadorGrafico::desenharSprite(Sprite sprite)
+		{
+			janela->draw(sprite);
+		}
+
+
 		const bool GerenciadorGrafico::verificaJanelaAberta()
 		{
 			return janela->isOpen();

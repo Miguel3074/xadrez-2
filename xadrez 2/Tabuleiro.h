@@ -10,7 +10,7 @@ namespace Xadrez_2 {
 				float empuxo;
 
 			public:
-				Tabuleiro(const Vector2f pos, IDs::IDs id);
+				Tabuleiro(const Vector2f pos);
 				~Tabuleiro();
 				void atualizar(float gravidade);
 				void colisao(Entidade* outraentidade, Vector2f ds);

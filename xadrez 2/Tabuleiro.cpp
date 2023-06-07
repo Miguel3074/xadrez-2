@@ -2,8 +2,8 @@
 namespace Xadrez_2 {
 	namespace Entidade {
 		namespace Obstaculo {
-			Tabuleiro::Tabuleiro(const Vector2f pos, IDs::IDs id) :
-				Obstaculo(pos, Vector2f(450.0f, 150.0f), id, false), empuxo(0)
+			Tabuleiro::Tabuleiro(const Vector2f pos) :
+				Obstaculo(pos, Vector2f(450.0f, 150.0f), IDs::IDs::tabuleiro, false), empuxo(0)
 			{
 				if (!this->textura.loadFromFile("../TEXTURAS/tabuleiro.png")) {
 					cout << "Erro ao carregar a textura do cavalo\n";
@@ -23,12 +23,18 @@ namespace Xadrez_2 {
 			void Tabuleiro::colisao(Entidade* outraentidade, Vector2f ds)
 			{
 				if (outraentidade->getId() != IDs::IDs::tabuleiro) {
-					if (outraentidade->getCorpo().getPosition().y < corpo.getPosition().y)
-						outraentidade->mover(Vector2f(0.0f, ds.y));
-					else
-						outraentidade->mover(Vector2f(0.0f, -ds.y));
-					if (outraentidade->getId() == IDs::IDs::jogador || outraentidade->getId() == IDs::IDs::inimigo) {
+					if (ds.y > ds.x) {
+						if (outraentidade->getCorpo().getPosition().y < corpo.getPosition().y)
+							outraentidade->mover(Vector2f(0.0f, ds.y));
+						else
+							outraentidade->mover(Vector2f(0.0f, -ds.y));
 						outraentidade->setVel(Vector2f(outraentidade->getVel().x, 0.0f));
+					}
+					else {
+						if (outraentidade->getDirecao())
+							outraentidade->mover(Vector2f(-ds.x, 0.f));
+						else
+							outraentidade->mover(Vector2f(ds.x, 0.f));
 					}
 				}
 			}

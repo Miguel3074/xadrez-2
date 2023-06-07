@@ -153,6 +153,7 @@
     <ClCompile Include="Lista.cpp" />
     <ClCompile Include="ListaEntidade.cpp" />
     <ClCompile Include="Obstaculo.cpp" />
+    <ClCompile Include="Peao.cpp" />
     <ClCompile Include="Personagem.cpp" />
     <ClCompile Include="Tabuleiro.cpp" />
     <ClCompile Include="xadrez 2.cpp" />
@@ -173,6 +174,7 @@
     <ClInclude Include="Lista.h" />
     <ClInclude Include="ListaEntidade.h" />
     <ClInclude Include="Obstaculo.h" />
+    <ClInclude Include="Peao.h" />
     <ClInclude Include="Personagem.h" />
     <ClInclude Include="Tabuleiro.h" />
   </ItemGroup>

@@ -12,7 +12,7 @@ namespace Xadrez_2 {
 			FaseBiblio();
 			~FaseBiblio();
 			void criarMapa();
-
+			void executar();
 		};
 
 	}
