@@ -135,7 +135,6 @@ void Lista<L>::limparLista()
 			aux = aux2;
 		}
 	}
-	tam = 0;
 	pInicio = nullptr;
 	pFinal = nullptr;
 }

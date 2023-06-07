@@ -12,7 +12,6 @@ namespace IDs {
 		torre,
 		tabuleiro,
 		fase1,
-		fase2,
-		menu
+		fase2
 	};
 }

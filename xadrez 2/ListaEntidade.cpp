@@ -33,11 +33,6 @@ namespace Xadrez_2 {
 		return objListaEntidade.getTam();
 	}
 
-	void ListaEntidade::limparLista()
-	{
-		objListaEntidade.limparLista();
-	}
-
 	Entidade::Entidade* ListaEntidade::operator[](int pos)
 	{
 		return objListaEntidade.operator[](pos);
