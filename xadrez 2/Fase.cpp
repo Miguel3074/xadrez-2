@@ -27,12 +27,12 @@ namespace Xadrez_2 {
 
 		void Fase::criaPeao(const Vector2f pos)
 		{
-			Entidade::Personagem::Inimigo::Inimigo* inimigo = new Entidade::Personagem::Inimigo::Peao(pos);
-			if (inimigo == nullptr) {
+			Entidade::Personagem::Inimigo::Inimigo* peao = new Entidade::Personagem::Inimigo::Peao(pos);
+			if (peao == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Peao" << std::endl;
 				exit(1);
 			}
-			listaEntidades.addEntidade(static_cast<Entidade::Entidade*>(inimigo));
+			listaEntidades.addEntidade(static_cast<Entidade::Entidade*>(peao));
 		}
 
 		void Fase::criaJogador(const Vector2f pos)
@@ -61,42 +61,43 @@ namespace Xadrez_2 {
 
 		void Fase::criaTorre(const Vector2f pos)
 		{
-			/*Entidade::Personagem::Inimigo::Peao* Peao = new Entidade::Personagem::Inimigo::Peao(pos, pJogador);
-			if (Peao == nullptr) {
-				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Peao" << std::endl;
+			Entidade::Personagem::Inimigo::Torre* torre = new Entidade::Personagem::Inimigo::Torre(pos);
+			if (torre == nullptr) {
+				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar uma Torre" << std::endl;
 				exit(1);
 			}
-			return static_cast<Entidade::Entidade*>(Peao);*/
+			listaEntidades.addEntidade(static_cast<Entidade::Entidade*>(torre));
 		}
 
 		void Fase::criaRainha(const Vector2f pos)
 		{
-			/*Entidade::Personagem::Inimigo::Peao* Peao = new Entidade::Personagem::Inimigo::Peao(pos, pJogador);
-			if (Peao == nullptr) {
-				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Peao" << std::endl;
+			Entidade::Personagem::Inimigo::Rainha* rainha = new Entidade::Personagem::Inimigo::Rainha(pos);
+			if (rainha == nullptr) {
+				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar uma Torre" << std::endl;
 				exit(1);
 			}
-			return static_cast<Entidade::Entidade*>(Peao);*/
+			listaEntidades.addEntidade(static_cast<Entidade::Entidade*>(rainha));
 		}
 
 		void Fase::criarEntidade(char letra, const Vector2i pos)
 		{
 			Vector2f posAux = Vector2f(pos.x * 75.f, pos.y * 75.f);
+			srand(time(NULL));
 			switch (letra)
 			{
 			case ('p'):
 			{
-				criaPeao(posAux);
+				criaPeao(Vector2f(rand() % 1920, rand() % 1080));
 			}
 			break;
 			case('t'):
 			{
-				criaTorre(posAux);
+				criaTorre(Vector2f(rand() % 1920, rand() % 1080));
 			}
 			break;
 			case('q'):
 			{
-				criaRainha(posAux);
+				criaRainha(Vector2f(rand() % 1920, rand() % 1080));
 			}
 			break;
 			case('j'):

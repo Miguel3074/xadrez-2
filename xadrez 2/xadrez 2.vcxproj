@@ -156,7 +156,9 @@
     <ClCompile Include="Obstaculo.cpp" />
     <ClCompile Include="Peao.cpp" />
     <ClCompile Include="Personagem.cpp" />
+    <ClCompile Include="Rainha.cpp" />
     <ClCompile Include="Tabuleiro.cpp" />
+    <ClCompile Include="Torre.cpp" />
     <ClCompile Include="xadrez 2.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -178,8 +180,10 @@
     <ClInclude Include="Obstaculo.h" />
     <ClInclude Include="Peao.h" />
     <ClInclude Include="Personagem.h" />
+    <ClInclude Include="Rainha.h" />
     <ClInclude Include="Tabuleiro.h" />
     <ClInclude Include="Tela.h" />
+    <ClInclude Include="Torre.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

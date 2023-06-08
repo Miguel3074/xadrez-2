@@ -3,6 +3,8 @@
 #include "Ente.h"
 #include "Jogador.h"
 #include "Peao.h"
+#include "Torre.h"
+#include "Rainha.h"
 #include "Tabuleiro.h"
 #include "GerenciadorGrafico.h"
 #include "GerenciadoEventos.h"
