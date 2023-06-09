@@ -27,6 +27,7 @@ namespace Xadrez_2 {
 
 		void Fase::criaPeao(const Vector2f pos)
 		{
+			cout << pos.x <<"  "<< pos.y<<endl;
 			Entidade::Personagem::Inimigo::Inimigo* peao = new Entidade::Personagem::Inimigo::Peao(pos);
 			if (peao == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Peao" << std::endl;
@@ -61,6 +62,7 @@ namespace Xadrez_2 {
 
 		void Fase::criaTorre(const Vector2f pos)
 		{
+			cout << pos.x <<"  "<< pos.y<<endl;
 			Entidade::Personagem::Inimigo::Torre* torre = new Entidade::Personagem::Inimigo::Torre(pos);
 			if (torre == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar uma Torre" << std::endl;
@@ -71,6 +73,7 @@ namespace Xadrez_2 {
 
 		void Fase::criaRainha(const Vector2f pos)
 		{
+			cout << pos.x <<"  "<< pos.y<<endl;
 			Entidade::Personagem::Inimigo::Rainha* rainha = new Entidade::Personagem::Inimigo::Rainha(pos);
 			if (rainha == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar uma Torre" << std::endl;
