@@ -10,6 +10,7 @@ namespace IDs {
 		rei,
 		torre,
 		tabuleiro,
+		teiaAranha,
 		fase1,
 		fase2,
 		menu

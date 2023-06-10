@@ -6,7 +6,7 @@ namespace Xadrez_2 {
 				Obstaculo(pos, Vector2f(450.0f, 150.0f), IDs::IDs::tabuleiro, false), empuxo(0)
 			{
 				if (!this->textura.loadFromFile("../TEXTURAS/tabuleiro.png")) {
-					cout << "Erro ao carregar a textura do cavalo\n";
+					cout << "Erro ao carregar a textura do tabuleiro\n";
 				}
 				textura.setSmooth(true);
 				corpo.setTexture(&textura);
@@ -22,7 +22,7 @@ namespace Xadrez_2 {
 			}
 			void Tabuleiro::colisao(Entidade* outraentidade, Vector2f ds)
 			{
-				if (outraentidade->getId() != IDs::IDs::tabuleiro) {
+				if (outraentidade->getId() != IDs::IDs::tabuleiro && outraentidade->getId() != IDs::IDs::teiaAranha) {
 					if (ds.y > ds.x) {
 						if (outraentidade->getCorpo().getPosition().y < corpo.getPosition().y)
 							outraentidade->mover(Vector2f(0.0f, ds.y));
