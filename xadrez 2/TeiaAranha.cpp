@@ -25,7 +25,6 @@ namespace Xadrez_2 {
 			{
 				if (outraentidade->getId() != IDs::IDs::teiaAranha) {
 					outraentidade->setVel(Vector2f(outraentidade->getVel().x / 2.f, outraentidade->getVel().y / 2.f));
-					cout << "bbb" << endl;
 					if (outraentidade->getId() == IDs::IDs::jogador) {
 						if (outraentidade->getDirecao()) {
 							outraentidade->mover(Vector2f(1.f, 0.f));

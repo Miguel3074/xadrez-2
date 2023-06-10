@@ -33,7 +33,12 @@ private:
 		}
 		E* getElemento()
 		{
-			return elemento;
+			if (elemento)
+				return elemento;
+			else
+			{
+				return nullptr;
+			}
 		};
 	};
 	Elemento<L>* pInicio;
@@ -105,7 +110,7 @@ void Lista<L>::removerElemento(L* elemento)
 		tam--;
 		delete(aux);
 		aux = nullptr;
-		aux2 = nullptr;
+		//aux2 = nullptr;
 	}
 }
 

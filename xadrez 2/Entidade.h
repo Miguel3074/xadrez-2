@@ -13,6 +13,7 @@ namespace Xadrez_2 {
 			Vector2f vel;
 			Texture textura;
 
+			bool estaVivo;
 			bool dirEsquerda;
 
 		public:
@@ -25,6 +26,8 @@ namespace Xadrez_2 {
 			void setVel(Vector2f v);
 			Vector2f getVel();
 			bool getDirecao();
+			void setEstaVivo(bool a);
+			bool getEstaVivo();
 			virtual void atualizar(float gravidade) = 0;
 			virtual void colisao(Entidade* outraentidade, Vector2f ds) = 0;
 			void mover(Vector2f a);

@@ -3,7 +3,7 @@
 namespace Xadrez_2 {
 	namespace Entidade {
 		Xadrez_2::Entidade::Entidade::Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs iD, Vector2f vel) :
-			corpo(RectangleShape(tam)), pos(pos), tam(tam), Ente(iD), dirEsquerda(false)
+			corpo(RectangleShape(tam)), pos(pos), tam(tam), Ente(iD), dirEsquerda(false), estaVivo(true)
 		{
 		}
 
@@ -49,6 +49,16 @@ namespace Xadrez_2 {
 		bool Entidade::getDirecao()
 		{
 			return dirEsquerda;
+		}
+
+		void Entidade::setEstaVivo(bool a)
+		{
+			estaVivo = a;
+		}
+
+		bool Entidade::getEstaVivo()
+		{
+			return estaVivo;
 		}
 
 	}

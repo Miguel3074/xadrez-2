@@ -11,7 +11,8 @@ namespace Xadrez_2 {
 		{
 		private:
 			GerenciadorGrafico* pGerenciadorGrafico;
-			Entidade::Personagem::Jogador::Jogador* pjogador;
+			Entidade::Personagem::Jogador::Jogador* pjogador1;
+			Entidade::Personagem::Jogador::Jogador* pjogador2;
 			Jogo* instanciaJogo;
 
 			static GerenciadorEvento* pEvento;
@@ -21,8 +22,10 @@ namespace Xadrez_2 {
 			~GerenciadorEvento();
 			void setInstanciaJogo(Jogo* jogo) { instanciaJogo = jogo; }
 			static GerenciadorEvento* getGerenciadorEvento();
-			void setJogador(Entidade::Personagem::Jogador::Jogador* pJogador);
-			Entidade::Personagem::Jogador::Jogador* getJogador();
+			void setJogador1(Entidade::Personagem::Jogador::Jogador* pJogador1);
+			void setJogador2(Entidade::Personagem::Jogador::Jogador* pJogador2);
+			Entidade::Personagem::Jogador::Jogador* getJogador1();
+			Entidade::Personagem::Jogador::Jogador* getJogador2();
 			void verificaTeclaPressionada(Keyboard::Key tecla);
 			void verificaTeclaSolta(Keyboard::Key tecla);
 			void executar();

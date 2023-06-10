@@ -50,8 +50,7 @@ namespace Xadrez_2 {
 								outraentidade->mover(Vector2f(ds.x, 0.f));
 						}
 						else {
-							outraentidade->mover(Vector2f(0.f, ds.y));
-							outraentidade->setVel(Vector2f(outraentidade->getVel().x, 0.f));
+							estaVivo = false;
 						}
 
 					}

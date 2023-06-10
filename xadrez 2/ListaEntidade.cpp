@@ -45,12 +45,15 @@ namespace Xadrez_2 {
 
 	void ListaEntidade::executar(RenderWindow* janela, float gravidade)
 	{
-		int tam = objListaEntidade.getTam();
 		Entidade::Entidade* aux = nullptr;
-		for (int i = 0; i < tam; i++) {
+		for (int i = 0; i < objListaEntidade.getTam(); i++) {
 			aux = objListaEntidade.operator[](i);
 			aux->atualizar(gravidade);
-			janela->draw(aux->getCorpo());
+			if (aux->getEstaVivo() == false) {
+				objListaEntidade.removerElemento(aux);
+			}
+			else
+				janela->draw(aux->getCorpo());
 		}
 	}
 

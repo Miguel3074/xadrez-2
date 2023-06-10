@@ -7,7 +7,7 @@ namespace Xadrez_2 {
 		GerenciadorEvento* GerenciadorEvento::pEvento = nullptr;
 
 		GerenciadorEvento::GerenciadorEvento() :
-			instanciaJogo(nullptr), pjogador(nullptr), pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico())
+			instanciaJogo(nullptr), pjogador1(nullptr), pjogador2(nullptr), pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico())
 		{
 		}
 
@@ -28,39 +28,66 @@ namespace Xadrez_2 {
 		}
 
 
-		void GerenciadorEvento::setJogador(Entidade::Personagem::Jogador::Jogador* pJogador)
+		void GerenciadorEvento::setJogador1(Entidade::Personagem::Jogador::Jogador* pJogador1)
 		{
-			this->pjogador = pJogador;
+			this->pjogador1 = pJogador1;
 		}
 
-		Entidade::Personagem::Jogador::Jogador* GerenciadorEvento::getJogador()
+		Entidade::Personagem::Jogador::Jogador* GerenciadorEvento::getJogador1()
 		{
-			return pjogador;
+			return pjogador1;
+		}
+
+		void GerenciadorEvento::setJogador2(Entidade::Personagem::Jogador::Jogador* pJogador2)
+		{
+			this->pjogador2 = pJogador2;
+		}
+
+		Entidade::Personagem::Jogador::Jogador* GerenciadorEvento::getJogador2()
+		{
+			return pjogador2;
 		}
 
 		void GerenciadorEvento::verificaTeclaPressionada(Keyboard::Key tecla)
 		{
 			if (tecla == Keyboard::A) {
-				pjogador->andar(true);
+				pjogador1->andar(true);
 
 			}
 			if (tecla == Keyboard::D) {
-				pjogador->andar(false);
+				pjogador1->andar(false);
 			}
 			if (tecla == Keyboard::W) {
-				if (pjogador->getVel().y <= 0.015f && pjogador->getVel().y >= -0.015f) {
-					pjogador->setVel(Vector2f(pjogador->getVel().x, 2.7f));
+				if (pjogador1->getVel().y <= 0.015f && pjogador1->getVel().y >= -0.015f) {
+					pjogador1->setVel(Vector2f(pjogador1->getVel().x, 2.7f));
+				}
+			}
+			if (tecla == Keyboard::Left) {
+				pjogador2->andar(true);
+
+			}
+			if (tecla == Keyboard::Right) {
+				pjogador2->andar(false);
+			}
+			if (tecla == Keyboard::Up) {
+				if (pjogador2->getVel().y <= 0.015f && pjogador2->getVel().y >= -0.015f) {
+					pjogador2->setVel(Vector2f(pjogador2->getVel().x, 2.7f));
 				}
 			}
 			if (tecla == Keyboard::Escape) {
 				instanciaJogo->mudarTela(0);
+				pjogador1 = nullptr;
+				pjogador2 = nullptr;
 			}
 		}
 
 		void GerenciadorEvento::verificaTeclaSolta(Keyboard::Key tecla)
 		{
 			if (tecla == Keyboard::A || tecla == Keyboard::D) {
-				pjogador->parar();
+				pjogador1->parar();
+			}
+			if (tecla == Keyboard::Left || tecla == Keyboard::Right) {
+				pjogador2->parar();
 			}
 		}
 

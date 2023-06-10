@@ -44,8 +44,14 @@ namespace Xadrez_2 {
 				exit(1);
 			}
 			Gerenciador::GerenciadorEvento* pEvento = pEvento->getGerenciadorEvento();
-			pEvento->setJogador(jogador);
-			listaEntidades.addEntidade(static_cast<Entidade::Entidade*>(jogador));
+			if (pEvento->getJogador1() == nullptr) {
+				pEvento->setJogador1(jogador);
+				listaEntidades.addEntidade(static_cast<Entidade::Entidade*>(jogador));
+			}
+			else if (pEvento->getJogador2() == nullptr) {
+				pEvento->setJogador2(jogador);
+				listaEntidades.addEntidade(static_cast<Entidade::Entidade*>(jogador));
+			}
 		}
 
 		void Fase::criaTabuleiro(const Vector2f pos)

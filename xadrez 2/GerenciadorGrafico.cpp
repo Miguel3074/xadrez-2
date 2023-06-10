@@ -6,7 +6,7 @@ namespace Xadrez_2 {
 		GerenciadorGrafico* GerenciadorGrafico::pGerenciadorGrafico = GerenciadorGrafico::getGerenciadorGrafico();
 
 		GerenciadorGrafico::GerenciadorGrafico() :
-			resolucao(1920.f, 1080.0f), janela(new RenderWindow(VideoMode(1920.f, 1080.0f), "Xadrez-2"))
+			resolucao(1920.f, 1080.0f), janela(new RenderWindow(VideoMode(1920.f, 1080.0f), "Xadrez-2", Style::Titlebar | Style::Close))
 		{
 			if (janela == nullptr) {
 				cout << "ERROR: Nao foi possivel criar uma janela grafica" << endl;
