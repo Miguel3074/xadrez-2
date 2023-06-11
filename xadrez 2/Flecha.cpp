@@ -4,7 +4,7 @@
 namespace Xadrez_2 {
 	namespace Entidades {
 		Flecha::Flecha(const Vector2f pos) :
-			Entidade(pos, Vector2f(50.f, 20.f), IDs::flecha, Vector2f(0.1f, 0.f)), atingiu(false), aerodinamica(-0.00699f), ladoDisparo(false)
+			Entidade(pos, Vector2f(50.f, 20.f), IDs::flecha, Vector2f(0.1f, 0.f)), atingiu(false), aerodinamica(-0.00695f), ladoDisparo(false)
 		{
 			if (!this->textura.loadFromFile("../TEXTURAS/flecha.png")) {
 				cout << "Erro ao carregar a textura da flecha\n";

@@ -15,6 +15,7 @@ namespace Xadrez_2 {
 				~Peao();
 				void executar();
 				void colisao(Entidade* outraentidade, Vector2f ds);
+				bool getChegouNoFinal();
 			};
 		}
 	}

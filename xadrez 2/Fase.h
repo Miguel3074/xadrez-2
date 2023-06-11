@@ -23,6 +23,7 @@ namespace Xadrez_2 {
 			Gerenciadores::GerenciadorColisao* pColisao;
 			Gerenciadores::GerenciadorGrafico* pGerenciadorGrafico;
 			Gerenciadores::GerenciadorEvento* pEvento;
+			list<Entidades::Personagens::Peao*> listaPeao;
 
 			Texture texturaFundo;
 			Sprite fundo;

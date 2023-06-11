@@ -24,6 +24,8 @@ namespace Xadrez_2 {
 				podeAndar = true;
 				if (corpo.getPosition().x < (1920.f - tam.x) && corpo.getPosition().x > 0.f) {
 					corpo.move(-0.05f, 0.0f);
+				}
+				else {
 					chegouNoFinal = true;
 				}
 
@@ -53,6 +55,10 @@ namespace Xadrez_2 {
 				}
 				break;
 				}
+			}
+			bool Peao::getChegouNoFinal()
+			{
+				return chegouNoFinal;
 			}
 		}
 	}

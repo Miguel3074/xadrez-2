@@ -8,7 +8,8 @@ namespace Xadrez_2 {
 			pColisao(nullptr),
 			pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
 			pEvento(pEvento->getGerenciadorEvento()),
-			gravidade(0.007f)
+			gravidade(0.007f),
+			listaPeao()
 		{
 			/*if (pColisao == nullptr) {
 				cout << "Erro ao criar gerenciador de colisao" << endl;
@@ -26,14 +27,15 @@ namespace Xadrez_2 {
 
 		void Fase::criaPeao(const Vector2f pos)
 		{
-
-			Entidades::Personagens::Inimigo* peao = new Entidades::Personagens::Peao(pos);
+			Entidades::Personagens::Peao* aux = new Entidades::Personagens::Peao(pos);
+			Entidades::Personagens::Inimigo* peao = aux;
 			if (peao == nullptr) {
 				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Peao" << std::endl;
 				exit(1);
 			}
 			pColisao->incluirInimigo(peao);
 			listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(peao), gravidade);
+			listaPeao.push_back(aux);
 		}
 
 		void Fase::criaJogador(const Vector2f pos)
@@ -178,6 +180,15 @@ namespace Xadrez_2 {
 			listaEntidades.executar(pGerenciadorGrafico->getJanela());
 			pColisao->executar();
 			pEvento->executar();
+			for (Entidades::Personagens::Peao* p : listaPeao)
+			{
+				if (p->getChegouNoFinal() == true) {
+					criaRainha(p->getPos());
+					p->setEstaVivo(false);
+					listaPeao.remove(p);
+					break;
+				}
+			}
 		}
 	}
 }

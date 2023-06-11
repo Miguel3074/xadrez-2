@@ -65,28 +65,39 @@ namespace Xadrez_2 {
 			}
 			void Rainha::persegueJogador()
 			{
-				if (persegueJogador1)
-				{
-					if (jog1) {
-						Vector2f posJog1 = jog1->getPos();
-						if (posJog1.x - corpo.getPosition().x > 0.f)
-							corpo.move(vel.x, 0.f);
-						else
-							corpo.move(-vel.x, 0.f);
+				if (corpo.getPosition().x > 0.f) {
+					if (corpo.getPosition().x < 1920.f - tam.x) {
+						if (persegueJogador1)
+						{
+							if (jog1) {
+								Vector2f posJog1 = jog1->getPos();
+								if (posJog1.x - corpo.getPosition().x > 0.f)
+									corpo.move(vel.x, 0.f);
+								else
+									corpo.move(-vel.x, 0.f);
+							}
+							else
+								persegueJogador1 = false;
+						}
+						else {
+							if (jog2) {
+								Vector2f posJog2 = jog2->getPos();
+								if (posJog2.x - corpo.getPosition().x > 0.f)
+									corpo.move(vel.x, 0.f);
+								else
+									corpo.move(-vel.x, 0.f);
+							}
+							else
+								persegueJogador1 = true;
+						}
 					}
-					else
-						persegueJogador1 = false;
+					else {
+						corpo.setPosition(1920.f - tam.x, corpo.getPosition().y);
+					}
 				}
-				else {
-					if (jog2) {
-						Vector2f posJog2 = jog2->getPos();
-						if (posJog2.x - corpo.getPosition().x > 0.f)
-							corpo.move(vel.x, 0.f);
-						else
-							corpo.move(-vel.x, 0.f);
-					}
-					else
-						persegueJogador1 = true;
+				else
+				{
+					corpo.setPosition(0.f, corpo.getPosition().y);
 				}
 			}
 		}
