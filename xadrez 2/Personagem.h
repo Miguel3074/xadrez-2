@@ -4,8 +4,8 @@
 #include "Entidade.h"
 
 namespace Xadrez_2 {
-	namespace Entidade {
-		namespace Personagem {
+	namespace Entidades {
+		namespace Personagens {
 			class Personagem : public Entidade
 			{
 			protected:
@@ -13,12 +13,13 @@ namespace Xadrez_2 {
 				Clock relogio;
 				float dt;
 			public:
-				Personagem(const Vector2f pos, const Vector2f tam, Vector2f vel, IDs::IDs iD);
+				Personagem(const Vector2f pos, const Vector2f tam, Vector2f vel, IDs iD);
 				~Personagem();
 				void andar(const bool dirEsquerda);
 				void parar();
-
 				void atualizarPosicao();
+
+				virtual void executar() = 0;
 			};
 		}
 	}

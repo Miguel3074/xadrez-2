@@ -1,8 +1,8 @@
 #include "FaseBiblio.h"
 namespace Xadrez_2 {
-	namespace Fase {
+	namespace Fases {
 		FaseBiblio::FaseBiblio() :
-			Fase(IDs::IDs::fase1)
+			Fase(IDs::fase1)
 		{
 		}
 		FaseBiblio::~FaseBiblio()
@@ -10,6 +10,14 @@ namespace Xadrez_2 {
 		}
 		void FaseBiblio::criarMapa()
 		{
+			if (pColisao)
+				delete(pColisao);
+			pColisao = new Gerenciadores::GerenciadorColisao();
+
+			if (!pColisao) {
+				cout << "Erro ao criar gerenciador de colisao" << endl;
+				exit(1);
+			}
 			listaEntidades.limparLista();
 			if (!texturaFundo.loadFromFile("../TEXTURAS/fundo.jpg"))
 			{
@@ -37,10 +45,7 @@ namespace Xadrez_2 {
 		}
 		void FaseBiblio::executar()
 		{
-			pGerenciadorGrafico->getGerenciadorGrafico()->desenharSprite(fundo);
-			listaEntidades.executar(pGerenciadorGrafico->getJanela(), gravidade);
-			pColisao->executar();
-			pEvento->executar();
+			Fase::executar();
 		}
 	}
 }

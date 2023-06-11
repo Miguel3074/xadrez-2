@@ -1,37 +1,85 @@
 #include "GerenciadorColisao.h"
 
-Xadrez_2::Gerenciador::GerenciadorColisao::GerenciadorColisao(ListaEntidade* listaEntidades) :
-	listaEntidades(listaEntidades)
-{
-}
+namespace Xadrez_2 {
+	namespace Gerenciadores {
+		GerenciadorColisao::GerenciadorColisao() :
+			listaObstaculos(), listaInimigos(), jogador1(nullptr), jogador2(nullptr)
+		{
+		}
 
-Xadrez_2::Gerenciador::GerenciadorColisao::~GerenciadorColisao()
-{
+		GerenciadorColisao::~GerenciadorColisao()
+		{
 
-}
+		}
 
-const Vector2f Xadrez_2::Gerenciador::GerenciadorColisao::calculaColisao(Entidade::Entidade* ent1, Entidade::Entidade* ent2)
-{
-	Vector2f distancia, metade_retangulo, colisao;
-	distancia = { fabs((ent1->getPos().x + ent1->getTam().x / 2.0f) - (ent2->getPos().x + ent2->getTam().x / 2.0f)) ,
-				  fabs((ent1->getPos().y + ent1->getTam().y / 2.0f) - (ent2->getPos().y + ent2->getTam().y / 2.0f)) };
-	metade_retangulo = { (ent1->getTam().x + ent2->getTam().x) / 2.0f,
-						 (ent1->getTam().y + ent2->getTam().y) / 2.0f };
-	colisao = distancia - metade_retangulo;
+		void GerenciadorColisao::definirJogador1(Entidades::Personagens::Jogador* jogador1)
+		{
+			this->jogador1 = jogador1;
+		}
 
-	return colisao;
-}
+		void GerenciadorColisao::definirJogador2(Entidades::Personagens::Jogador* jogador2)
+		{
+			this->jogador2 = jogador2;
+		}
 
-void Xadrez_2::Gerenciador::GerenciadorColisao::executar()
-{
-	for (int i = 0; i < listaEntidades->getTam() - 1; i++) {
-		Entidade::Entidade* ent1 = listaEntidades->operator[](i);
-		for (int j = i + 1; j < listaEntidades->getTam(); j++) {
-			Entidade::Entidade* ent2 = listaEntidades->operator[](j);
+		const Vector2f GerenciadorColisao::calculaColisao(Entidades::Entidade* ent1, Entidades::Entidade* ent2)
+		{
+			Vector2f distancia, metade_retangulo, colisao;
+			distancia = { fabs((ent1->getPos().x + ent1->getTam().x / 2.0f) - (ent2->getPos().x + ent2->getTam().x / 2.0f)) ,
+						  fabs((ent1->getPos().y + ent1->getTam().y / 2.0f) - (ent2->getPos().y + ent2->getTam().y / 2.0f)) };
+			metade_retangulo = { (ent1->getTam().x + ent2->getTam().x) / 2.0f,
+								 (ent1->getTam().y + ent2->getTam().y) / 2.0f };
+			colisao = distancia - metade_retangulo;
+
+			return colisao;
+		}
+
+		void GerenciadorColisao::incluirObstaculo(Entidades::Obstaculos::Obstaculo* obstaculo)
+		{
+			listaObstaculos.push_back(obstaculo);
+		}
+
+		void GerenciadorColisao::incluirInimigo(Entidades::Personagens::Inimigo* inimigo)
+		{
+			listaInimigos.push_back(inimigo);
+		}
+
+		void GerenciadorColisao::colidir(Entidades::Entidade* ent1, Entidades::Entidade* ent2)
+		{
 			sf::Vector2f ds = calculaColisao(ent1, ent2);
 			if (ds.x < 0.0f && ds.y < 0.0f) {
-				ent2->colisao(ent1, ds);
+				ent1->colisao(ent2, ds);
 			}
+		}
+
+		void GerenciadorColisao::executar()
+		{
+			sf::Vector2f ds = sf::Vector2f();
+			for (Entidades::Obstaculos::Obstaculo* obst : listaObstaculos)
+			{
+				colidir(obst, jogador1);
+				colidir(obst, jogador2);
+
+				for (Entidades::Personagens::Inimigo* inim : listaInimigos)
+				{
+					if (!inim->getEstaVivo())
+						continue;
+					colidir(obst, inim);
+					colidir(inim, jogador1);
+					colidir(inim, jogador2);
+				}
+			}
+			/*
+			for (int i = 0; i < listaEntidades->getTam() - 1; i++) {
+				Entidade::Entidade* ent1 = listaEntidades->operator[](i);
+				for (int j = i + 1; j < listaEntidades->getTam(); j++) {
+					Entidade::Entidade* ent2 = listaEntidades->operator[](j);
+					sf::Vector2f ds = calculaColisao(ent1, ent2);
+					if (ds.x < 0.0f && ds.y < 0.0f) {
+						ent2->colisao(ent1, ds);
+					}
+				}
+			}*/
 		}
 	}
 }

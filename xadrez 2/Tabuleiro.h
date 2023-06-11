@@ -2,8 +2,8 @@
 #include "Obstaculo.h"
 
 namespace Xadrez_2 {
-	namespace Entidade {
-		namespace Obstaculo {
+	namespace Entidades {
+		namespace Obstaculos {
 			class Tabuleiro : public Obstaculo
 			{
 			private:
@@ -12,10 +12,9 @@ namespace Xadrez_2 {
 			public:
 				Tabuleiro(const Vector2f pos);
 				~Tabuleiro();
-				void atualizar(float gravidade);
+				void executar();
 				void colisao(Entidade* outraentidade, Vector2f ds);
 			};
-
 		}
 	}
 }

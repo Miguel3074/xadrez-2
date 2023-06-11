@@ -13,12 +13,13 @@ namespace Xadrez_2 {
 	{
 	}
 
-	void ListaEntidade::addEntidade(Entidade::Entidade* entidade)
+	void ListaEntidade::addEntidade(Entidades::Entidade* entidade, float gravidade)
 	{
 		objListaEntidade.addElemento(entidade);
+		entidade->setGravidade(gravidade);
 	}
 
-	void ListaEntidade::removeEntidade(Entidade::Entidade* entidade)
+	void ListaEntidade::removeEntidade(Entidades::Entidade* entidade)
 	{
 		objListaEntidade.removerElemento(entidade);
 	}
@@ -38,18 +39,18 @@ namespace Xadrez_2 {
 		objListaEntidade.limparLista();
 	}
 
-	Entidade::Entidade* ListaEntidade::operator[](int pos)
+	Entidades::Entidade* ListaEntidade::operator[](int pos)
 	{
 		return objListaEntidade.operator[](pos);
 	}
 
-	void ListaEntidade::executar(RenderWindow* janela, float gravidade)
+	void ListaEntidade::executar(RenderWindow* janela)
 	{
-		Entidade::Entidade* aux = nullptr;
+		Entidades::Entidade* aux = nullptr;
 		for (int i = 0; i < objListaEntidade.getTam(); i++) {
 			aux = objListaEntidade.operator[](i);
-			aux->atualizar(gravidade);
-			if (aux->getEstaVivo() == false) {
+			aux->executar();
+			if (!aux->getEstaVivo()) {
 				objListaEntidade.removerElemento(aux);
 			}
 			else

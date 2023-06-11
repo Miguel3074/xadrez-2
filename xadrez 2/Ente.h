@@ -8,16 +8,17 @@ namespace Xadrez_2 {
 	class Ente {
 
 	protected:
-		const IDs::IDs ID;
-		static Gerenciador::GerenciadorGrafico* pGrafico;
+		const IDs ID;
+		static Gerenciadores::GerenciadorGrafico* pGrafico;
 
 	public:
 
-		Ente(IDs::IDs ID);
+		Ente(IDs ID);
 		~Ente();
 
 		//virtual void atualizar() = 0;
-		const IDs::IDs getId() const;
+		const IDs getId() const;
+		virtual void executar() = 0;
 	};
 
 }

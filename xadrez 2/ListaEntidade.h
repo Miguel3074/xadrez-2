@@ -7,17 +7,17 @@ namespace Xadrez_2 {
 	class ListaEntidade
 	{
 	private:
-		Lista<Entidade::Entidade> objListaEntidade;
+		Lista<Entidades::Entidade> objListaEntidade;
 	public:
 		ListaEntidade();
 		~ListaEntidade();
-		void addEntidade(Entidade::Entidade* entidade);
-		void removeEntidade(Entidade::Entidade* entidade);
+		void addEntidade(Entidades::Entidade* entidade, float gravidade);
+		void removeEntidade(Entidades::Entidade* entidade);
 		void removeEntidade(int pos);
 		void limparLista();
 		int getTam();
-		Entidade::Entidade* operator[](int pos);
-		void executar(RenderWindow* janela, float gravidade);
+		Entidades::Entidade* operator[](int pos);
+		void executar(RenderWindow* janela);
 	};
 
 }

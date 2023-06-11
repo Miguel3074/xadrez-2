@@ -1,9 +1,10 @@
 #include "Ente.h"
+
 namespace Xadrez_2 {
 
-	Gerenciador::GerenciadorGrafico* Ente::pGrafico = Gerenciador::GerenciadorGrafico::getGerenciadorGrafico();
+	Gerenciadores::GerenciadorGrafico* Ente::pGrafico = Gerenciadores::GerenciadorGrafico::getGerenciadorGrafico();
 
-	Ente::Ente(IDs::IDs ID) :
+	Ente::Ente(IDs ID) :
 		ID(ID)
 	{
 	}
@@ -12,7 +13,7 @@ namespace Xadrez_2 {
 	{
 	}
 
-	const  IDs::IDs Ente::getId() const
+	const IDs Ente::getId() const
 	{
 		return ID;
 	}

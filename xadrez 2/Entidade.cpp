@@ -1,9 +1,9 @@
 #include "Entidade.h"
 
 namespace Xadrez_2 {
-	namespace Entidade {
-		Xadrez_2::Entidade::Entidade::Entidade(const Vector2f pos, const Vector2f tam, const IDs::IDs iD, Vector2f vel) :
-			corpo(RectangleShape(tam)), pos(pos), tam(tam), Ente(iD), dirEsquerda(false), estaVivo(true)
+	namespace Entidades {
+		Entidade::Entidade(const Vector2f pos, const Vector2f tam, const IDs iD, Vector2f vel) :
+			corpo(RectangleShape(tam)), pos(pos), tam(tam), Ente(iD), dirEsquerda(false), gravidade(0.f), estaVivo(true)
 		{
 		}
 
@@ -59,6 +59,11 @@ namespace Xadrez_2 {
 		bool Entidade::getEstaVivo()
 		{
 			return estaVivo;
+		}
+
+		void Entidade::setGravidade(float gravidade)
+		{
+			this->gravidade = gravidade;
 		}
 
 	}

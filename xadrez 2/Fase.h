@@ -11,19 +11,18 @@
 #include "GerenciadoEventos.h"
 #include "GerenciadorColisao.h"
 #include "ListaEntidade.h"
-#include "Tela.h"
 
 
 namespace Xadrez_2 {
 	class Jogo;
-	namespace Fase {
-		class Fase : public Ente, public Tela
+	namespace Fases {
+		class Fase : public Ente
 		{
 		protected:
 			ListaEntidade listaEntidades;
-			Gerenciador::GerenciadorColisao* pColisao;
-			Gerenciador::GerenciadorGrafico* pGerenciadorGrafico;
-			Gerenciador::GerenciadorEvento* pEvento;
+			Gerenciadores::GerenciadorColisao* pColisao;
+			Gerenciadores::GerenciadorGrafico* pGerenciadorGrafico;
+			Gerenciadores::GerenciadorEvento* pEvento;
 
 			Texture texturaFundo;
 			Sprite fundo;
@@ -32,7 +31,7 @@ namespace Xadrez_2 {
 
 			float gravidade;
 		public:
-			Fase(IDs::IDs ID_fase);
+			Fase(IDs ID_fase);
 			~Fase();
 			void setInstanciaJogo(Jogo* jogo);
 			void criaPeao(const Vector2f pos);
@@ -45,6 +44,7 @@ namespace Xadrez_2 {
 			void criarEntidade(char letra, const Vector2i pos);
 			Vector2f randPos();
 			int randQnty();
+			virtual void executar();
 		};
 	}
 }

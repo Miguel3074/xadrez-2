@@ -2,8 +2,8 @@
 #include "Obstaculo.h"
 
 namespace Xadrez_2 {
-	namespace Entidade {
-		namespace Obstaculo {
+	namespace Entidades {
+		namespace Obstaculos {
 			class TeiaAranha : public Obstaculo
 			{
 			private:
@@ -11,11 +11,10 @@ namespace Xadrez_2 {
 			public:
 				TeiaAranha(const Vector2f pos);
 				~TeiaAranha();
-				void atualizar(float gravidade);
+				void executar();
 				void colisao(Entidade* outraentidade, Vector2f ds);
 
 			};
-
 		}
 	}
 }

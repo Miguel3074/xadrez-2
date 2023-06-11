@@ -140,9 +140,6 @@
     <ClInclude Include="Menu.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>
-    <ClInclude Include="Tela.h">
-      <Filter>Arquivos de Cabeçalho</Filter>
-    </ClInclude>
     <ClInclude Include="Torre.h">
       <Filter>Arquivos de Cabeçalho</Filter>
     </ClInclude>

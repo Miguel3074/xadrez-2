@@ -1,6 +1,6 @@
 #pragma once
 
-namespace IDs {
+namespace Xadrez_2 {
 	enum class IDs {
 		vazio = 0,
 		jogador,

@@ -1,19 +1,18 @@
 #include "Jogo.h"
 
-void Xadrez_2::Jogo::criarFase()
-{
-	menu->executar();
-	menu->setInstanciaJogo(this);
-	fase1->setInstanciaJogo(this);
-	fase2->setInstanciaJogo(this);
-}
-
 namespace Xadrez_2 {
+	void Jogo::criarFase()
+	{
+		menu->executar();
+		menu->setInstanciaJogo(this);
+		fase1->setInstanciaJogo(this);
+		fase2->setInstanciaJogo(this);
+	}
 
 	Jogo::Jogo() :
 		pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
-		fase1(new Fase::FaseBiblio()), fase2(new Fase::FaseParque()), menu(new Menu()), faseAtual(menu),
-		pEvento(Gerenciador::GerenciadorEvento::getGerenciadorEvento())
+		fase1(new Fases::FaseBiblio()), fase2(new Fases::FaseParque()), menu(new Menu()), faseAtual(menu),
+		pEvento(Gerenciadores::GerenciadorEvento::getGerenciadorEvento())
 	{
 		if (pGerenciadorGrafico == nullptr) {
 			cout << "ERRO AO CRIAR GERENCIADOR GRAFICO";
@@ -57,5 +56,4 @@ namespace Xadrez_2 {
 			pGerenciadorGrafico->mostraElementos();
 		}
 	}
-
 }

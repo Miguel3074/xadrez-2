@@ -3,7 +3,7 @@
 #include "Fase.h"
 
 namespace Xadrez_2 {
-	namespace Fase {
+	namespace Fases {
 		class FaseBiblio : public Fase
 		{
 		private:

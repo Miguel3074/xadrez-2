@@ -8,12 +8,12 @@ namespace Xadrez_2 {
 	class Jogo
 	{
 	private:
-		Gerenciador::GerenciadorGrafico* pGerenciadorGrafico;
-		Gerenciador::GerenciadorEvento* pEvento;
-		Fase::FaseBiblio* fase1;
-		Fase::FaseParque* fase2;
+		Gerenciadores::GerenciadorGrafico* pGerenciadorGrafico;
+		Gerenciadores::GerenciadorEvento* pEvento;
+		Fases::FaseBiblio* fase1;
+		Fases::FaseParque* fase2;
 		Menu* menu;
-		Tela* faseAtual;
+		Ente* faseAtual;
 
 		void criarFase();
 	public:

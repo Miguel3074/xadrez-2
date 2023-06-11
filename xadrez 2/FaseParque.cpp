@@ -1,8 +1,8 @@
 #include "FaseParque.h"
 namespace Xadrez_2 {
-	namespace Fase {
+	namespace Fases {
 		FaseParque::FaseParque() :
-			Fase(IDs::IDs::fase2)
+			Fase(IDs::fase2)
 		{
 		}
 		FaseParque::~FaseParque()
@@ -30,10 +30,7 @@ namespace Xadrez_2 {
 		}
 		void FaseParque::executar()
 		{
-			//pGerenciadorGrafico->getGerenciadorGrafico()->desenharSprite(fundo);
-			//listaEntidades.executar(pGerenciadorGrafico->getJanela(), gravidade);
-			//pColisao->executar();
-			//pEvento->executar();
+			Fase::executar();
 		}
 	}
 }

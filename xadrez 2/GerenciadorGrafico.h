@@ -4,7 +4,7 @@
 
 namespace Xadrez_2 {
 
-	namespace Gerenciador {
+	namespace Gerenciadores {
 
 		class GerenciadorGrafico
 		{

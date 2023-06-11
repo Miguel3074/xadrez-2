@@ -1,7 +1,7 @@
 #include "GerenciadorGrafico.h"
 
 namespace Xadrez_2 {
-	namespace Gerenciador {
+	namespace Gerenciadores {
 
 		GerenciadorGrafico* GerenciadorGrafico::pGerenciadorGrafico = GerenciadorGrafico::getGerenciadorGrafico();
 

@@ -4,7 +4,7 @@
 
 namespace Xadrez_2 {
 	class Jogo;
-	class Menu : public Ente, public Tela
+	class Menu : public Ente
 	{
 	private:
 

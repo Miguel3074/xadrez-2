@@ -2,7 +2,7 @@
 #include "Jogo.h"
 
 namespace Xadrez_2 {
-	namespace Gerenciador {
+	namespace Gerenciadores {
 
 		GerenciadorEvento* GerenciadorEvento::pEvento = nullptr;
 
@@ -28,22 +28,22 @@ namespace Xadrez_2 {
 		}
 
 
-		void GerenciadorEvento::setJogador1(Entidade::Personagem::Jogador::Jogador* pJogador1)
+		void GerenciadorEvento::setJogador1(Entidades::Personagens::Jogador* pJogador1)
 		{
 			this->pjogador1 = pJogador1;
 		}
 
-		Entidade::Personagem::Jogador::Jogador* GerenciadorEvento::getJogador1()
+		Entidades::Personagens::Jogador* GerenciadorEvento::getJogador1()
 		{
 			return pjogador1;
 		}
 
-		void GerenciadorEvento::setJogador2(Entidade::Personagem::Jogador::Jogador* pJogador2)
+		void GerenciadorEvento::setJogador2(Entidades::Personagens::Jogador* pJogador2)
 		{
 			this->pjogador2 = pJogador2;
 		}
 
-		Entidade::Personagem::Jogador::Jogador* GerenciadorEvento::getJogador2()
+		Entidades::Personagens::Jogador* GerenciadorEvento::getJogador2()
 		{
 			return pjogador2;
 		}

@@ -1,9 +1,9 @@
 #include "Tabuleiro.h"
 namespace Xadrez_2 {
-	namespace Entidade {
-		namespace Obstaculo {
+	namespace Entidades {
+		namespace Obstaculos {
 			Tabuleiro::Tabuleiro(const Vector2f pos) :
-				Obstaculo(pos, Vector2f(450.0f, 150.0f), IDs::IDs::tabuleiro, false), empuxo(0)
+				Obstaculo(pos, Vector2f(450.0f, 150.0f), IDs::tabuleiro, false), empuxo(0)
 			{
 				if (!this->textura.loadFromFile("../TEXTURAS/tabuleiro.png")) {
 					cout << "Erro ao carregar a textura do tabuleiro\n";
@@ -14,7 +14,7 @@ namespace Xadrez_2 {
 			Tabuleiro::~Tabuleiro()
 			{
 			}
-			void Tabuleiro::atualizar(float gravidade)
+			void Tabuleiro::executar()
 			{
 				empuxo = gravidade * -1;
 				corpo.move(0.0f, gravidade);
@@ -22,7 +22,7 @@ namespace Xadrez_2 {
 			}
 			void Tabuleiro::colisao(Entidade* outraentidade, Vector2f ds)
 			{
-				if (outraentidade->getId() != IDs::IDs::tabuleiro && outraentidade->getId() != IDs::IDs::teiaAranha) {
+				if (outraentidade->getId() != IDs::tabuleiro && outraentidade->getId() != IDs::teiaAranha) {
 					if (ds.y > ds.x) {
 						if (outraentidade->getCorpo().getPosition().y < corpo.getPosition().y)
 							outraentidade->mover(Vector2f(0.0f, ds.y));
