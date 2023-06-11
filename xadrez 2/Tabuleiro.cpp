@@ -39,7 +39,6 @@ namespace Xadrez_2 {
 						else
 							outraentidade->mover(Vector2f(ds.x, 0.f));
 					}
-
 				}
 			}
 		}

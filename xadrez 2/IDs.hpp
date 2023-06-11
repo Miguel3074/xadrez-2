@@ -12,6 +12,7 @@ namespace Xadrez_2 {
 		flecha,
 		tabuleiro,
 		teiaAranha,
+		espinho,
 		fase1,
 		fase2,
 		menu

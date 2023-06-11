@@ -75,6 +75,10 @@ namespace Xadrez_2 {
 				colidir(obst, jogador1);
 				colidir(obst, jogador2);
 
+				for (Entidades::Obstaculos::Obstaculo* obst2 : listaObstaculos)
+				{
+					colidir(obst, obst2);
+				}
 				for (Entidades::Personagens::Inimigo* inim : listaInimigos)
 				{
 					if (!inim->getEstaVivo())
@@ -90,17 +94,7 @@ namespace Xadrez_2 {
 					colidir(flecha, jogador2);
 				}
 			}
-			/*
-			for (int i = 0; i < listaEntidades->getTam() - 1; i++) {
-				Entidade::Entidade* ent1 = listaEntidades->operator[](i);
-				for (int j = i + 1; j < listaEntidades->getTam(); j++) {
-					Entidade::Entidade* ent2 = listaEntidades->operator[](j);
-					sf::Vector2f ds = calculaColisao(ent1, ent2);
-					if (ds.x < 0.0f && ds.y < 0.0f) {
-						ent2->colisao(ent1, ds);
-					}
-				}
-			}*/
+
 		}
 	}
 }

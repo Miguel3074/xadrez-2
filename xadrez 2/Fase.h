@@ -7,6 +7,7 @@
 #include "Rainha.h"
 #include "Tabuleiro.h"
 #include "TeiaAranha.h"
+#include "Espinho.h"
 #include "GerenciadorGrafico.h"
 #include "GerenciadoEventos.h"
 #include "GerenciadorColisao.h"
@@ -39,6 +40,7 @@ namespace Xadrez_2 {
 			void criaJogador(const Vector2f pos);
 			void criaTabuleiro(const Vector2f pos);
 			void criaTeia(const Vector2f pos);
+			void criaEspinho(const Vector2f pos);
 			void criaTorre(const Vector2f pos);
 			void criaRainha(const Vector2f pos);
 			virtual void criarMapa() = 0;

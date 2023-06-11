@@ -73,11 +73,22 @@ namespace Xadrez_2 {
 		{
 			Entidades::Obstaculos::TeiaAranha* teia = new Entidades::Obstaculos::TeiaAranha(pos);
 			if (teia == nullptr) {
-				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um tabuleiro" << std::endl;
+				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar teia" << std::endl;
 				exit(1);
 			}
 			pColisao->incluirObstaculo(teia);
 			listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(teia), gravidade);
+		}
+
+		void Fase::criaEspinho(const Vector2f pos)
+		{
+			Entidades::Obstaculos::Espinho* esp = new Entidades::Obstaculos::Espinho(pos);
+			if (esp == nullptr) {
+				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar espinho" << std::endl;
+				exit(1);
+			}
+			pColisao->incluirObstaculo(esp);
+			listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(esp), gravidade);
 		}
 
 		void Fase::criaTorre(const Vector2f pos)
@@ -99,7 +110,7 @@ namespace Xadrez_2 {
 
 			Entidades::Personagens::Rainha* rainha = new Entidades::Personagens::Rainha(pos);
 			if (rainha == nullptr) {
-				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar uma Torre" << std::endl;
+				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar rainha" << std::endl;
 				exit(1);
 			}
 			pColisao->incluirInimigo(rainha);
@@ -147,6 +158,11 @@ namespace Xadrez_2 {
 			{
 				for (int i = 0; i < randQnty(); i++)
 					criaTeia(randPos());
+			}
+			case('e'):
+			{
+				for (int i = 0; i < randQnty(); i++)
+					criaEspinho(randPos());
 			}
 			break;
 			}
