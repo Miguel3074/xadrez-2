@@ -102,6 +102,8 @@ namespace Xadrez_2 {
 			}
 			pColisao->incluirInimigo(rainha);
 			listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(rainha), gravidade);
+
+			rainha->setJogadores(pColisao->getJogador1(), pColisao->getJogador2());
 		}
 
 		void Fase::criarEntidade(char letra, const Vector2i pos)

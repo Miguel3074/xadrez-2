@@ -4,7 +4,7 @@ namespace Xadrez_2 {
 	namespace Entidades {
 		namespace Personagens {
 			Rainha::Rainha(const Vector2f pos) :
-				Inimigo(pos, Vector2f(75.0f, 173.0f), IDs::rainha), atirou(false)
+				Inimigo(pos, Vector2f(75.0f, 173.0f), IDs::rainha), persegueJogador1(true), jog1(nullptr), jog2(nullptr)
 			{
 				vel = Vector2f(0.f, 0.f);
 				if (!this->textura.loadFromFile("../TEXTURAS/PRETAS/rainhaP 75_173.png")) {
@@ -12,13 +12,27 @@ namespace Xadrez_2 {
 				}
 				textura.setSmooth(true);
 				corpo.setTexture(&textura);
-				podeAndar = false;
+				podeAndar = true;
+				vel.x = 0.20f;
 			}
 			Rainha::~Rainha()
 			{
 			}
+
+			void Rainha::setJogadores(Jogador* joga1, Jogador* joga2)
+			{
+				jog1 = joga1;
+				if (joga2) {
+					jog2 = joga2;
+					if (rand() % 2 == 0) {
+						persegueJogador1 = false;
+					}
+				}
+			}
+
 			void Rainha::executar()
 			{
+				persegueJogador();
 				Inimigo::executar();
 				/*Vector2f posInimigo = corpo.getPosition();
 				corpo.move(0.0f, -vel.y);
@@ -47,6 +61,32 @@ namespace Xadrez_2 {
 
 				}
 				break;
+				}
+			}
+			void Rainha::persegueJogador()
+			{
+				if (persegueJogador1)
+				{
+					if (jog1) {
+						Vector2f posJog1 = jog1->getPos();
+						if (posJog1.x - corpo.getPosition().x > 0.f)
+							corpo.move(vel.x, 0.f);
+						else
+							corpo.move(-vel.x, 0.f);
+					}
+					else
+						persegueJogador1 = false;
+				}
+				else {
+					if (jog2) {
+						Vector2f posJog2 = jog2->getPos();
+						if (posJog2.x - corpo.getPosition().x > 0.f)
+							corpo.move(vel.x, 0.f);
+						else
+							corpo.move(-vel.x, 0.f);
+					}
+					else
+						persegueJogador1 = true;
 				}
 			}
 		}

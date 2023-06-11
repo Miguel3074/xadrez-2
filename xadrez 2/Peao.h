@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Inimigo.h"
-
+#include "Rainha.h" 
 
 namespace Xadrez_2 {
 	namespace Entidades {

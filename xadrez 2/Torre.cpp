@@ -16,6 +16,7 @@ namespace Xadrez_2 {
 			}
 			Torre::~Torre()
 			{
+
 			}
 			Flecha* Torre::getFlecha()
 			{

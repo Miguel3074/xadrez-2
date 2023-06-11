@@ -17,6 +17,16 @@ namespace Xadrez_2 {
 			this->jogador1 = jogador1;
 		}
 
+		Entidades::Personagens::Jogador* GerenciadorColisao::getJogador1()
+		{
+			return jogador1;
+		}
+		Entidades::Personagens::Jogador* GerenciadorColisao::getJogador2()
+		{
+			return jogador2;
+		}
+
+
 		void GerenciadorColisao::definirJogador2(Entidades::Personagens::Jogador* jogador2)
 		{
 			this->jogador2 = jogador2;

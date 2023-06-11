@@ -23,7 +23,10 @@ namespace Xadrez_2 {
 				vel.x = 0.15f;
 				if (rand() % 2 == 1) {
 					vel.x = vel.x * -1.f;
+					corpo.setScale(Vector2f(1, 1));
 				}
+				else
+					corpo.setScale(Vector2f(-1, 1));
 			}
 			corpo.move(vel.x, -vel.y);
 			vel.y = vel.y - gravidade - aerodinamica;

@@ -24,7 +24,9 @@ namespace Xadrez_2 {
 			~GerenciadorColisao();
 
 			void definirJogador1(Entidades::Personagens::Jogador* jogador1);
+			Entidades::Personagens::Jogador* getJogador1();
 			void definirJogador2(Entidades::Personagens::Jogador* jogador2);
+			Entidades::Personagens::Jogador* getJogador2();
 
 			void incluirObstaculo(Entidades::Obstaculos::Obstaculo* obstaculo);
 			void incluirInimigo(Entidades::Personagens::Inimigo* inimigo);
