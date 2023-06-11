@@ -30,6 +30,10 @@ namespace Xadrez_2 {
 				if (podeAndar) {
 					atualizarPosicao();
 				}
+				else
+				{
+					vel.x = 0.f;
+				}
 
 				corpo.move(0.0f, -vel.y);
 				vel.y = vel.y - gravidade;
@@ -50,6 +54,25 @@ namespace Xadrez_2 {
 
 				}
 				break;
+				}
+			}
+			void Jogador::atualizarPosicao()
+			{
+				dt = relogio.getElapsedTime().asSeconds();
+				float ds = 1000 * dt; //MRU
+				vel.x = ds;
+				if (dirEsquerda) {
+					ds *= -1;
+				}
+				corpo.move(ds, 0.0f);
+				if (corpo.getPosition().x < (1920.f - tam.x) && corpo.getPosition().x > 0.f) {
+					corpo.move(ds, 0.0f);
+				}
+				else if (corpo.getPosition().x <= 0.f) {
+					corpo.setPosition(Vector2f(0.1f, corpo.getPosition().y));
+				}
+				else if (corpo.getPosition().x >= (1920.f - tam.x)) {
+					corpo.setPosition(Vector2f(1919.f - tam.x, corpo.getPosition().y));
 				}
 			}
 		}

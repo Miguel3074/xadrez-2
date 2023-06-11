@@ -23,7 +23,7 @@ namespace Xadrez_2 {
 				Inimigo::executar();
 				podeAndar = true;
 				if (corpo.getPosition().x < (1920.f - tam.x) && corpo.getPosition().x > 0.f) {
-					corpo.move(-0.07f, 0.0f);
+					corpo.move(-0.05f, 0.0f);
 				}
 				/*Vector2f posInimigo = corpo.getPosition();
 				podeAndar = true;
@@ -49,7 +49,7 @@ namespace Xadrez_2 {
 						if (outraentidade->getDirecao())
 							outraentidade->mover(Vector2f(-ds.x, 0.f));
 						else
-							outraentidade->mover(Vector2f(ds.x, 0.f));
+							outraentidade->setEstaVivo(false);
 					}
 					else {
 						estaVivo = false;

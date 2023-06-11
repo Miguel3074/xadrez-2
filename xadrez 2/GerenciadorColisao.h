@@ -3,6 +3,7 @@
 //#include "ListaEntidade.h"
 #include "Obstaculo.h"
 #include "Inimigo.h"
+#include "Flecha.h"
 
 namespace Xadrez_2 {
 	namespace Gerenciadores
@@ -12,6 +13,7 @@ namespace Xadrez_2 {
 		private:
 			list<Entidades::Obstaculos::Obstaculo*> listaObstaculos;
 			list<Entidades::Personagens::Inimigo*> listaInimigos;
+			list <Entidades::Flecha*> listaFlecha;
 			Entidades::Personagens::Jogador* jogador1;
 			Entidades::Personagens::Jogador* jogador2;
 
@@ -26,6 +28,7 @@ namespace Xadrez_2 {
 
 			void incluirObstaculo(Entidades::Obstaculos::Obstaculo* obstaculo);
 			void incluirInimigo(Entidades::Personagens::Inimigo* inimigo);
+			void incluirFlecha(Entidades::Flecha* flecha);
 
 			void executar();
 		};

@@ -18,6 +18,7 @@ namespace Xadrez_2 {
 				cout << "Erro ao criar gerenciador de colisao" << endl;
 				exit(1);
 			}
+
 			listaEntidades.limparLista();
 			if (!texturaFundo.loadFromFile("../TEXTURAS/fundo.jpg"))
 			{

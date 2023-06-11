@@ -17,7 +17,6 @@ namespace Xadrez_2 {
 				~Personagem();
 				void andar(const bool dirEsquerda);
 				void parar();
-				void atualizarPosicao();
 
 				virtual void executar() = 0;
 			};

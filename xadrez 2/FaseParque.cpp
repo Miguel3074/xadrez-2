@@ -1,4 +1,5 @@
 #include "FaseParque.h"
+
 namespace Xadrez_2 {
 	namespace Fases {
 		FaseParque::FaseParque() :
@@ -10,7 +11,23 @@ namespace Xadrez_2 {
 		}
 		void FaseParque::criarMapa()
 		{
+			if (pColisao)
+				delete(pColisao);
+			pColisao = new Gerenciadores::GerenciadorColisao();
+
+			if (!pColisao) {
+				cout << "Erro ao criar gerenciador de colisao" << endl;
+				exit(1);
+			}
+
 			listaEntidades.limparLista();
+			if (!texturaFundo.loadFromFile("../TEXTURAS/fundo2.jpg"))
+			{
+				cout << "Erro na textura do fundo do mapaBilbio.\n";
+			}
+			texturaFundo.setSmooth(true);
+			fundo.setTexture(texturaFundo);
+
 			string linha;
 			mapa2txt.open("FaseParqueMapa.txt");
 			if (!mapa2txt.is_open()) {
@@ -34,3 +51,6 @@ namespace Xadrez_2 {
 		}
 	}
 }
+
+
+

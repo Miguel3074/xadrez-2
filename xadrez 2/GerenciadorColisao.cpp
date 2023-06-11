@@ -3,7 +3,7 @@
 namespace Xadrez_2 {
 	namespace Gerenciadores {
 		GerenciadorColisao::GerenciadorColisao() :
-			listaObstaculos(), listaInimigos(), jogador1(nullptr), jogador2(nullptr)
+			listaObstaculos(), listaInimigos(), listaFlecha(), jogador1(nullptr), jogador2(nullptr)
 		{
 		}
 
@@ -44,6 +44,11 @@ namespace Xadrez_2 {
 			listaInimigos.push_back(inimigo);
 		}
 
+		void GerenciadorColisao::incluirFlecha(Entidades::Flecha* flecha)
+		{
+			listaFlecha.push_back(flecha);
+		}
+
 		void GerenciadorColisao::colidir(Entidades::Entidade* ent1, Entidades::Entidade* ent2)
 		{
 			sf::Vector2f ds = calculaColisao(ent1, ent2);
@@ -67,6 +72,12 @@ namespace Xadrez_2 {
 					colidir(obst, inim);
 					colidir(inim, jogador1);
 					colidir(inim, jogador2);
+				}
+				for (Entidades::Flecha* flecha : listaFlecha)
+				{
+					colidir(obst, flecha);
+					colidir(flecha, jogador1);
+					colidir(flecha, jogador2);
 				}
 			}
 			/*

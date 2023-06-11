@@ -88,6 +88,8 @@ namespace Xadrez_2 {
 			}
 			pColisao->incluirInimigo(torre);
 			listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(torre), gravidade);
+			pColisao->incluirFlecha(torre->getFlecha());
+			listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(torre->getFlecha()), gravidade);
 		}
 
 		void Fase::criaRainha(const Vector2f pos)
@@ -150,7 +152,7 @@ namespace Xadrez_2 {
 
 			//POSICAO ELEATORIAS
 			Vector2i pos2;
-			pos2.x = rand() % 1900;
+			pos2.x = (rand() % 1600) + 300.f;
 			pos2.y = rand() % 1000;
 			Vector2f posf = (Vector2f)pos2;
 			return posf;
@@ -159,7 +161,7 @@ namespace Xadrez_2 {
 		int Fase::randQnty()
 		{
 			int i;
-			i = (rand() % 2) + 3;
+			i = (rand() % 3) + 3;
 			return i;
 		}
 

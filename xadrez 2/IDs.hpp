@@ -9,6 +9,7 @@ namespace Xadrez_2 {
 		rainha,
 		rei,
 		torre,
+		flecha,
 		tabuleiro,
 		teiaAranha,
 		fase1,

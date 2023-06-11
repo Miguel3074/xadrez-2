@@ -23,6 +23,9 @@ namespace Xadrez_2 {
 			void Tabuleiro::colisao(Entidade* outraentidade, Vector2f ds)
 			{
 				if (outraentidade->getId() != IDs::tabuleiro && outraentidade->getId() != IDs::teiaAranha) {
+					if (outraentidade->getId() == IDs::flecha) {
+						outraentidade->setVel(Vector2f(0.f, 0.f));
+					}
 					if (ds.y > ds.x) {
 						if (outraentidade->getCorpo().getPosition().y < corpo.getPosition().y)
 							outraentidade->mover(Vector2f(0.0f, ds.y));
@@ -36,6 +39,7 @@ namespace Xadrez_2 {
 						else
 							outraentidade->mover(Vector2f(ds.x, 0.f));
 					}
+
 				}
 			}
 		}

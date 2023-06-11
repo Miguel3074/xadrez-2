@@ -144,6 +144,7 @@
     <ClCompile Include="Fase.cpp" />
     <ClCompile Include="FaseBiblio.cpp" />
     <ClCompile Include="FaseParque.cpp" />
+    <ClCompile Include="Flecha.cpp" />
     <ClCompile Include="GerenciadoEventos.cpp" />
     <ClCompile Include="GerenciadorColisao.cpp" />
     <ClCompile Include="GerenciadorGrafico.cpp" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Fase.h" />
     <ClInclude Include="FaseBiblio.h" />
     <ClInclude Include="FaseParque.h" />
+    <ClInclude Include="Flecha.h" />
     <ClInclude Include="GerenciadoEventos.h" />
     <ClInclude Include="GerenciadorColisao.h" />
     <ClInclude Include="GerenciadorGrafico.h" />

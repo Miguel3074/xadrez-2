@@ -17,6 +17,7 @@ namespace Xadrez_2 {
 				~Jogador();
 				void executar();
 				void colisao(Entidade* outraentidade, Vector2f ds);
+				void atualizarPosicao();
 			};
 		}
 	}
