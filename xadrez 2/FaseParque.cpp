@@ -44,6 +44,7 @@ namespace Xadrez_2 {
 				j++;
 			}
 			mapa2txt.close();
+			tempo.restart();
 		}
 		void FaseParque::executar()
 		{

@@ -9,12 +9,19 @@ namespace Xadrez_2 {
 			pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
 			pEvento(pEvento->getGerenciadorEvento()),
 			gravidade(0.007f),
-			listaPeao()
+			listaPeao(),
+			pontuacaoBase(10000),
+			pontuacao()
 		{
-			/*if (pColisao == nullptr) {
-				cout << "Erro ao criar gerenciador de colisao" << endl;
+			if (!fonte.loadFromFile("Flavor_sans.otf"))
+			{
+				cout << "Falha ao carregar fonte." << endl;
 				exit(1);
-			}*/
+			}
+
+			pontuacao.setFont(fonte);
+			pontuacao.setPosition(50, 75);
+			pontuacao.setString(to_string(pontuacaoBase));
 		}
 
 		Fase::~Fase()
@@ -192,8 +199,10 @@ namespace Xadrez_2 {
 
 		void Fase::executar()
 		{
+			RenderWindow* janela = pGerenciadorGrafico->getJanela();
+
 			pGerenciadorGrafico->getGerenciadorGrafico()->desenharSprite(fundo);
-			listaEntidades.executar(pGerenciadorGrafico->getJanela());
+			listaEntidades.executar(janela);
 			pColisao->executar();
 			pEvento->executar();
 			for (Entidades::Personagens::Peao* p : listaPeao)
@@ -205,6 +214,10 @@ namespace Xadrez_2 {
 					break;
 				}
 			}
+
+			pontuacaoAtual = pontuacaoBase - static_cast<int>(tempo.getElapsedTime().asSeconds()) * 15;
+			pontuacao.setString(to_string(pontuacaoAtual));
+			janela->draw(pontuacao);
 		}
 	}
 }

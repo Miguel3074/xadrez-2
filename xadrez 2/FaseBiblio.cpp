@@ -4,6 +4,7 @@ namespace Xadrez_2 {
 		FaseBiblio::FaseBiblio() :
 			Fase(IDs::fase1)
 		{
+			pontuacaoBase = 10000;
 		}
 		FaseBiblio::~FaseBiblio()
 		{
@@ -43,6 +44,7 @@ namespace Xadrez_2 {
 				j++;
 			}
 			mapa1txt.close();
+			tempo.restart();
 		}
 		void FaseBiblio::executar()
 		{

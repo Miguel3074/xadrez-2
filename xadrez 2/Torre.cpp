@@ -50,6 +50,7 @@ namespace Xadrez_2 {
 					}
 					else {
 						estaVivo = false;
+						flecha->setEstaVivo(false);
 					}
 
 				}

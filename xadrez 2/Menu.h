@@ -33,14 +33,17 @@ namespace Xadrez_2 {
 		int menuOpcao;
 		Jogo* instanciaJogo;
 
+		void organizarPerfis();
+		void rankings();
+		void menuPerfis();
+		void criarPerfil();
+
 	public:
 		Menu();
 		~Menu();
 
 		void setInstanciaJogo(Jogo* jogo) { this->instanciaJogo = jogo; }
 
-		void menuPerfis();
-		void criarPerfil();
 		void menuInicial();
 
 		void executar();

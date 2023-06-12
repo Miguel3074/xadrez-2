@@ -52,6 +52,8 @@ namespace Xadrez_2 {
 
 		jogadoresPerfis.close();
 
+		organizarPerfis();
+
 		fase1.setFont(fonte);
 		fase2.setFont(fonte);
 		pontos.setFont(fonte);
@@ -74,6 +76,60 @@ namespace Xadrez_2 {
 		perfis.clear();
 	}
 
+	void Menu::rankings() {
+		RenderWindow* janela = pGrafico->getJanela();
+		Event evento;
+		Text rank("", fonte);
+		bool mostraRankings = true;
+
+		while (mostraRankings)
+		{
+			janela->clear();
+			rank.setString("Top 10");
+			rank.setPosition(300, 50);
+			janela->draw(rank);
+
+			for (int i = 0; i < 10 && i < perfis.size(); i++)
+			{
+				rank.setPosition(300, 150 + 50 * i);
+				rank.setString("Perfil: " + perfis[i]->getNome() + " - " + "Pontuacao: " + to_string(perfis[i]->getPontuacao()));
+				janela->draw(rank);
+			}
+			janela->display();
+
+			while (janela->pollEvent(evento)) {
+				switch (evento.type)
+				{
+				case Event::Closed:
+					pGrafico->fecharJanela();
+					break;
+				case Event::KeyPressed:
+					Event::KeyEvent botao = evento.key;
+					switch (botao.code)
+					{
+					case Keyboard::Escape:
+						mostraRankings = false;
+						break;
+					}
+					break;
+				}
+			}
+		}
+	}
+
+	void Menu::organizarPerfis() {
+		for (int i = 0; i < perfis.size(); i++)
+		{
+			for (int j = i; j < perfis.size(); j++)
+				if (perfis[i]->getPontuacao() < perfis[j]->getPontuacao())
+				{
+					Perfil* aux = perfis[i];
+					perfis[i] = perfis[j];
+					perfis[j] = aux;
+				}
+		}
+	}
+
 	void Menu::menuPerfis()
 	{
 		RenderWindow* janela = pGrafico->getJanela();
@@ -83,7 +139,7 @@ namespace Xadrez_2 {
 
 		if (menuOpcao > 1 && perfis.size() - menuOpcao > 1)
 			selecao.setPosition(270, (200 + 50 * 2));
-		else if (menuOpcao < 2)
+		else if (menuOpcao < 2 || perfis.size() < 5)
 			selecao.setPosition(270, 200 + 50 * menuOpcao);
 		else
 			if (perfis.size() - menuOpcao < 1)
@@ -148,7 +204,8 @@ namespace Xadrez_2 {
 						perfilAtual = perfis[menuOpcao - 1];
 					menuPerfil = false;
 					menuOpcao = 1;
-					jogadorPerfil.setString("Ola, " + perfilAtual->getNome());
+					if(perfilAtual)
+						jogadorPerfil.setString("Ola, " + perfilAtual->getNome());
 					return;
 				}
 				break;
@@ -183,8 +240,10 @@ namespace Xadrez_2 {
 					{
 						if (evento.key.code <= 25)
 							nomePerfil.setString(nomePerfil.getString() + char(evento.key.code + 97));
+						else if (evento.key.code == 26)
+							nomePerfil.setString(nomePerfil.getString() + "0");
 						else
-							nomePerfil.setString(nomePerfil.getString() + to_string(evento.key.code - 25 + 48));
+							nomePerfil.setString(nomePerfil.getString() + to_string(evento.key.code - 26));
 					}
 					else if (evento.key.code == Keyboard::Key::Backspace)
 					{
@@ -266,7 +325,10 @@ namespace Xadrez_2 {
 					menuOpcao <= 1 ? menuOpcao = 4 : menuOpcao--;
 					break;
 				case Keyboard::Enter:
-					instanciaJogo->mudarTela(menuOpcao);
+					if (menuOpcao == 3)
+						rankings();
+					else
+						instanciaJogo->mudarTela(menuOpcao);
 					return;
 				}
 				break;

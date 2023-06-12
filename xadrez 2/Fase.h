@@ -25,9 +25,14 @@ namespace Xadrez_2 {
 			Gerenciadores::GerenciadorGrafico* pGerenciadorGrafico;
 			Gerenciadores::GerenciadorEvento* pEvento;
 			list<Entidades::Personagens::Peao*> listaPeao;
+			Text pontuacao;
+			Font fonte;
 
 			Texture texturaFundo;
 			Sprite fundo;
+			unsigned int pontuacaoBase;
+			unsigned int pontuacaoAtual;
+			Clock tempo;
 
 			Jogo* instanciaJogo;
 
