@@ -43,6 +43,7 @@ namespace Xadrez_2 {
 		~Menu();
 
 		void setInstanciaJogo(Jogo* jogo) { this->instanciaJogo = jogo; }
+		void setMelhorPontuacao(unsigned int pontos);
 
 		void menuInicial();
 

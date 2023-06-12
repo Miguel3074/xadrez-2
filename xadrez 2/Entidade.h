@@ -13,6 +13,7 @@ namespace Xadrez_2 {
 			Vector2f vel;
 			Texture textura;
 
+			unsigned int pontuacao;
 			bool estaVivo;
 			bool dirEsquerda;
 			float gravidade;
@@ -30,6 +31,8 @@ namespace Xadrez_2 {
 			void setEstaVivo(bool a);
 			bool getEstaVivo();
 			void setGravidade(float gravidade);
+			void acrescentarPontuacao(unsigned int pontos) { pontuacao += pontos; }
+			unsigned int verificarPontuacao() { return pontuacao; }
 			virtual void colisao(Entidade* outraentidade, Vector2f ds) = 0;
 			void mover(Vector2f a);
 			virtual void executar() = 0;

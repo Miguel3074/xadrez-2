@@ -336,6 +336,12 @@ namespace Xadrez_2 {
 		}
 	}
 
+	void Menu::setMelhorPontuacao(unsigned int pontos)
+	{
+		if (perfilAtual->getPontuacao() < pontos)
+			perfilAtual->setPontuacao(pontos);
+	}
+
 	void Menu::executar()
 	{
 		if(menuPerfil)

@@ -21,6 +21,9 @@ namespace Xadrez_2 {
 	public:
 		Jogo();
 		~Jogo();
+
+		void verificarMaiorPontuacao(unsigned int pontos) { menu->setMelhorPontuacao(pontos); }
+
 		void mudarTela(int telaN);
 		void executar();
 	};

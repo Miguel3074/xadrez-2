@@ -17,6 +17,10 @@ namespace Xadrez_2 {
 		void limparLista();
 		int getTam();
 		Entidades::Entidade* operator[](int pos);
+
+		bool jogadoresVivos();
+		bool inimigosVivos();
+
 		void executar(RenderWindow* janela);
 	};
 

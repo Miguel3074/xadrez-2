@@ -1,8 +1,11 @@
 #include "Fase.h"
-
+#include "Jogo.h"
 
 namespace Xadrez_2 {
 	namespace Fases {
+		bool Fase::faseFinal(false);
+		int Fase::faseAtual(1);
+
 		Fase::Fase(IDs ID_fase) :
 			Ente(ID_fase), listaEntidades(), instanciaJogo(nullptr),
 			pColisao(nullptr),
@@ -10,7 +13,7 @@ namespace Xadrez_2 {
 			pEvento(pEvento->getGerenciadorEvento()),
 			gravidade(0.007f),
 			listaPeao(),
-			pontuacaoBase(10000),
+			pontuacaoAtual(0),
 			pontuacao()
 		{
 			if (!fonte.loadFromFile("Flavor_sans.otf"))
@@ -21,7 +24,7 @@ namespace Xadrez_2 {
 
 			pontuacao.setFont(fonte);
 			pontuacao.setPosition(50, 75);
-			pontuacao.setString(to_string(pontuacaoBase));
+			pontuacao.setString(to_string(pontuacaoAtual));
 		}
 
 		Fase::~Fase()
@@ -47,21 +50,37 @@ namespace Xadrez_2 {
 
 		void Fase::criaJogador(const Vector2f pos)
 		{
-			Entidades::Personagens::Jogador* jogador = new Entidades::Personagens::Jogador(pos);
-			if (jogador == nullptr) {
-				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Jogador" << std::endl;
-				exit(1);
-			}
+			Entidades::Personagens::Jogador* jogador;
 			Gerenciadores::GerenciadorEvento* pEvento = pEvento->getGerenciadorEvento();
 			if (pEvento->getJogador1() == nullptr) {
+				jogador = new Entidades::Personagens::Jogador(pos);
 				pEvento->setJogador1(jogador);
 				pColisao->definirJogador1(jogador);
 				listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(jogador), gravidade);
 			}
-			else if (pEvento->getJogador2() == nullptr) {
+			else
+			{
+				jogador = pEvento->getJogador1();
+				jogador->setEstaVivo(true);
+				pColisao->definirJogador1(jogador);
+				listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(jogador), gravidade);
+			}
+			if (pEvento->getJogador2() == nullptr) {
+				jogador = new Entidades::Personagens::Jogador(pos);
 				pEvento->setJogador2(jogador);
 				pColisao->definirJogador2(jogador);
 				listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(jogador), gravidade);
+			}
+			else
+			{
+				jogador = pEvento->getJogador2();
+				jogador->setEstaVivo(true);
+				pColisao->definirJogador2(jogador);
+				listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(jogador), gravidade);
+			}
+			if (jogador == nullptr) {
+				std::cout << "Construtor::ConstrutorFase::nao foi possivel criar um Jogador" << std::endl;
+				exit(1);
 			}
 		}
 
@@ -215,9 +234,82 @@ namespace Xadrez_2 {
 				}
 			}
 
-			pontuacaoAtual = pontuacaoBase - static_cast<int>(tempo.getElapsedTime().asSeconds()) * 15;
+			Entidades::Personagens::Jogador* jogador1, * jogador2;
+			jogador1 = pEvento->getJogador1();
+			jogador2 = pEvento->getJogador2();
+			if (jogador1) {
+				if (jogador2)
+					pontuacaoAtual = pEvento->getJogador1()->verificarPontuacao() + pEvento->getJogador2()->verificarPontuacao();
+				else
+					pontuacaoAtual = pEvento->getJogador1()->verificarPontuacao();
+			}
 			pontuacao.setString(to_string(pontuacaoAtual));
 			janela->draw(pontuacao);
+
+			if (!listaEntidades.jogadoresVivos()) {
+				pEvento->setJogador1(nullptr);
+				pEvento->setJogador2(nullptr);
+				faseFinal = false;
+				bool finalizarFase = false;
+				Text falhou("Voce Perdeu. Pressione Enter para voltar ao menu.", fonte);
+				falhou.setCharacterSize(50);
+				falhou.setPosition(500, 300);
+				Event evento;
+				while (!finalizarFase)
+				{
+					janela->clear();
+					janela->draw(falhou);
+					janela->display();
+					while (janela->pollEvent(evento))
+					{
+						if (evento.type == Event::Closed) {
+							pGrafico->fecharJanela();
+							finalizarFase = true;
+						}
+						if (evento.type == Event::KeyPressed && evento.key.code == Keyboard::Key::Enter)
+							finalizarFase = true;
+					}
+				}
+				pontuacaoAtual = 0;
+				instanciaJogo->mudarTela(0);
+			}
+
+			if (!listaEntidades.inimigosVivos()) {
+				if (!faseFinal) {
+					faseFinal = true;
+					if (faseAtual == 1)
+						instanciaJogo->mudarTela(2);
+					else
+						instanciaJogo->mudarTela(1);
+				}
+				else {
+					pEvento->setJogador1(nullptr);
+					pEvento->setJogador2(nullptr);
+					faseFinal = false;
+					bool finalizarFase = false;
+					Text sucesso("Pontos: " + to_string(pontuacaoAtual) + ". Pressione Enter para voltar ao menu.", fonte);
+					sucesso.setCharacterSize(50);
+					sucesso.setPosition(500, 300);
+					Event evento;
+					while (!finalizarFase)
+					{
+						janela->clear();
+						janela->draw(sucesso);
+						janela->display();
+						while (janela->pollEvent(evento))
+						{
+							if (evento.type == Event::Closed) {
+								pGrafico->fecharJanela();
+								finalizarFase = true;
+							}
+							if (evento.type == Event::KeyPressed && evento.key.code == Keyboard::Key::Enter)
+								finalizarFase = true;
+						}
+					}
+					instanciaJogo->verificarMaiorPontuacao(pontuacaoAtual);
+					instanciaJogo->mudarTela(0);
+				}
+			}
 		}
 	}
 }

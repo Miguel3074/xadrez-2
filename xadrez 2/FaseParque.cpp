@@ -5,12 +5,16 @@ namespace Xadrez_2 {
 		FaseParque::FaseParque() :
 			Fase(IDs::fase2)
 		{
+			
 		}
 		FaseParque::~FaseParque()
 		{
 		}
 		void FaseParque::criarMapa()
 		{
+			faseAtual = 2;
+			if (!faseFinal)
+				pontuacaoAtual = 0;
 			if (pColisao)
 				delete(pColisao);
 			pColisao = new Gerenciadores::GerenciadorColisao();
@@ -44,7 +48,6 @@ namespace Xadrez_2 {
 				j++;
 			}
 			mapa2txt.close();
-			tempo.restart();
 		}
 		void FaseParque::executar()
 		{

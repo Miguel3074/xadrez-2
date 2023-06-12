@@ -39,7 +39,7 @@ namespace Xadrez_2 {
 						  fabs((ent1->getPos().y + ent1->getTam().y / 2.0f) - (ent2->getPos().y + ent2->getTam().y / 2.0f)) };
 			metade_retangulo = { (ent1->getTam().x + ent2->getTam().x) / 2.0f,
 								 (ent1->getTam().y + ent2->getTam().y) / 2.0f };
-			colisao = distancia - metade_retangulo;
+			colisao = sf::operator-(distancia, metade_retangulo);
 
 			return colisao;
 		}
@@ -72,6 +72,9 @@ namespace Xadrez_2 {
 			sf::Vector2f ds = sf::Vector2f();
 			for (Entidades::Obstaculos::Obstaculo* obst : listaObstaculos)
 			{
+				if (!obst->getEstaVivo()) {
+					continue;
+				}
 				colidir(obst, jogador1);
 				colidir(obst, jogador2);
 
@@ -81,14 +84,18 @@ namespace Xadrez_2 {
 				}
 				for (Entidades::Personagens::Inimigo* inim : listaInimigos)
 				{
-					if (!inim->getEstaVivo())
+					if (!inim->getEstaVivo()) {
 						continue;
+					}
 					colidir(obst, inim);
 					colidir(inim, jogador1);
 					colidir(inim, jogador2);
 				}
 				for (Entidades::Flecha* flecha : listaFlecha)
 				{
+					if (!flecha->getEstaVivo()) {
+						continue;
+					}
 					colidir(obst, flecha);
 					colidir(flecha, jogador1);
 					colidir(flecha, jogador2);

@@ -14,6 +14,7 @@ namespace Xadrez_2 {
 				corpo.setTexture(&textura);
 				podeAndar = true;
 				vel.x = 0.20f;
+				pontuacao = 10;
 			}
 			Rainha::~Rainha()
 			{
@@ -57,6 +58,7 @@ namespace Xadrez_2 {
 					}
 					else {
 						estaVivo = false;
+						outraentidade->acrescentarPontuacao(pontuacao);
 					}
 
 				}

@@ -27,12 +27,12 @@ namespace Xadrez_2 {
 			list<Entidades::Personagens::Peao*> listaPeao;
 			Text pontuacao;
 			Font fonte;
+			static bool faseFinal;
+			static int faseAtual;
 
 			Texture texturaFundo;
 			Sprite fundo;
-			unsigned int pontuacaoBase;
 			unsigned int pontuacaoAtual;
-			Clock tempo;
 
 			Jogo* instanciaJogo;
 

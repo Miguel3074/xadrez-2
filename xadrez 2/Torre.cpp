@@ -14,6 +14,7 @@ namespace Xadrez_2 {
 				textura.setSmooth(true);
 				corpo.setTexture(&textura);
 				podeAndar = false;
+				pontuacao = 20;
 			}
 			Torre::~Torre()
 			{
@@ -51,6 +52,7 @@ namespace Xadrez_2 {
 					else {
 						estaVivo = false;
 						flecha->setEstaVivo(false);
+						outraentidade->acrescentarPontuacao(pontuacao);
 					}
 
 				}

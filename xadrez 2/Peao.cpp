@@ -12,6 +12,7 @@ namespace Xadrez_2 {
 				}
 				textura.setSmooth(true);
 				corpo.setTexture(&textura);
+				pontuacao = 5;
 			}
 
 			Peao::~Peao()
@@ -50,6 +51,7 @@ namespace Xadrez_2 {
 					}
 					else {
 						estaVivo = false;
+						outraentidade->acrescentarPontuacao(pontuacao);
 					}
 
 				}

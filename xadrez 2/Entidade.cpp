@@ -3,7 +3,7 @@
 namespace Xadrez_2 {
 	namespace Entidades {
 		Entidade::Entidade(const Vector2f pos, const Vector2f tam, const IDs iD, Vector2f vel) :
-			corpo(RectangleShape(tam)), pos(pos), tam(tam), Ente(iD), dirEsquerda(false), gravidade(0.f), estaVivo(true)
+			corpo(RectangleShape(tam)), pos(pos), tam(tam), Ente(iD), dirEsquerda(false), gravidade(0.f), estaVivo(true), pontuacao(0)
 		{
 		}
 

@@ -44,6 +44,24 @@ namespace Xadrez_2 {
 		return objListaEntidade.operator[](pos);
 	}
 
+	bool ListaEntidade::jogadoresVivos() {
+		for (int i = 0; i < objListaEntidade.getTam(); i++) {
+			if (objListaEntidade[i]->getId() == IDs::jogador)
+				return true;
+		}
+		return false;
+	}
+
+	bool ListaEntidade::inimigosVivos() {
+		for (int i = 0; i < objListaEntidade.getTam(); i++) {
+			if (objListaEntidade[i]->getId() == IDs::peao ||
+				objListaEntidade[i]->getId() == IDs::rainha || 
+				objListaEntidade[i]->getId() == IDs::torre)
+				return true;
+		}
+		return false;
+	}
+
 	void ListaEntidade::executar(RenderWindow* janela)
 	{
 		Entidades::Entidade* aux = nullptr;

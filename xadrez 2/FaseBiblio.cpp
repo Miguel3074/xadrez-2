@@ -4,13 +4,16 @@ namespace Xadrez_2 {
 		FaseBiblio::FaseBiblio() :
 			Fase(IDs::fase1)
 		{
-			pontuacaoBase = 10000;
+			
 		}
 		FaseBiblio::~FaseBiblio()
 		{
 		}
 		void FaseBiblio::criarMapa()
 		{
+			faseAtual = 1;
+			if (!faseFinal)
+				pontuacaoAtual = 0;
 			if (pColisao)
 				delete(pColisao);
 			pColisao = new Gerenciadores::GerenciadorColisao();
@@ -44,7 +47,6 @@ namespace Xadrez_2 {
 				j++;
 			}
 			mapa1txt.close();
-			tempo.restart();
 		}
 		void FaseBiblio::executar()
 		{

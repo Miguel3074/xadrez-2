@@ -136,9 +136,10 @@ namespace Xadrez_2 {
 			Elemento<L>* aux2 = nullptr;
 			while (aux != nullptr) {
 				aux2 = aux->getProx();
-				if (aux->getElemento())
+				if (aux->getElemento()) {
 					delete(aux->getElemento());
-				aux = nullptr;
+				}
+				delete(aux);
 				aux = aux2;
 			}
 		}
