@@ -27,6 +27,7 @@ namespace Xadrez_2 {
 					corpo.move(-0.05f, 0.0f);
 				}
 				else {
+					corpo.setPosition(0.f, 900.f - tam.y);
 					chegouNoFinal = true;
 				}
 

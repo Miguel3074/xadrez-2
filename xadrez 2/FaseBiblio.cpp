@@ -4,7 +4,7 @@ namespace Xadrez_2 {
 		FaseBiblio::FaseBiblio() :
 			Fase(IDs::fase1)
 		{
-			
+
 		}
 		FaseBiblio::~FaseBiblio()
 		{
@@ -32,7 +32,10 @@ namespace Xadrez_2 {
 			fundo.setTexture(texturaFundo);
 
 			string linha;
-			mapa1txt.open("FaseBiblioMapa.txt");
+			if (numJogadores == false)
+				mapa1txt.open("FaseBiblioMapa1.txt");
+			else if (numJogadores == true)
+				mapa1txt.open("FaseBiblioMapa2.txt");
 			if (!mapa1txt.is_open()) {
 				cout << "nao foi possivel abrir o arquivo" << endl;
 				exit(1);

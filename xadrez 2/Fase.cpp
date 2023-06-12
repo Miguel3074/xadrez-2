@@ -14,7 +14,8 @@ namespace Xadrez_2 {
 			gravidade(0.007f),
 			listaPeao(),
 			pontuacaoAtual(0),
-			pontuacao()
+			pontuacao(),
+			numJogadores(false)
 		{
 			if (!fonte.loadFromFile("Flavor_sans.otf"))
 			{
@@ -199,8 +200,8 @@ namespace Xadrez_2 {
 
 			//POSICAO ELEATORIAS
 			Vector2i pos2;
-			pos2.x = (rand() % 1600) + 300.f;
-			pos2.y = rand() % 1000;
+			pos2.x = (rand() % 1500) + 300.f;
+			pos2.y = rand() % 900;
 			Vector2f posf = (Vector2f)pos2;
 			return posf;
 		}
@@ -208,7 +209,7 @@ namespace Xadrez_2 {
 		int Fase::randQnty()
 		{
 			int i;
-			i = (rand() % 3) + 3;
+			i = (rand() % 2) + 3;
 			return i;
 		}
 
@@ -311,6 +312,10 @@ namespace Xadrez_2 {
 					instanciaJogo->mudarTela(0);
 				}
 			}
+		}
+		void Fase::setNumJogadores(bool a)
+		{
+			numJogadores = a;
 		}
 	}
 }

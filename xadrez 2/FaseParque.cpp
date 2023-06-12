@@ -5,7 +5,7 @@ namespace Xadrez_2 {
 		FaseParque::FaseParque() :
 			Fase(IDs::fase2)
 		{
-			
+
 		}
 		FaseParque::~FaseParque()
 		{
@@ -33,7 +33,10 @@ namespace Xadrez_2 {
 			fundo.setTexture(texturaFundo);
 
 			string linha;
-			mapa2txt.open("FaseParqueMapa.txt");
+			if (numJogadores == false)
+				mapa2txt.open("FaseParqueMapa1.txt");
+			else if (numJogadores == true)
+				mapa2txt.open("FaseParqueMapa2.txt");
 			if (!mapa2txt.is_open()) {
 				cout << "nao foi possivel abrir o arquivo" << endl;
 				exit(1);

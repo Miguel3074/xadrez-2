@@ -51,10 +51,7 @@ namespace Xadrez_2 {
 				case(IDs::jogador):
 				{
 					if (ds.x > ds.y) {
-						if (outraentidade->getDirecao())
-							outraentidade->mover(Vector2f(-ds.x, 0.f));
-						else
-							outraentidade->mover(Vector2f(ds.x, 0.f));
+						outraentidade->setEstaVivo(false);
 					}
 					else {
 						estaVivo = false;
