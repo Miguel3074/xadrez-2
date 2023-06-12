@@ -95,7 +95,7 @@ namespace Xadrez_2 {
 
 		if (menuOpcao < 3) {
 			janela->draw(nomePerfil);
-			for (int i = 1; i < 5 && i < perfis.size(); i++)
+			for (int i = 1; i < 5 && i <= perfis.size(); i++)
 			{
 				nomePerfil.setString(perfis[i-1]->getNome());
 				nomePerfil.setPosition(300, 200 + 50 * i);
@@ -148,6 +148,7 @@ namespace Xadrez_2 {
 						perfilAtual = perfis[menuOpcao - 1];
 					menuPerfil = false;
 					menuOpcao = 1;
+					jogadorPerfil.setString("Ola, " + perfilAtual->getNome());
 					return;
 				}
 				break;
@@ -213,7 +214,6 @@ namespace Xadrez_2 {
 				janela->clear();
 			}
 		}
-		jogadorPerfil.setString("Ola, " + perfilAtual->getNome());
 	}
 
 	void Menu::menuInicial()
