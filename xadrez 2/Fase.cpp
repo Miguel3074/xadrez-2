@@ -166,6 +166,7 @@ namespace Xadrez_2 {
 				for (int i = 0; i < randQnty(); i++)
 					criaTeia(randPos());
 			}
+			break;
 			case('e'):
 			{
 				for (int i = 0; i < randQnty(); i++)
