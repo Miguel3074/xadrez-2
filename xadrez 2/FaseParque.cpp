@@ -10,11 +10,14 @@ namespace Xadrez_2 {
 		FaseParque::~FaseParque()
 		{
 		}
+
 		void FaseParque::criarMapa()
 		{
 			faseAtual = 2;
-			if (!faseFinal)
+			if (!faseFinal) {
 				pontuacaoAtual = 0;
+				numJogadores = 0;
+			}
 			if (pColisao)
 				delete(pColisao);
 			pColisao = new Gerenciadores::GerenciadorColisao();
@@ -23,6 +26,9 @@ namespace Xadrez_2 {
 				cout << "Erro ao criar gerenciador de colisao" << endl;
 				exit(1);
 			}
+
+			if (!numJogadores)
+				numeroJogadores();
 
 			listaEntidades.limparLista();
 			if (!texturaFundo.loadFromFile("../TEXTURAS/fundo2.jpg"))
@@ -33,9 +39,9 @@ namespace Xadrez_2 {
 			fundo.setTexture(texturaFundo);
 
 			string linha;
-			if (numJogadores == false)
+			if (numJogadores == 1)
 				mapa2txt.open("FaseParqueMapa1.txt");
-			else if (numJogadores == true)
+			else if (numJogadores == 2)
 				mapa2txt.open("FaseParqueMapa2.txt");
 			if (!mapa2txt.is_open()) {
 				cout << "nao foi possivel abrir o arquivo" << endl;

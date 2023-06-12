@@ -15,7 +15,7 @@ namespace Xadrez_2 {
 			listaPeao(),
 			pontuacaoAtual(0),
 			pontuacao(),
-			numJogadores(false)
+			numJogadores(0)
 		{
 			if (!fonte.loadFromFile("Flavor_sans.otf"))
 			{
@@ -36,6 +36,65 @@ namespace Xadrez_2 {
 			}
 		}
 
+		void Fase::numeroJogadores()
+		{
+			RenderWindow* janela = pGrafico->getJanela();
+			Event evento;
+			Text opcaoJogador1("Um Jogador", fonte), opcaoJogador2("Dois Jogadores", fonte), selecao(">>", fonte);
+			int opt = 1;
+			opcaoJogador1.setPosition(150, 200);
+			opcaoJogador2.setPosition(380, 200);
+			selecao.setPosition(120, 200);
+			numJogadores = 0;
+
+
+			while (!numJogadores)
+			{
+				if (opt == 1)
+					selecao.setPosition(120, 200);
+				else
+					selecao.setPosition(350, 200);
+
+				janela->clear();
+
+				janela->draw(selecao);
+				janela->draw(opcaoJogador1);
+				janela->draw(opcaoJogador2);
+
+				janela->display();
+
+				while (janela->pollEvent(evento)) {
+					switch (evento.type)
+					{
+					case Event::Closed:
+						pGrafico->fecharJanela();
+						numJogadores = -1;
+						break;
+					case Event::KeyPressed:
+						Event::KeyEvent botao = evento.key;
+						switch (botao.code)
+						{
+						case Keyboard::Escape:
+							pGrafico->fecharJanela();
+							numJogadores = -1;
+							break;
+						case Keyboard::A:
+						case Keyboard::Left:
+						case Keyboard::D:
+						case Keyboard::Right:
+							opt == 1 ? opt = 2 : opt = 1;
+							break;
+						case Keyboard::Enter:
+							numJogadores = opt;
+							break;
+						}
+						break;
+					}
+				}
+
+			}
+		}
+
 		void Fase::criaPeao(const Vector2f pos)
 		{
 			Entidades::Personagens::Peao* aux = new Entidades::Personagens::Peao(pos);
@@ -51,7 +110,7 @@ namespace Xadrez_2 {
 
 		void Fase::criaJogador(const Vector2f pos)
 		{
-			Entidades::Personagens::Jogador* jogador;
+			Entidades::Personagens::Jogador* jogador = nullptr;
 			Gerenciadores::GerenciadorEvento* pEvento = pEvento->getGerenciadorEvento();
 			if (pEvento->getJogador1() == nullptr) {
 				jogador = new Entidades::Personagens::Jogador(pos);
@@ -59,21 +118,20 @@ namespace Xadrez_2 {
 				pColisao->definirJogador1(jogador);
 				listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(jogador), gravidade);
 			}
-			else
-			{
-				jogador = pEvento->getJogador1();
-				jogador->setEstaVivo(true);
-				pColisao->definirJogador1(jogador);
-				listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(jogador), gravidade);
-			}
-			if (pEvento->getJogador2() == nullptr) {
+			else if (pEvento->getJogador2() == nullptr) {
 				jogador = new Entidades::Personagens::Jogador(pos);
 				pEvento->setJogador2(jogador);
 				pColisao->definirJogador2(jogador);
 				listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(jogador), gravidade);
 			}
-			else
-			{
+			else if (pColisao->getJogador1() == nullptr) {
+				jogador = pEvento->getJogador1();
+				jogador->setEstaVivo(true);
+				pColisao->definirJogador1(jogador);
+				listaEntidades.addEntidade(static_cast<Entidades::Entidade*>(jogador), gravidade);
+			}
+			else {
+
 				jogador = pEvento->getJogador2();
 				jogador->setEstaVivo(true);
 				pColisao->definirJogador2(jogador);

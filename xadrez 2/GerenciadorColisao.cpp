@@ -78,8 +78,10 @@ namespace Xadrez_2 {
 				if (jogador1->getEstaVivo()) {
 					colidir(obst, jogador1);
 				}
-				if (jogador2->getEstaVivo()) {
-					colidir(obst, jogador2);
+				if (jogador2) {
+					if (jogador2->getEstaVivo()) {
+						colidir(obst, jogador2);
+					}
 				}
 
 				for (Entidades::Obstaculos::Obstaculo* obst2 : listaObstaculos)
@@ -95,8 +97,10 @@ namespace Xadrez_2 {
 					if (jogador1->getEstaVivo()) { 
 						colidir(inim, jogador1); 
 					}
-					if (jogador2->getEstaVivo())  {
-						colidir(inim, jogador2);  
+					if (jogador2) {
+						if (jogador2->getEstaVivo()) {
+							colidir(inim, jogador2);
+						}
 					}
 				}
 				for (Entidades::Flecha* flecha : listaFlecha)
@@ -108,8 +112,10 @@ namespace Xadrez_2 {
 					if (jogador1->getEstaVivo()) { 
 						colidir(flecha, jogador1); 
 					}
-					if (jogador2->getEstaVivo()) { 
-						colidir(flecha, jogador2); 
+					if (jogador2) {
+						if (jogador2->getEstaVivo()) {
+							colidir(flecha, jogador2);
+						}
 					}
 				}
 			}

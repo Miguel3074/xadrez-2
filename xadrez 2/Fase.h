@@ -37,7 +37,7 @@ namespace Xadrez_2 {
 			Jogo* instanciaJogo;
 
 			float gravidade;
-			bool numJogadores;
+			int numJogadores;
 		public:
 			Fase(IDs ID_fase);
 			virtual ~Fase();
@@ -54,6 +54,7 @@ namespace Xadrez_2 {
 			Vector2f randPos();
 			int randQnty();
 			virtual void executar();
+			void numeroJogadores();
 			void setNumJogadores(bool a);
 		};
 	}
