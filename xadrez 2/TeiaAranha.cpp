@@ -23,7 +23,7 @@ namespace Xadrez_2 {
 			}
 			void TeiaAranha::colisao(Entidade* outraentidade, Vector2f ds)
 			{
-				if (outraentidade->getId() != IDs::teiaAranha) {
+				if (outraentidade->getId() != IDs::teiaAranha && outraentidade->getId() != IDs::flecha) {
 					outraentidade->setVel(Vector2f(outraentidade->getVel().x, outraentidade->getVel().y / 2.f));
 					if (outraentidade->getId() == IDs::jogador) {
 						if (outraentidade->getDirecao() && outraentidade->getVel().x != 0.f) {

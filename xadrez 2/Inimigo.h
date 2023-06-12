@@ -16,8 +16,7 @@ namespace Xadrez_2 {
 			class Inimigo :public Personagem
 			{
 			private:
-				//Jogador::Jogador* jogador;
-				//short moveRand;
+
 
 			public:
 				Inimigo(const Vector2f pos, const Vector2f tam, IDs id);//, Jogador::Jogador* jogador

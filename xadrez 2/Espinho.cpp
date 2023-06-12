@@ -19,16 +19,23 @@ namespace Xadrez_2 {
 			{
 				vel.y = vel.y + gravidade;
 				corpo.move(0.0f, vel.y);
+				verifEspetou();
 			}
 			void Espinho::colisao(Entidade* outraentidade, Vector2f ds)
 			{
 				if (outraentidade->getId() == IDs::jogador) {
 					outraentidade->setEstaVivo(false);
+					espetou = true;
 				}
 				else if (outraentidade->getId() == IDs::tabuleiro) {
 					corpo.move(0.0f, -ds.y);
 					vel.y = 0.f;
 				}
+			}
+			void Espinho::verifEspetou()
+			{
+				if (espetou == true)
+					estaVivo = false;
 			}
 		}
 	}

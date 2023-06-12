@@ -13,6 +13,8 @@ namespace Xadrez_2 {
 				~Espinho();
 				void executar();
 				void colisao(Entidade* outraentidade, Vector2f ds);
+				void verifEspetou();
+
 			};
 		}
 	}
