@@ -34,7 +34,7 @@ namespace Xadrez_2 {
 			float gravidade;
 		public:
 			Fase(IDs ID_fase);
-			~Fase();
+			virtual ~Fase();
 			void setInstanciaJogo(Jogo* jogo);
 			void criaPeao(const Vector2f pos);
 			void criaJogador(const Vector2f pos);

@@ -12,7 +12,7 @@ namespace Xadrez_2 {
 	Jogo::Jogo() :
 		pGerenciadorGrafico(pGerenciadorGrafico->getGerenciadorGrafico()),
 		fase1(new Fases::FaseBiblio()), fase2(new Fases::FaseParque()), menu(new Menu()), faseAtual(menu),
-		pEvento(Gerenciadores::GerenciadorEvento::getGerenciadorEvento())
+		pEvento(Gerenciadores::GerenciadorEvento::getGerenciadorEvento())//, listaJogadores()
 	{
 		if (pGerenciadorGrafico == nullptr) {
 			cout << "ERRO AO CRIAR GERENCIADOR GRAFICO";
@@ -25,6 +25,12 @@ namespace Xadrez_2 {
 
 	Jogo::~Jogo()
 	{
+		if (fase1)
+			delete(fase1);
+		if (fase2)
+			delete(fase2);
+		if (menu)
+			delete(menu);
 	}
 
 	void Jogo::mudarTela(int telaN)

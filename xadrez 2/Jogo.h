@@ -3,6 +3,7 @@
 #include "FaseBiblio.h"
 #include "FaseParque.h"
 #include "Menu.h"
+#include <string>
 
 namespace Xadrez_2 {
 	class Jogo
@@ -14,6 +15,7 @@ namespace Xadrez_2 {
 		Fases::FaseParque* fase2;
 		Menu* menu;
 		Ente* faseAtual;
+		//list<string> listaJogadores;
 
 		void criarFase();
 	public:

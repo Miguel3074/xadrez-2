@@ -12,7 +12,7 @@ namespace Xadrez_2 {
 
 			public:
 				Obstaculo(const Vector2f pos, const Vector2f tam, IDs id, bool dan);
-				~Obstaculo();
+				virtual ~Obstaculo();
 
 				virtual void executar() = 0;
 			};

@@ -14,7 +14,7 @@ namespace Xadrez_2 {
 	public:
 
 		Ente(IDs ID);
-		~Ente();
+		virtual ~Ente();
 
 		//virtual void atualizar() = 0;
 		const IDs getId() const;

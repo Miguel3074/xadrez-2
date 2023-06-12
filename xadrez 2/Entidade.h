@@ -19,7 +19,7 @@ namespace Xadrez_2 {
 
 		public:
 			Entidade(const Vector2f pos, const Vector2f tam, const IDs iD, Vector2f vel);
-			~Entidade();
+			virtual ~Entidade();
 			const RectangleShape getCorpo() const;
 			void setPos(Vector2f p);
 			Vector2f getPos();

@@ -21,7 +21,7 @@ namespace Xadrez_2 {
 
 			public:
 				Inimigo(const Vector2f pos, const Vector2f tam, IDs id);//, Jogador::Jogador* jogador
-				~Inimigo();
+				virtual ~Inimigo();
 
 				virtual void executar();
 			};

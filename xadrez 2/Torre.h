@@ -9,7 +9,7 @@ namespace Xadrez_2 {
 			class Torre :public Inimigo
 			{
 			private:
-				Flecha flecha;
+				Flecha* flecha;
 				bool atirou;
 			public:
 				Torre(const Vector2f pos);
