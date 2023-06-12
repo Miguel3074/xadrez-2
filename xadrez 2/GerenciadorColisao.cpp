@@ -101,7 +101,6 @@ namespace Xadrez_2 {
 					colidir(flecha, jogador2);
 				}
 			}
-
 		}
 	}
 }
