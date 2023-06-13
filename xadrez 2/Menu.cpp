@@ -197,7 +197,7 @@ namespace Xadrez_2 {
 				case Keyboard::Up:
 					menuOpcao <= 0 ? menuOpcao = perfis.size() : menuOpcao--;
 					break;
-				case Keyboard::Enter:
+				case Keyboard::Return:
 					if (menuOpcao == 0)
 						criarPerfil();
 					else
@@ -245,7 +245,7 @@ namespace Xadrez_2 {
 						else
 							nomePerfil.setString(nomePerfil.getString() + to_string(evento.key.code - 26));
 					}
-					else if (evento.key.code == Keyboard::Key::Backspace)
+					else if (evento.key.code == Keyboard::Key::BackSpace)
 					{
 						if (nomePerfil.getString().getSize() > 0)
 						{
@@ -261,7 +261,7 @@ namespace Xadrez_2 {
 						pGrafico->fecharJanela();
 						menuPerfil = false;
 					}
-					else if (evento.key.code == Keyboard::Key::Enter)
+					else if (evento.key.code == Keyboard::Key::Return)
 					{
 						perfilAtual = new Perfil();
 						perfilAtual->setNome(nomePerfil.getString());
@@ -324,7 +324,7 @@ namespace Xadrez_2 {
 				case Keyboard::Up:
 					menuOpcao <= 1 ? menuOpcao = 4 : menuOpcao--;
 					break;
-				case Keyboard::Enter:
+				case Keyboard::Return: 
 					if (menuOpcao == 3)
 						rankings();
 					else

@@ -84,7 +84,7 @@ namespace Xadrez_2 {
 						case Keyboard::Right:
 							opt == 1 ? opt = 2 : opt = 1;
 							break;
-						case Keyboard::Enter:
+						case Keyboard::Return:
 							numJogadores = opt;
 							break;
 						}
@@ -326,7 +326,7 @@ namespace Xadrez_2 {
 							pGrafico->fecharJanela();
 							finalizarFase = true;
 						}
-						if (evento.type == Event::KeyPressed && evento.key.code == Keyboard::Key::Enter)
+						if (evento.type == Event::KeyPressed && evento.key.code == Keyboard::Key::Return) 
 							finalizarFase = true;
 					}
 				}
@@ -362,7 +362,7 @@ namespace Xadrez_2 {
 								pGrafico->fecharJanela();
 								finalizarFase = true;
 							}
-							if (evento.type == Event::KeyPressed && evento.key.code == Keyboard::Key::Enter)
+							if (evento.type == Event::KeyPressed && evento.key.code == Keyboard::Key::Return)
 								finalizarFase = true;
 						}
 					}
